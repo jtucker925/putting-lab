@@ -1090,14 +1090,19 @@
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);">
         <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);margin-bottom:8px;">Grading Scale</div>
         <div style="display:flex;flex-wrap:wrap;gap:8px;">
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(123,198,126,0.15);border:1px solid rgba(123,198,126,0.3);color:var(--accent);">93–100 → A</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(123,198,126,0.1);border:1px solid rgba(123,198,126,0.2);color:var(--accent);">90–92 → A−</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(74,222,128,0.15);border:1px solid rgba(74,222,128,0.4);color:#4ade80;">97–100 → A+</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(123,198,126,0.15);border:1px solid rgba(123,198,126,0.3);color:var(--accent);">94–96 → A</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(123,198,126,0.1);border:1px solid rgba(123,198,126,0.2);color:var(--accent);">90–93 → A-</span>
           <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(201,168,76,0.12);border:1px solid rgba(201,168,76,0.25);color:var(--gold-light);">87–89 → B+</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.18);color:var(--gold-light);">83–86 → B</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.12);color:var(--gold-light);">80–82 → B−</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(201,168,76,0.08);border:1px solid rgba(201,168,76,0.18);color:var(--gold-light);">84–86 → B</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(201,168,76,0.06);border:1px solid rgba(201,168,76,0.12);color:var(--gold-light);">80–83 → B-</span>
           <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--chalk);">77–79 → C+</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--chalk);">73–76 → C</span>
-          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.2);color:#e07060;">Below 73 → D / Get back out there</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--chalk);">74–76 → C</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.1);color:var(--chalk);">70–73 → C-</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.2);color:#e07060;">67–69 → D+</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.2);color:#e07060;">64–66 → D</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(192,57,43,0.08);border:1px solid rgba(192,57,43,0.2);color:#e07060;">60–63 → D-</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.65rem;padding:3px 10px;border-radius:2px;background:rgba(192,57,43,0.15);border:1px solid rgba(192,57,43,0.35);color:#c0392b;">Below 60 → F</span>
         </div>
       </div>
       <button class="reset-btn" onclick="resetAll()">Reset Full Session</button>
@@ -1437,33 +1442,45 @@
 
   // ── GRADING ───────────────────────────────────────────────────────────────
   function gradeFromScore(s) {
-    if (s >= 93) return 'A';
+    if (s >= 97) return 'A+';
+    if (s >= 94) return 'A';
     if (s >= 90) return 'A-';
     if (s >= 87) return 'B+';
-    if (s >= 83) return 'B';
+    if (s >= 84) return 'B';
     if (s >= 80) return 'B-';
     if (s >= 77) return 'C+';
-    if (s >= 73) return 'C';
-    return 'D';
+    if (s >= 74) return 'C';
+    if (s >= 70) return 'C-';
+    if (s >= 67) return 'D+';
+    if (s >= 64) return 'D';
+    if (s >= 60) return 'D-';
+    return 'F';
   }
 
   function gradeColor(g) {
     if (!g || g === '—') return 'var(--gold)';
+    if (g === 'A+')       return '#4ade80';
     if (g.startsWith('A')) return '#7bc67e';
     if (g.startsWith('B')) return '#c9a84c';
     if (g.startsWith('C')) return '#d4cfc6';
-    return '#e07060';
+    if (g.startsWith('D')) return '#e07060';
+    return '#c0392b';
   }
 
   function getGradeMsg(s) {
-    if (s >= 93) return 'Tour-level session. Turning Stone better watch out.';
-    if (s >= 90) return 'Excellent. Putting like a scratch player.';
-    if (s >= 87) return 'Strong session. A few more reps and you are dangerous.';
-    if (s >= 83) return 'Solid work. Consistency is building.';
-    if (s >= 80) return 'Good foundation. Tighten up the longer putts.';
-    if (s >= 77) return 'Getting there. Keep showing up.';
-    if (s >= 73) return 'Work to do. But that is what the garage is for.';
-    return 'Rough session. Reset and go again.';
+    if (s >= 97) return 'A+ — Flawless. That is Turning Stone ready.';
+    if (s >= 94) return 'A — Tour-level session. Own the greens.';
+    if (s >= 90) return 'A- — Excellent. Putting like a scratch player.';
+    if (s >= 87) return 'B+ — Strong session. A few reps away from elite.';
+    if (s >= 84) return 'B — Solid work. Consistency is building.';
+    if (s >= 80) return 'B- — Good foundation. Tighten up the longer putts.';
+    if (s >= 77) return 'C+ — Getting there. Keep showing up.';
+    if (s >= 74) return 'C — Work to do. That is what the garage is for.';
+    if (s >= 70) return 'C- — Below standard. Reset the routine.';
+    if (s >= 67) return 'D+ — Tough session. Identify the leak and fix it.';
+    if (s >= 64) return 'D — Get back on the mat tomorrow.';
+    if (s >= 60) return 'D- — Rough one. It happens. Show up again.';
+    return 'F — Everyone has a bad night. Back to basics tomorrow.';
   }
 
   // ── COMPUTE SESSION SCORE (level-aware) ──────────────────────────────────
