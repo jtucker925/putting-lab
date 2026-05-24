@@ -1364,6 +1364,25 @@
           <div class="stat-big" id="ytd-longest-streak">—</div>
         </div>
       </div>
+
+      <!-- Distance breakdown table -->
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);">
+        <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);margin-bottom:12px;">Distance Breakdown — All Sessions</div>
+        <div id="ytd-dist-empty" style="font-size:0.82rem;color:var(--chalk);">Log sessions to see breakdown.</div>
+        <table id="ytd-dist-table" style="display:none;width:100%;border-collapse:collapse;font-size:0.82rem;">
+          <thead>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+              <th style="text-align:left;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Distance</th>
+              <th style="text-align:center;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Make %</th>
+              <th style="text-align:center;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Makes / Attempts</th>
+              <th style="text-align:center;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Tour Avg</th>
+              <th style="text-align:left;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">vs Tour</th>
+            </tr>
+          </thead>
+          <tbody id="ytd-dist-body"></tbody>
+        </table>
+      </div>
+
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);font-size:0.85rem;color:var(--chalk);line-height:1.7;" id="ytd-narrative">Log sessions to generate your YTD narrative.</div>
     </div>
 
@@ -1969,6 +1988,38 @@
       }
       var lsEl = document.getElementById('ytd-longest-streak');
       if (lsEl) lsEl.textContent = longestStreak + (longestStreak===1?' day':' days');
+
+      // Distance breakdown table
+      var tourAvgs = {'4':86,'5':75,'6':63,'8':50};
+      var distLabels = {'4':'4 Feet','5':'5 Feet','6':'6 Feet','8':'8 Feet'};
+      var distEmpty = document.getElementById('ytd-dist-empty');
+      var distTable = document.getElementById('ytd-dist-table');
+      var distBody  = document.getElementById('ytd-dist-body');
+      if (distBody) {
+        distBody.innerHTML = '';
+        var hasAny = valid.length > 0;
+        if (distEmpty) distEmpty.style.display = hasAny ? 'none' : 'block';
+        if (distTable) distTable.style.display  = hasAny ? 'table' : 'none';
+        ['4','5','6','8'].forEach(function(d) {
+          if (!distTotals[d] || distTotals[d].t === 0) return;
+          var m = distTotals[d].m, t = distTotals[d].t;
+          var pct = Math.round((m/t)*100);
+          var tour = tourAvgs[d];
+          var diff = pct - tour;
+          var diffStr = (diff >= 0 ? '+' : '') + diff + '%';
+          var diffColor = diff >= 0 ? '#7bc67e' : '#e07060';
+          var pctColor = pct >= 90 ? '#7bc67e' : pct >= 75 ? '#c9a84c' : '#e07060';
+          var row = document.createElement('tr');
+          row.style.borderBottom = '1px solid rgba(255,255,255,0.04)';
+          row.innerHTML =
+            '<td style="padding:8px 10px;color:var(--cream);font-family:Bebas Neue,monospace;font-size:1rem;letter-spacing:1px;">'+distLabels[d]+'</td>'+
+            '<td style="padding:8px 10px;text-align:center;font-family:Bebas Neue,sans-serif;font-size:1.3rem;color:'+pctColor+';">'+pct+'%</td>'+
+            '<td style="padding:8px 10px;text-align:center;color:var(--chalk);font-family:DM Mono,monospace;font-size:0.75rem;">'+m+' / '+t+'</td>'+
+            '<td style="padding:8px 10px;text-align:center;color:var(--chalk);font-size:0.82rem;">'+tour+'%</td>'+
+            '<td style="padding:8px 10px;font-family:DM Mono,monospace;font-size:0.75rem;color:'+diffColor+';">'+diffStr+'</td>';
+          distBody.appendChild(row);
+        });
+      }
 
       var narEl = document.getElementById('ytd-narrative');
       if (narEl) {
