@@ -686,12 +686,12 @@
     </div>
 
     <div class="session-banner">
-      <h2>25-Minute Garage Session</h2>
-      <p>A structured practice routine built around your Remossy mat. You're putting from an 8-foot max to keep the backswing clear of the garage floor. Four focused drills, no filler. Warm up fast, get to the pressure reps that actually move the needle.</p>
+      <h2>28-Minute Garage Session</h2>
+      <p>A structured practice routine built around your Remossy mat. You're putting from an 8-foot max to keep the backswing clear of the garage floor. Intermediate Level 2. Tighter gates, scored one-handed reps at 3 distances, and consecutive 8ft pressure game. The easy A is gone — earn it.</p>
       <div class="session-meta">
         <div class="meta-item">
           <span class="meta-label">Total Time</span>
-          <span class="meta-value">25 MIN</span>
+          <span class="meta-value">28 MIN</span>
         </div>
         <div class="meta-item">
           <span class="meta-label">Balls Needed</span>
@@ -703,7 +703,7 @@
         </div>
         <div class="meta-item">
           <span class="meta-label">Difficulty</span>
-          <span class="meta-value">INTERMEDIATE</span>
+          <span class="meta-value">INT. L2</span>
         </div>
       </div>
     </div>
@@ -817,8 +817,8 @@
             <div class="drill-title">One-Handed Challenge</div>
             <div class="drill-tags">
               <span class="tag tag-focus">Stroke Feel</span>
-              <span class="tag tag-time">⏱ 5 Min</span>
-              <span class="tag tag-balls">3 Balls</span>
+              <span class="tag tag-time">⏱ 8 Min</span>
+              <span class="tag tag-balls">45 Putts</span>
             </div>
           </div>
           <div class="drill-chevron">▼</div>
@@ -828,11 +828,11 @@
           <p>Tiger Woods uses this drill to expose what each hand is actually doing — because two hands hide problems one hand instantly reveals. Your trail hand (left, for a lefty) naturally wants to flip and dominate. Your lead hand (right) is the stability hand — it holds the face square through impact. Keep it short, scored, and competitive with yourself.</p>
           <div class="drill-section-label">How To Do It</div>
           <ol class="steps">
-            <li><strong style="color:var(--cream)">Trail hand warmup (left hand only) — 5 putts from 4ft:</strong> Grip left hand only. Slow strokes. Feel where the face wants to go. This is diagnostic — note your miss pattern but don't score it.</li>
-            <li><strong style="color:var(--cream)">Lead hand warmup (right hand only) — 5 putts from 4ft:</strong> Grip right hand only. This should feel more controlled and stable. Again, note but don't score.</li>
-            <li><strong style="color:var(--cream)">Trail hand scored (left hand) — 10 putts from 4ft:</strong> Now it counts. Log every make and miss in the Trail Hand tracker. Goal: beat your last session's total.</li>
-            <li><strong style="color:var(--cream)">Lead hand scored (right hand) — 10 putts from 4ft:</strong> Log every make and miss in the Lead Hand tracker. Which hand is stronger? That's your data.</li>
-            <li>Finish with 5 two-handed putts from 4ft. Feel how the one-handed work clicks into place.</li>
+            <li><strong style="color:var(--gold)">4ft block:</strong> 5 trail (left) → 5 lead (right) → 5 two-handed. Score all 15 putts in the tracker.</li>
+            <li><strong style="color:var(--gold)">5ft block:</strong> 5 trail (left) → 5 lead (right) → 5 two-handed. Score all 15 putts in the tracker.</li>
+            <li><strong style="color:var(--gold)">6ft block:</strong> 5 trail (left) → 5 lead (right) → 5 two-handed. Score all 15 putts in the tracker.</li>
+            <li>Total: 45 putts. Every putt scored. The two-handed reps after each block show you whether the one-handed work is transferring immediately.</li>
+            <li>Note which distance each block is in the tracker — 4ft trail, 4ft lead, 4ft two-handed, then repeat for 5ft and 6ft.</li>
           </ol>
           <div class="pro-tip">
             <strong>Pro Tip</strong>
@@ -864,7 +864,7 @@
             <li>Make it: count goes up. Miss it: count resets to zero. Stay at 4 feet until you string 5 together.</li>
             <li>Once you make 5 in a row from 4 feet, advance to 5 feet. Same rules — miss and the count resets (but you stay at 5 feet).</li>
             <li>Make 5 in a row from 5 feet, advance to 6 feet. This is where it gets real — routine or chaos.</li>
-            <li><strong style="color:var(--gold)">Bonus round — 8 feet:</strong> Once you've conquered 6 feet, step back to your mat max. No restart penalty here — just go for 5 total makes, not necessarily consecutive. When that comes easy, we tighten the screws.</li>
+            <li><strong style="color:var(--gold)">8 feet — Intermediate L2 rules:</strong> Step back to your mat max. Same rules as 4/5/6ft — miss and the count resets to zero. 5 consecutive makes required. This is where the pressure game gets real. Log every make and miss in the tracker.</li>
           </ol>
           <div class="pro-tip">
             <strong>Pro Tip</strong>
@@ -883,122 +883,6 @@
       <p>Track your makes and misses across all distances. Your session grade is calculated live — weighted by distance difficulty, just like on the course.</p>
     </div>
 
-    <div class="tracker-grid">
-
-      <!-- 4ft -->
-      <div class="tracker-card">
-        <h3>4-Foot Makes</h3>
-        <div class="sub">The money distance — pressure game</div>
-        <div class="counter-row">
-          <span class="counter-label">Makes</span>
-          <div class="counter-btns">
-            <button class="btn-count make" onclick="adjust('make4', -1)">−</button>
-            <span class="count-display" id="make4">0</span>
-            <button class="btn-count make" onclick="adjust('make4', 1)">+</button>
-          </div>
-        </div>
-        <div class="counter-row">
-          <span class="counter-label">Misses</span>
-          <div class="counter-btns">
-            <button class="btn-count miss" onclick="adjust('miss4', -1)">−</button>
-            <span class="count-display" id="miss4">0</span>
-            <button class="btn-count miss" onclick="adjust('miss4', 1)">+</button>
-          </div>
-        </div>
-        <div class="pct-bar-wrap">
-          <div class="pct-bar-label"><span>Make %</span><span id="pct4-label">—</span></div>
-          <div class="pct-bar"><div class="pct-fill" id="pct4-bar" style="width:0%"></div></div>
-        </div>
-        <div class="stat-context" style="margin-top:10px;">Tour avg: <strong style="color:var(--cream)">86%</strong> &nbsp;|&nbsp; Target: <strong style="color:var(--cream)">75%+</strong></div>
-        <button class="reset-btn" onclick="resetTracker('4')">Reset</button>
-      </div>
-
-      <!-- 5ft -->
-      <div class="tracker-card">
-        <h3>5-Foot Makes</h3>
-        <div class="sub">Pressure game — stage 2</div>
-        <div class="counter-row">
-          <span class="counter-label">Makes</span>
-          <div class="counter-btns">
-            <button class="btn-count make" onclick="adjust('make5', -1)">−</button>
-            <span class="count-display" id="make5">0</span>
-            <button class="btn-count make" onclick="adjust('make5', 1)">+</button>
-          </div>
-        </div>
-        <div class="counter-row">
-          <span class="counter-label">Misses</span>
-          <div class="counter-btns">
-            <button class="btn-count miss" onclick="adjust('miss5', -1)">−</button>
-            <span class="count-display" id="miss5">0</span>
-            <button class="btn-count miss" onclick="adjust('miss5', 1)">+</button>
-          </div>
-        </div>
-        <div class="pct-bar-wrap">
-          <div class="pct-bar-label"><span>Make %</span><span id="pct5-label">—</span></div>
-          <div class="pct-bar"><div class="pct-fill" id="pct5-bar" style="width:0%"></div></div>
-        </div>
-        <div class="stat-context" style="margin-top:10px;">Tour avg: <strong style="color:var(--cream)">75%</strong> &nbsp;|&nbsp; Target: <strong style="color:var(--cream)">60%+</strong></div>
-        <button class="reset-btn" onclick="resetTracker('5')">Reset</button>
-      </div>
-
-      <!-- 6ft -->
-      <div class="tracker-card">
-        <h3>6-Foot Makes</h3>
-        <div class="sub">Pressure game — stage 3</div>
-        <div class="counter-row">
-          <span class="counter-label">Makes</span>
-          <div class="counter-btns">
-            <button class="btn-count make" onclick="adjust('make6', -1)">−</button>
-            <span class="count-display" id="make6">0</span>
-            <button class="btn-count make" onclick="adjust('make6', 1)">+</button>
-          </div>
-        </div>
-        <div class="counter-row">
-          <span class="counter-label">Misses</span>
-          <div class="counter-btns">
-            <button class="btn-count miss" onclick="adjust('miss6', -1)">−</button>
-            <span class="count-display" id="miss6">0</span>
-            <button class="btn-count miss" onclick="adjust('miss6', 1)">+</button>
-          </div>
-        </div>
-        <div class="pct-bar-wrap">
-          <div class="pct-bar-label"><span>Make %</span><span id="pct6-label">—</span></div>
-          <div class="pct-bar"><div class="pct-fill" id="pct6-bar" style="width:0%"></div></div>
-        </div>
-        <div class="stat-context" style="margin-top:10px;">Tour avg: <strong style="color:var(--cream)">63%</strong> &nbsp;|&nbsp; Target: <strong style="color:var(--cream)">45%+</strong></div>
-        <button class="reset-btn" onclick="resetTracker('6')">Reset</button>
-      </div>
-
-      <!-- 8ft -->
-      <div class="tracker-card">
-        <h3>8-Foot Makes</h3>
-        <div class="sub">Bonus round — no restart penalty</div>
-        <div class="counter-row">
-          <span class="counter-label">Makes</span>
-          <div class="counter-btns">
-            <button class="btn-count make" onclick="adjust('make8', -1)">−</button>
-            <span class="count-display" id="make8">0</span>
-            <button class="btn-count make" onclick="adjust('make8', 1)">+</button>
-          </div>
-        </div>
-        <div class="counter-row">
-          <span class="counter-label">Misses</span>
-          <div class="counter-btns">
-            <button class="btn-count miss" onclick="adjust('miss8', -1)">−</button>
-            <span class="count-display" id="miss8">0</span>
-            <button class="btn-count miss" onclick="adjust('miss8', 1)">+</button>
-          </div>
-        </div>
-        <div class="pct-bar-wrap">
-          <div class="pct-bar-label"><span>Make %</span><span id="pct8-label">—</span></div>
-          <div class="pct-bar"><div class="pct-fill" id="pct8-bar" style="width:0%"></div></div>
-        </div>
-        <div class="stat-context" style="margin-top:10px;">Tour avg: <strong style="color:var(--cream)">50%</strong> &nbsp;|&nbsp; Target: <strong style="color:var(--cream)">35%+</strong></div>
-        <button class="reset-btn" onclick="resetTracker('8')">Reset</button>
-      </div>
-
-    </div>
-
     <!-- ONE-HANDED TRACKER -->
     <div style="margin-top:20px;">
       <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;">One-Handed Challenge — Drill 03</div>
@@ -1006,7 +890,7 @@
 
         <div class="tracker-card">
           <h3>Trail Hand</h3>
-          <div class="sub">Left hand — scored putts from 4ft</div>
+          <div class="sub">Left hand — cumulative across 4ft / 5ft / 6ft (15 putts total)</div>
           <div class="counter-row">
             <span class="counter-label">Makes</span>
             <div class="counter-btns">
@@ -1033,7 +917,7 @@
 
         <div class="tracker-card">
           <h3>Lead Hand</h3>
-          <div class="sub">Right hand — scored putts from 4ft</div>
+          <div class="sub">Right hand — cumulative across 4ft / 5ft / 6ft (15 putts total)</div>
           <div class="counter-row">
             <span class="counter-label">Makes</span>
             <div class="counter-btns">
@@ -1066,6 +950,125 @@
         <div style="font-size:0.85rem;color:var(--chalk);line-height:1.7;" id="hand-analysis">Log both hands to see your stroke diagnosis.</div>
       </div>
     </div>
+
+
+    <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:12px;margin-top:20px;">Pressure Game — Distance Tracker</div>
+    <div class="tracker-grid">
+
+      <!-- 4ft -->
+      <div class="tracker-card">
+        <h3>4-Foot Makes</h3>
+        <div class="sub">Two-handed transfer (Drill 03) + Pressure Game stage 1</div>
+        <div class="counter-row">
+          <span class="counter-label">Makes</span>
+          <div class="counter-btns">
+            <button class="btn-count make" onclick="adjust('make4', -1)">−</button>
+            <span class="count-display" id="make4">0</span>
+            <button class="btn-count make" onclick="adjust('make4', 1)">+</button>
+          </div>
+        </div>
+        <div class="counter-row">
+          <span class="counter-label">Misses</span>
+          <div class="counter-btns">
+            <button class="btn-count miss" onclick="adjust('miss4', -1)">−</button>
+            <span class="count-display" id="miss4">0</span>
+            <button class="btn-count miss" onclick="adjust('miss4', 1)">+</button>
+          </div>
+        </div>
+        <div class="pct-bar-wrap">
+          <div class="pct-bar-label"><span>Make %</span><span id="pct4-label">—</span></div>
+          <div class="pct-bar"><div class="pct-fill" id="pct4-bar" style="width:0%"></div></div>
+        </div>
+        <div class="stat-context" style="margin-top:10px;">Tour avg: <strong style="color:var(--cream)">86%</strong> &nbsp;|&nbsp; Target: <strong style="color:var(--cream)">75%+</strong></div>
+        <button class="reset-btn" onclick="resetTracker('4')">Reset</button>
+      </div>
+
+      <!-- 5ft -->
+      <div class="tracker-card">
+        <h3>5-Foot Makes</h3>
+        <div class="sub">Two-handed transfer (Drill 03) + Pressure Game stage 2</div>
+        <div class="counter-row">
+          <span class="counter-label">Makes</span>
+          <div class="counter-btns">
+            <button class="btn-count make" onclick="adjust('make5', -1)">−</button>
+            <span class="count-display" id="make5">0</span>
+            <button class="btn-count make" onclick="adjust('make5', 1)">+</button>
+          </div>
+        </div>
+        <div class="counter-row">
+          <span class="counter-label">Misses</span>
+          <div class="counter-btns">
+            <button class="btn-count miss" onclick="adjust('miss5', -1)">−</button>
+            <span class="count-display" id="miss5">0</span>
+            <button class="btn-count miss" onclick="adjust('miss5', 1)">+</button>
+          </div>
+        </div>
+        <div class="pct-bar-wrap">
+          <div class="pct-bar-label"><span>Make %</span><span id="pct5-label">—</span></div>
+          <div class="pct-bar"><div class="pct-fill" id="pct5-bar" style="width:0%"></div></div>
+        </div>
+        <div class="stat-context" style="margin-top:10px;">Tour avg: <strong style="color:var(--cream)">75%</strong> &nbsp;|&nbsp; Target: <strong style="color:var(--cream)">60%+</strong></div>
+        <button class="reset-btn" onclick="resetTracker('5')">Reset</button>
+      </div>
+
+      <!-- 6ft -->
+      <div class="tracker-card">
+        <h3>6-Foot Makes</h3>
+        <div class="sub">Two-handed transfer (Drill 03) + Pressure Game stage 3</div>
+        <div class="counter-row">
+          <span class="counter-label">Makes</span>
+          <div class="counter-btns">
+            <button class="btn-count make" onclick="adjust('make6', -1)">−</button>
+            <span class="count-display" id="make6">0</span>
+            <button class="btn-count make" onclick="adjust('make6', 1)">+</button>
+          </div>
+        </div>
+        <div class="counter-row">
+          <span class="counter-label">Misses</span>
+          <div class="counter-btns">
+            <button class="btn-count miss" onclick="adjust('miss6', -1)">−</button>
+            <span class="count-display" id="miss6">0</span>
+            <button class="btn-count miss" onclick="adjust('miss6', 1)">+</button>
+          </div>
+        </div>
+        <div class="pct-bar-wrap">
+          <div class="pct-bar-label"><span>Make %</span><span id="pct6-label">—</span></div>
+          <div class="pct-bar"><div class="pct-fill" id="pct6-bar" style="width:0%"></div></div>
+        </div>
+        <div class="stat-context" style="margin-top:10px;">Tour avg: <strong style="color:var(--cream)">63%</strong> &nbsp;|&nbsp; Target: <strong style="color:var(--cream)">45%+</strong></div>
+        <button class="reset-btn" onclick="resetTracker('6')">Reset</button>
+      </div>
+
+      <!-- 8ft -->
+      <div class="tracker-card">
+        <h3>8-Foot Makes</h3>
+        <div class="sub">Pressure Game stage 4 — consecutive makes required</div>
+        <div class="counter-row">
+          <span class="counter-label">Makes</span>
+          <div class="counter-btns">
+            <button class="btn-count make" onclick="adjust('make8', -1)">−</button>
+            <span class="count-display" id="make8">0</span>
+            <button class="btn-count make" onclick="adjust('make8', 1)">+</button>
+          </div>
+        </div>
+        <div class="counter-row">
+          <span class="counter-label">Misses</span>
+          <div class="counter-btns">
+            <button class="btn-count miss" onclick="adjust('miss8', -1)">−</button>
+            <span class="count-display" id="miss8">0</span>
+            <button class="btn-count miss" onclick="adjust('miss8', 1)">+</button>
+          </div>
+        </div>
+        <div class="pct-bar-wrap">
+          <div class="pct-bar-label"><span>Make %</span><span id="pct8-label">—</span></div>
+          <div class="pct-bar"><div class="pct-fill" id="pct8-bar" style="width:0%"></div></div>
+        </div>
+        <div class="stat-context" style="margin-top:10px;">Tour avg: <strong style="color:var(--cream)">50%</strong> &nbsp;|&nbsp; Target: <strong style="color:var(--cream)">35%+</strong></div>
+        <button class="reset-btn" onclick="resetTracker('8')">Reset</button>
+      </div>
+
+    </div>
+
 
     <!-- SESSION GRADE -->
     <div class="tracker-card" style="margin-top:20px;">
@@ -1184,39 +1187,66 @@
       <p>Your master record. Every session logged, every trend tracked. This is where the garage work becomes a story.</p>
     </div>
 
-    <!-- STREAK + LAST SESSION ROW -->
-    <!-- Row 1: 4 stat cards -->
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:16px;">
+    <!-- LEVEL STATUS CARD -->
+    <div id="level-card" style="
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
+      border: 1px solid rgba(201,168,76,0.5);
+      border-radius: 4px;
+      padding: 24px 28px;
+      margin-bottom:20px;
+    ">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+        <div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Current Level</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;color:var(--cream);" id="level-name">Intermediate L2</div>
+          <div style="font-size:0.82rem;color:var(--chalk);margin-top:4px;" id="level-desc">Scored one-handed reps, consecutive 8ft pressure game, tighter rubric.</div>
+        </div>
+        <div style="text-align:center;min-width:120px;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--gold);line-height:1;" id="career-score-big">—</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);">Career Score</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;margin-top:2px;" id="career-grade-badge">—</div>
+        </div>
+      </div>
 
+      <!-- Next milestone progress -->
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);">
+        <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
+          <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);">Next Milestone</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--gold);" id="milestone-label">—</div>
+        </div>
+        <div style="height:8px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;">
+          <div id="milestone-bar" style="height:100%;background:linear-gradient(90deg,var(--green-light),var(--gold));border-radius:4px;transition:width 0.4s ease;width:0%;"></div>
+        </div>
+        <div style="font-size:0.78rem;color:var(--chalk);margin-top:8px;" id="milestone-detail">—</div>
+      </div>
+    </div>
+
+    <!-- ROW 1: stat cards -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:16px;">
       <div class="tracker-card" style="text-align:center;">
         <div class="meta-label" style="margin-bottom:6px;">Current Streak</div>
         <div class="stat-big" id="log-streak">—</div>
         <div class="stat-context" id="log-streak-msg">No sessions logged yet.</div>
       </div>
-
       <div class="tracker-card" style="text-align:center;">
         <div class="meta-label" style="margin-bottom:6px;">Days Since Last Session</div>
         <div class="stat-big" id="log-days-since">—</div>
         <div class="stat-context" id="log-since-msg">Start logging to track.</div>
       </div>
-
       <div class="tracker-card" style="text-align:center;">
         <div class="meta-label" style="margin-bottom:6px;">Sessions Logged</div>
         <div class="stat-big" id="log-total-sessions">0</div>
         <div class="stat-context">Total garage sessions completed.</div>
       </div>
-
     </div>
 
-    <!-- Row 2: Best Session + Last 3 Sessions side by side -->
+    <!-- ROW 2: Best Session + Last 3 -->
     <div style="display:grid;grid-template-columns:1fr 3fr;gap:16px;margin-bottom:20px;">
-
       <div class="tracker-card" style="text-align:center;">
         <div class="meta-label" style="margin-bottom:6px;">Best Session</div>
         <div class="stat-big" id="log-best-grade">—</div>
         <div class="stat-context" id="log-best-date">No sessions yet.</div>
       </div>
-
       <div class="tracker-card">
         <div class="meta-label" style="margin-bottom:12px;">Last 3 Sessions</div>
         <div id="trailing3-empty" style="font-size:0.82rem;color:var(--chalk);">No sessions logged yet.</div>
@@ -1225,20 +1255,22 @@
             <div class="meta-label" style="margin-bottom:6px;" id="t3-date-0">—</div>
             <div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;" id="t3-grade-0">—</div>
             <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--chalk);margin-top:4px;" id="t3-score-0"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--gold);margin-top:3px;" id="t3-level-0"></div>
           </div>
           <div id="t3-1" style="text-align:center;padding:10px 8px;background:rgba(255,255,255,0.03);border-radius:3px;border:1px solid rgba(255,255,255,0.06);">
             <div class="meta-label" style="margin-bottom:6px;" id="t3-date-1">—</div>
             <div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;" id="t3-grade-1">—</div>
             <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--chalk);margin-top:4px;" id="t3-score-1"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--gold);margin-top:3px;" id="t3-level-1"></div>
           </div>
           <div id="t3-2" style="text-align:center;padding:10px 8px;background:rgba(255,255,255,0.03);border-radius:3px;border:1px solid rgba(255,255,255,0.06);">
             <div class="meta-label" style="margin-bottom:6px;" id="t3-date-2">—</div>
             <div style="font-family:'Bebas Neue',sans-serif;font-size:2.2rem;line-height:1;" id="t3-grade-2">—</div>
             <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--chalk);margin-top:4px;" id="t3-score-2"></div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--gold);margin-top:3px;" id="t3-level-2"></div>
           </div>
         </div>
       </div>
-
     </div>
 
     <!-- TIGER QUOTE -->
@@ -1255,61 +1287,38 @@
       <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-top:10px;padding-left:24px;">— Tiger Woods</div>
     </div>
 
-    <!-- LOG SESSION BUTTON -->
+    <!-- LOG SESSION -->
     <div class="tracker-card" style="margin-bottom:20px;">
       <h3>Log Today's Session</h3>
       <div class="sub">Pulls your current Make Tracker data. Fill in scores before logging.</div>
-      <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:center;">
+      <div style="margin-top:16px;display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;">
         <div>
           <div class="meta-label" style="margin-bottom:4px;">Session Date</div>
-          <input type="date" id="log-date-input" style="
-            background:rgba(255,255,255,0.05);
-            border:1px solid rgba(255,255,255,0.15);
-            border-radius:3px;
-            color:var(--cream);
-            font-family:'DM Mono',monospace;
-            font-size:0.8rem;
-            padding:8px 12px;
-            outline:none;
-          ">
+          <input type="date" id="log-date-input" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:3px;color:var(--cream);font-family:'DM Mono',monospace;font-size:0.8rem;padding:8px 12px;outline:none;">
+        </div>
+        <div>
+          <div class="meta-label" style="margin-bottom:4px;">Level</div>
+          <select id="log-level-input" style="background:#1a3a2a;border:1px solid rgba(255,255,255,0.15);border-radius:3px;color:var(--cream);font-family:'DM Mono',monospace;font-size:0.8rem;padding:8px 12px;outline:none;">
+            <option value="L1">Intermediate L1</option>
+            <option value="L2" selected>Intermediate L2</option>
+            <option value="L3">Intermediate L3</option>
+            <option value="A1">Advanced L1</option>
+            <option value="A2">Advanced L2</option>
+          </select>
         </div>
         <div>
           <div class="meta-label" style="margin-bottom:4px;">Session Notes (optional)</div>
-          <input type="text" id="log-notes-input" placeholder="e.g. felt rusty, good rhythm..." style="
-            background:rgba(255,255,255,0.05);
-            border:1px solid rgba(255,255,255,0.15);
-            border-radius:3px;
-            color:var(--cream);
-            font-family:'DM Mono',monospace;
-            font-size:0.8rem;
-            padding:8px 12px;
-            outline:none;
-            width:260px;
-          ">
+          <input type="text" id="log-notes-input" placeholder="e.g. felt rusty, good rhythm..." style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:3px;color:var(--cream);font-family:'DM Mono',monospace;font-size:0.8rem;padding:8px 12px;outline:none;width:240px;">
         </div>
       </div>
       <div style="margin-top:12px;font-size:0.82rem;color:var(--chalk);">
-        Will log: 
-        <span id="log-preview" style="color:var(--cream);">Go to Make Tracker, hit some putts, then come back here.</span>
+        Preview: <span id="log-preview" style="color:var(--cream);">Go to Make Tracker, hit some putts, then come back here.</span>
       </div>
-      <button onclick="logSession()" style="
-        margin-top:14px;
-        font-family:'DM Mono',monospace;
-        font-size:0.65rem;
-        letter-spacing:2px;
-        text-transform:uppercase;
-        background:linear-gradient(135deg,var(--green-mid),var(--green-light));
-        border:1px solid rgba(123,198,126,0.4);
-        color:var(--cream);
-        padding:10px 24px;
-        border-radius:3px;
-        cursor:pointer;
-        transition:all 0.2s;
-      ">⛳ Log This Session</button>
+      <button onclick="logSession()" style="margin-top:14px;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;background:linear-gradient(135deg,var(--green-mid),var(--green-light));border:1px solid rgba(123,198,126,0.4);color:var(--cream);padding:10px 24px;border-radius:3px;cursor:pointer;touch-action:manipulation;min-height:44px;">⛳ Log This Session</button>
       <div id="log-feedback" style="margin-top:10px;font-size:0.82rem;color:var(--accent);min-height:20px;"></div>
     </div>
 
-    <!-- PERFORMANCE CHART -->
+    <!-- CHARTS -->
     <div class="tracker-card" style="margin-bottom:20px;">
       <h3>Session Score Trend</h3>
       <div class="sub">Your overall score across sessions — are you trending up?</div>
@@ -1319,7 +1328,6 @@
       <div id="trend-empty" style="font-size:0.82rem;color:var(--chalk);margin-top:12px;text-align:center;padding:20px 0;">Log at least 2 sessions to see your trend.</div>
     </div>
 
-    <!-- DISTANCE BREAKDOWN CHART -->
     <div class="tracker-card" style="margin-bottom:20px;">
       <h3>Distance Breakdown — Last 5 Sessions</h3>
       <div class="sub">Make % by distance. Where are you improving? Where are you leaking?</div>
@@ -1333,7 +1341,7 @@
     <div class="tracker-card" style="margin-bottom:20px;">
       <h3>YTD Analysis</h3>
       <div class="sub">Season-to-date performance summary.</div>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:16px;" id="ytd-grid">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;margin-top:16px;">
         <div style="text-align:center;">
           <div class="meta-label" style="margin-bottom:4px;">Avg Score</div>
           <div class="stat-big" id="ytd-avg">—</div>
@@ -1354,7 +1362,7 @@
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);font-size:0.85rem;color:var(--chalk);line-height:1.7;" id="ytd-narrative">Log sessions to generate your YTD narrative.</div>
     </div>
 
-    <!-- SESSION HISTORY TABLE -->
+    <!-- SESSION HISTORY -->
     <div class="tracker-card">
       <h3>Session History</h3>
       <div class="sub">Every rep. Every session.</div>
@@ -1362,285 +1370,200 @@
         <table style="width:100%;border-collapse:collapse;font-size:0.8rem;" id="history-table">
           <thead>
             <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
-              <th style="text-align:left;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">#</th>
-              <th style="text-align:left;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Date</th>
-              <th style="text-align:center;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Grade</th>
-              <th style="text-align:center;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Score</th>
-              <th style="text-align:center;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">4ft</th>
-              <th style="text-align:center;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">5ft</th>
-              <th style="text-align:center;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">6ft</th>
-              <th style="text-align:center;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">8ft</th>
-              <th style="text-align:left;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Notes</th>
+              <th style="text-align:left;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">#</th>
+              <th style="text-align:left;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Date</th>
+              <th style="text-align:center;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Level</th>
+              <th style="text-align:center;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Grade</th>
+              <th style="text-align:center;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Score</th>
+              <th style="text-align:center;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">4ft</th>
+              <th style="text-align:center;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">5ft</th>
+              <th style="text-align:center;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">6ft</th>
+              <th style="text-align:center;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">8ft</th>
+              <th style="text-align:left;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Notes</th>
               <th style="padding:6px 4px;"></th>
             </tr>
           </thead>
           <tbody id="history-body">
-            <tr><td colspan="10" style="text-align:center;padding:24px;color:var(--chalk);font-size:0.82rem;">No sessions logged yet. Complete a session and log it above.</td></tr>
+            <tr><td colspan="11" style="text-align:center;padding:24px;color:var(--chalk);font-size:0.82rem;">No sessions logged yet.</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
   </div>
+
 </main>
 
 <script>
-  // Trip countdown + progress tracker
-  (function() {
-    var tripDate  = new Date('2026-07-23');
-    var startDate = new Date('2026-05-12');
-    var today = new Date();
-    today.setHours(0,0,0,0);
 
-    var totalDays   = Math.round((tripDate - startDate) / (1000 * 60 * 60 * 24));
-    var daysElapsed = Math.round((today - startDate)    / (1000 * 60 * 60 * 24));
-    var daysLeft    = Math.round((tripDate - today)      / (1000 * 60 * 60 * 24));
-
-    var countEl = document.getElementById('days-countdown');
-    if (countEl) countEl.textContent = daysLeft > 0 ? daysLeft : 'Go time!';
-
-    var pct = Math.min(100, Math.max(0, (daysElapsed / totalDays) * 100));
-    var fill    = document.getElementById('trip-progress-fill');
-    var marker  = document.getElementById('trip-ball-marker');
-    var urgency = document.getElementById('trip-urgency');
-
-    if (fill)   fill.style.width = pct + '%';
-    if (marker) marker.style.left = pct + '%';
-
-    if (urgency) {
-      var msg = '';
-      if (daysLeft > 60)      msg = 'Plenty of runway - build the habits now.';
-      else if (daysLeft > 45) msg = 'Getting closer. Every session counts.';
-      else if (daysLeft > 30) msg = 'One month out. Routine needs to be locked in.';
-      else if (daysLeft > 14) msg = 'Under 30 days. This is crunch time, Tucker.';
-      else if (daysLeft > 7)  msg = 'Two weeks out. Dial it in. Every. Single. Putt.';
-      else if (daysLeft > 0)  msg = 'Game week. Go own those greens.';
-      else                    msg = 'It is go time. Turning Stone awaits.';
-      urgency.textContent = msg;
+  // ── LEVEL CONFIG ─────────────────────────────────────────────────────────
+  var LEVELS = {
+    'L1': {
+      name: 'Intermediate L1',
+      desc: 'Foundation level. Building habits and feel.',
+      careerWeight: 0.6,
+      rubric: { '4':{w:0.20,perfect:86}, '5':{w:0.25,perfect:75}, '6':{w:0.30,perfect:63}, '8':{w:0.25,perfect:50} },
+      nextGoal: { level: 'L2', sessions: 5, minScore: 95 }
+    },
+    'L2': {
+      name: 'Intermediate L2',
+      desc: 'Scored one-handed reps, consecutive 8ft pressure game, tighter rubric.',
+      careerWeight: 0.8,
+      rubric: { '4':{w:0.15,perfect:100}, '5':{w:0.20,perfect:95}, '6':{w:0.25,perfect:90}, '8':{w:0.25,perfect:80}, 'hand':{w:0.15,perfect:75} },
+      nextGoal: { level: 'L3', sessions: 5, minScore: 95 }
+    },
+    'L3': {
+      name: 'Intermediate L3',
+      desc: 'Elite amateur standard. Near-perfect required.',
+      careerWeight: 1.0,
+      rubric: { '4':{w:0.15,perfect:100}, '5':{w:0.20,perfect:98}, '6':{w:0.25,perfect:95}, '8':{w:0.25,perfect:88}, 'hand':{w:0.15,perfect:85} },
+      nextGoal: { level: 'A1', sessions: 5, minScore: 90 }
+    },
+    'A1': {
+      name: 'Advanced L1',
+      desc: 'Tour-standard pressure. Every miss counts.',
+      careerWeight: 1.2,
+      rubric: { '4':{w:0.15,perfect:100}, '5':{w:0.20,perfect:100}, '6':{w:0.25,perfect:98}, '8':{w:0.25,perfect:92}, 'hand':{w:0.15,perfect:90} },
+      nextGoal: { level: 'A2', sessions: 5, minScore: 85 }
+    },
+    'A2': {
+      name: 'Advanced L2',
+      desc: 'The ceiling. Reserved for the elite.',
+      careerWeight: 1.5,
+      rubric: { '4':{w:0.15,perfect:100}, '5':{w:0.20,perfect:100}, '6':{w:0.25,perfect:100}, '8':{w:0.25,perfect:95}, 'hand':{w:0.15,perfect:95} },
+      nextGoal: null
     }
-  })();
-
-  var state = { make4: 0, miss4: 0, make5: 0, miss5: 0, make6: 0, miss6: 0, make8: 0, miss8: 0, makeTrail: 0, missTrail: 0, makeLead: 0, missLead: 0 };
-
-  var distConfig = {
-    '4': { weight: 0.20, tourAvg: 86, label: '4ft' },
-    '5': { weight: 0.25, tourAvg: 75, label: '5ft' },
-    '6': { weight: 0.30, tourAvg: 63, label: '6ft' },
-    '8': { weight: 0.25, tourAvg: 50, label: '8ft' }
   };
 
-  function getGrade(score) {
-    if (score >= 93) return { letter: 'A',  color: '#7bc67e', msg: 'Tour-level session. Turning Stone better watch out.' };
-    if (score >= 90) return { letter: 'A-', color: '#7bc67e', msg: 'Excellent. Putting like a scratch player.' };
-    if (score >= 87) return { letter: 'B+', color: '#c9a84c', msg: 'Strong session. A few more reps and you are dangerous.' };
-    if (score >= 83) return { letter: 'B',  color: '#c9a84c', msg: 'Solid work. Consistency is building.' };
-    if (score >= 80) return { letter: 'B-', color: '#c9a84c', msg: 'Good foundation. Tighten up the longer putts.' };
-    if (score >= 77) return { letter: 'C+', color: '#d4cfc6', msg: 'Getting there. Keep showing up.' };
-    if (score >= 73) return { letter: 'C',  color: '#d4cfc6', msg: "Work to do - but that is what the garage is for." };
-    return { letter: 'D', color: '#e07060', msg: "Rough session. Reset and go again - that is the job." };
+  // ── GRADING ───────────────────────────────────────────────────────────────
+  function gradeFromScore(s) {
+    if (s >= 93) return 'A';
+    if (s >= 90) return 'A-';
+    if (s >= 87) return 'B+';
+    if (s >= 83) return 'B';
+    if (s >= 80) return 'B-';
+    if (s >= 77) return 'C+';
+    if (s >= 73) return 'C';
+    return 'D';
   }
 
-  // Nav wiring via addEventListener - no inline onclick needed
-  document.querySelectorAll('.nav-tab').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      var name = btn.getAttribute('data-section');
-      document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
-      document.querySelectorAll('.nav-tab').forEach(function(t) { t.classList.remove('active'); });
-      document.getElementById('section-' + name).classList.add('active');
-      btn.classList.add('active');
-    });
-  });
-
-  document.querySelectorAll('.drill-header').forEach(function(hdr) {
-    hdr.addEventListener('click', function() {
-      var id = hdr.getAttribute('data-drill');
-      document.getElementById(id).classList.toggle('expanded');
-    });
-  });
-
-  function adjust(key, delta) {
-    state[key] = Math.max(0, state[key] + delta);
-    document.getElementById(key).textContent = state[key];
-    updatePct();
+  function gradeColor(g) {
+    if (!g || g === '—') return 'var(--gold)';
+    if (g.startsWith('A')) return '#7bc67e';
+    if (g.startsWith('B')) return '#c9a84c';
+    if (g.startsWith('C')) return '#d4cfc6';
+    return '#e07060';
   }
 
-  function updatePct() {
-    ['4','5','6','8'].forEach(function(dist) {
-      var makes  = state['make' + dist];
-      var misses = state['miss' + dist];
-      var total  = makes + misses;
-      var pct    = total > 0 ? Math.round((makes / total) * 100) : null;
-      var bar    = document.getElementById('pct' + dist + '-bar');
-      var label  = document.getElementById('pct' + dist + '-label');
-      if (pct !== null) {
-        bar.style.width = pct + '%';
-        bar.classList.toggle('warn', pct < 40);
-        label.textContent = pct + '%';
-      } else {
-        bar.style.width = '0%';
-        label.textContent = '--';
-      }
-    });
-    updateGrade();
-
-    // One-handed trackers
-    ['Trail','Lead'].forEach(function(hand) {
-      var makes  = state['make' + hand];
-      var misses = state['miss' + hand];
-      var total  = makes + misses;
-      var pct    = total > 0 ? Math.round((makes / total) * 100) : null;
-      var bar    = document.getElementById('pct' + hand + '-bar');
-      var label  = document.getElementById('pct' + hand + '-label');
-      var verdict = document.getElementById(hand.toLowerCase() + '-verdict');
-      if (pct !== null) {
-        bar.style.width = pct + '%';
-        bar.classList.toggle('warn', pct < 50);
-        label.textContent = pct + '%';
-        var msg = pct >= 80 ? 'Strong — this hand is an asset.' :
-                  pct >= 60 ? 'Solid. Room to improve.' :
-                  pct >= 40 ? 'Needs work — focus here next session.' :
-                              'Weak link found. This is the priority.';
-        verdict.textContent = msg;
-      } else {
-        bar.style.width = '0%';
-        label.textContent = '—';
-        verdict.textContent = 'Hit 10 scored putts to log.';
-      }
-    });
-
-    // Hand comparison analysis
-    var tMakes = state.makeTrail, tTotal = state.makeTrail + state.missTrail;
-    var lMakes = state.makeLead, lTotal = state.makeLead + state.missLead;
-    var analysis = document.getElementById('hand-analysis');
-    if (analysis && tTotal > 0 && lTotal > 0) {
-      var tPct = Math.round((tMakes / tTotal) * 100);
-      var lPct = Math.round((lMakes / lTotal) * 100);
-      var diff = lPct - tPct;
-      var txt = '';
-      if (Math.abs(diff) <= 8) {
-        txt = 'Trail ' + tPct + '% / Lead ' + lPct + '% — Hands are balanced. Your two-handed stroke should be consistent. Keep building volume.';
-      } else if (diff > 8) {
-        txt = 'Trail ' + tPct + '% / Lead ' + lPct + '% — Lead hand (' + lPct + '%) is significantly stronger. Your left (trail) hand may be flipping through impact. Focus Drill 03 on trail hand reps until the gap closes.';
-      } else {
-        txt = 'Trail ' + tPct + '% / Lead ' + lPct + '% — Trail hand (' + tPct + '%) is stronger. Your right (lead) hand may be pulling across the line. Slow down the lead hand follow-through and keep the face square longer.';
-      }
-      analysis.textContent = txt;
-    } else if (analysis && (tTotal > 0 || lTotal > 0)) {
-      analysis.textContent = 'Log both hands to see your full stroke diagnosis.';
-    } else if (analysis) {
-      analysis.textContent = 'Log both hands to see your stroke diagnosis.';
-    }
+  function getGradeMsg(s) {
+    if (s >= 93) return 'Tour-level session. Turning Stone better watch out.';
+    if (s >= 90) return 'Excellent. Putting like a scratch player.';
+    if (s >= 87) return 'Strong session. A few more reps and you are dangerous.';
+    if (s >= 83) return 'Solid work. Consistency is building.';
+    if (s >= 80) return 'Good foundation. Tighten up the longer putts.';
+    if (s >= 77) return 'Getting there. Keep showing up.';
+    if (s >= 73) return 'Work to do. But that is what the garage is for.';
+    return 'Rough session. Reset and go again.';
   }
 
-  function updateGrade() {
-    var totalWeight  = 0;
-    var weightedScore = 0;
-    var lines = [];
+  // ── COMPUTE SESSION SCORE (level-aware) ──────────────────────────────────
+  function computeScore(distData, trailData, leadData, levelKey) {
+    var lvl = LEVELS[levelKey] || LEVELS['L2'];
+    var rubric = lvl.rubric;
+    var totalWeight = 0, weightedScore = 0;
 
-    ['4','5','6','8'].forEach(function(dist) {
-      var makes  = state['make' + dist];
-      var misses = state['miss' + dist];
-      var total  = makes + misses;
-      if (total === 0) return;
-      var cfg      = distConfig[dist];
-      var pct      = (makes / total) * 100;
-      var rawScore = Math.min(100, (pct / cfg.tourAvg) * 85);
-      weightedScore += rawScore * cfg.weight;
-      totalWeight   += cfg.weight;
-      var pctR  = Math.round(pct);
-      var diff  = pctR - cfg.tourAvg;
-      var dStr  = diff >= 0 ? '+' + diff + '%' : diff + '%';
-      var dCol  = diff >= 0 ? '#7bc67e' : '#e07060';
-      lines.push('<span style="color:#d4cfc6">' + cfg.label + ':</span> <strong style="color:#f5f0e8">' + pctR + '%</strong> <span style="font-size:0.75rem;color:' + dCol + '">(' + dStr + ' vs Tour)</span>');
-    });
-
-    var gradeEl = document.getElementById('grade-letter');
-    var labelEl = document.getElementById('grade-label');
-    var scoreEl = document.getElementById('grade-score');
-    var barEl   = document.getElementById('grade-bar');
-    var breakEl = document.getElementById('grade-breakdown');
-
-    if (totalWeight === 0) {
-      gradeEl.textContent = '--';
-      gradeEl.style.color = 'var(--gold)';
-      labelEl.textContent = 'No data yet';
-      scoreEl.textContent = '--';
-      barEl.style.width   = '0%';
-      breakEl.innerHTML   = 'Hit some putts to generate your session grade.';
-      return;
-    }
-
-    var finalScore = Math.round(weightedScore / totalWeight);
-    var grade = getGrade(finalScore);
-    gradeEl.textContent   = grade.letter;
-    gradeEl.style.color   = grade.color;
-    labelEl.textContent   = grade.msg;
-    scoreEl.textContent   = finalScore + ' / 100';
-    barEl.style.width     = finalScore + '%';
-    barEl.classList.toggle('warn', finalScore < 73);
-    breakEl.innerHTML     = lines.join('<br>');
-  }
-
-  function resetTracker(dist) {
-    state['make' + dist] = 0;
-    state['miss' + dist] = 0;
-    document.getElementById('make' + dist).textContent = '0';
-    document.getElementById('miss' + dist).textContent = '0';
-    updatePct();
-  }
-
-  function resetAll() {
     ['4','5','6','8'].forEach(function(d) {
-      state['make' + d] = 0;
-      state['miss' + d] = 0;
-      document.getElementById('make' + d).textContent = '0';
-      document.getElementById('miss' + d).textContent = '0';
+      if (!rubric[d]) return;
+      var dd = distData[d];
+      if (!dd || dd.total === 0) return;
+      var pct = (dd.makes / dd.total) * 100;
+      var raw = Math.min(100, (pct / rubric[d].perfect) * 100);
+      weightedScore += raw * rubric[d].w;
+      totalWeight   += rubric[d].w;
     });
-    ['Trail','Lead'].forEach(function(h) {
-      state['make' + h] = 0;
-      state['miss' + h] = 0;
-      document.getElementById('make' + h).textContent = '0';
-      document.getElementById('miss' + h).textContent = '0';
-    });
-    updatePct();
+
+    if (rubric['hand']) {
+      var tTotal = (trailData ? trailData.total : 0) + (leadData ? leadData.total : 0);
+      var tMakes = (trailData ? trailData.makes : 0) + (leadData ? leadData.makes : 0);
+      if (tTotal > 0) {
+        var hPct = (tMakes / tTotal) * 100;
+        var hRaw = Math.min(100, (hPct / rubric['hand'].perfect) * 100);
+        weightedScore += hRaw * rubric['hand'].w;
+        totalWeight   += rubric['hand'].w;
+      }
+    }
+
+    return totalWeight > 0 ? Math.round(weightedScore / totalWeight) : null;
   }
 
+  // ── CAREER SCORE ──────────────────────────────────────────────────────────
+  function computeCareerScore(sessions) {
+    if (!sessions || sessions.length === 0) return null;
+    var totalW = 0, weightedSum = 0;
+    sessions.forEach(function(s) {
+      var lvl = LEVELS[s.level] || LEVELS['L1'];
+      var w = lvl.careerWeight;
+      weightedSum += s.score * w;
+      totalW += w;
+    });
+    return totalW > 0 ? Math.round(weightedSum / totalW) : null;
+  }
 
-  // ── TIGER QUOTES ────────────────────────────────────────────────────────
+  // ── MILESTONE TRACKING ───────────────────────────────────────────────────
+  function getMilestoneProgress(sessions, currentLevelKey) {
+    var lvl = LEVELS[currentLevelKey];
+    if (!lvl || !lvl.nextGoal) return null;
+    var goal = lvl.nextGoal;
+    var nextLvl = LEVELS[goal.level];
+
+    // Count consecutive qualifying sessions at current level from the end
+    var qualifying = 0;
+    var reversed = sessions.slice().reverse();
+    for (var i = 0; i < reversed.length; i++) {
+      if (reversed[i].level === currentLevelKey && reversed[i].score >= goal.minScore) {
+        qualifying++;
+        if (qualifying >= goal.sessions) break;
+      } else if (reversed[i].level === currentLevelKey) {
+        break; // streak broken
+      }
+    }
+
+    return {
+      qualifying: Math.min(qualifying, goal.sessions),
+      required: goal.sessions,
+      minScore: goal.minScore,
+      nextLevelName: nextLvl ? nextLvl.name : goal.level
+    };
+  }
+
+  // ── TIGER QUOTES ─────────────────────────────────────────────────────────
   var tigerQuotes = [
-    "No matter how good you get, you can always get better. And that's the exciting part.",
-    "I don't have to make it perfect. I just have to make it.",
+    "No matter how good you get, you can always get better. And that is the exciting part.",
+    "I do not have to make it perfect. I just have to make it.",
     "Winning takes care of everything.",
     "The more I practice, the luckier I get.",
     "I knew what I had to do to get better. I was willing to go through the pain.",
-    "My dad always told me — you can practice putting anywhere. The greens change. Your fundamentals don't.",
-    "I've always been a firm believer that if you put the time in, the results will come.",
+    "My dad always told me — you can practice putting anywhere. The greens change. Your fundamentals do not.",
+    "I have always been a firm believer that if you put the time in, the results will come.",
     "The mental side of putting is just as important as the physical. You have to trust your read and commit.",
-    "In putting, every stroke counts the same. A two-footer counts as much as a drive. That's the beauty and the cruelty of it.",
+    "In putting, every stroke counts the same. A two-footer counts as much as a drive. That is the beauty and the cruelty of it.",
     "Pressure is a privilege. It only comes to those who earn it.",
-    "You have to believe in what you're doing on the greens. Doubt is the enemy.",
-    "Every single day I try to get better. That's all you can do.",
-    "The greens are where tournaments are won and lost. I've always known that.",
+    "You have to believe in what you are doing on the greens. Doubt is the enemy.",
+    "Every single day I try to get better. That is all you can do.",
+    "The greens are where tournaments are won and lost. I have always known that.",
     "Hard work and dedication. That is what it takes. No shortcuts.",
-    "When I'm putting well, I feel like every putt has a chance."
+    "When I am putting well, I feel like every putt has a chance."
   ];
 
-  function getQuoteForScore(score) {
-    // Pick quote based on session score; rotate if no score yet
-    var idx = score !== null
-      ? (score < 73 ? 6 : score < 83 ? 2 : score < 90 ? 0 : 14)
-      : Math.floor((new Date().getDate()) % tigerQuotes.length);
-    return tigerQuotes[idx];
-  }
+  // ── TRACKER STATE ─────────────────────────────────────────────────────────
+  var state = { make4:0, miss4:0, make5:0, miss5:0, make6:0, miss6:0, make8:0, miss8:0, makeTrail:0, missTrail:0, makeLead:0, missLead:0 };
 
-  // ── STORAGE HELPERS ──────────────────────────────────────────────────────
+  // ── STORAGE ───────────────────────────────────────────────────────────────
   var STORAGE_KEY = 'tucker-putting-log';
 
   function loadLog() {
-    try {
-      var raw = localStorage.getItem(STORAGE_KEY);
-      return raw ? JSON.parse(raw) : [];
-    } catch(e) { return []; }
+    try { var r = localStorage.getItem(STORAGE_KEY); return r ? JSON.parse(r) : []; }
+    catch(e) { return []; }
   }
 
   function saveLog(sessions) {
@@ -1652,175 +1575,294 @@
     sessions.splice(idx, 1);
     saveLog(sessions);
     renderLog();
-
-  // Wake lock — keeps iPad screen on during garage sessions
-  async function keepScreenAwake() {
-    if ('wakeLock' in navigator) {
-      try {
-        await navigator.wakeLock.request('screen');
-      } catch(e) {}
-    }
   }
-  keepScreenAwake();
-  document.addEventListener('visibilitychange', function() {
-    if (document.visibilityState === 'visible') keepScreenAwake();
+
+  // ── DATE HELPERS ──────────────────────────────────────────────────────────
+  function daysBetween(d1, d2) {
+    return Math.round(Math.abs((new Date(d2) - new Date(d1)) / 86400000));
+  }
+
+  function todayStr() { return new Date().toISOString().slice(0,10); }
+
+  function friendlyDate(s) {
+    var d = new Date(s + 'T12:00:00');
+    return d.toLocaleDateString('en-US', { month:'short', day:'numeric', year:'numeric' });
+  }
+
+  function pctStr(makes, total) { return total > 0 ? Math.round((makes/total)*100) + '%' : '—'; }
+
+  // ── NAV ───────────────────────────────────────────────────────────────────
+  document.querySelectorAll('.nav-tab').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var name = btn.getAttribute('data-section');
+      document.querySelectorAll('.section').forEach(function(s) { s.classList.remove('active'); });
+      document.querySelectorAll('.nav-tab').forEach(function(t) { t.classList.remove('active'); });
+      document.getElementById('section-' + name).classList.add('active');
+      btn.classList.add('active');
+      if (name === 'log') renderLog();
+    });
   });
+
+  // ── DRILL TOGGLES ─────────────────────────────────────────────────────────
+  document.querySelectorAll('.drill-header').forEach(function(hdr) {
+    hdr.addEventListener('click', function() {
+      document.getElementById(hdr.getAttribute('data-drill')).classList.toggle('expanded');
+    });
+  });
+
+  // ── TRACKER FUNCTIONS ─────────────────────────────────────────────────────
+  function adjust(key, delta) {
+    state[key] = Math.max(0, state[key] + delta);
+    document.getElementById(key).textContent = state[key];
+    updatePct();
+    updateLogPreview();
   }
 
-  // ── DATE HELPERS ─────────────────────────────────────────────────────────
-  function daysBetween(dateStr1, dateStr2) {
-    var d1 = new Date(dateStr1), d2 = new Date(dateStr2);
-    return Math.round(Math.abs((d2 - d1) / (1000 * 60 * 60 * 24)));
+  function updatePct() {
+    ['4','5','6','8'].forEach(function(d) {
+      var m = state['make'+d], t = state['make'+d]+state['miss'+d];
+      var pct = t > 0 ? Math.round((m/t)*100) : null;
+      var bar = document.getElementById('pct'+d+'-bar');
+      var lbl = document.getElementById('pct'+d+'-label');
+      if (pct !== null) {
+        bar.style.width = pct + '%';
+        bar.classList.toggle('warn', pct < 40);
+        lbl.textContent = pct + '%';
+      } else {
+        bar.style.width = '0%';
+        lbl.textContent = '—';
+      }
+    });
+
+    // One-handed trackers
+    ['Trail','Lead'].forEach(function(hand) {
+      var m = state['make'+hand], t = state['make'+hand]+state['miss'+hand];
+      var pct = t > 0 ? Math.round((m/t)*100) : null;
+      var bar = document.getElementById('pct'+hand+'-bar');
+      var lbl = document.getElementById('pct'+hand+'-label');
+      var vrd = document.getElementById(hand.toLowerCase()+'-verdict');
+      if (pct !== null) {
+        bar.style.width = pct + '%';
+        bar.classList.toggle('warn', pct < 50);
+        lbl.textContent = pct + '%';
+        vrd.textContent = pct >= 80 ? 'Strong — this hand is an asset.' :
+                          pct >= 60 ? 'Solid. Room to improve.' :
+                          pct >= 40 ? 'Needs work — focus here next session.' :
+                                      'Weak link found. This is the priority.';
+      } else {
+        bar.style.width = '0%'; lbl.textContent = '—';
+        vrd.textContent = 'Hit scored putts to log.';
+      }
+    });
+
+    // Hand analysis
+    var tM = state.makeTrail, tT = state.makeTrail+state.missTrail;
+    var lM = state.makeLead,  lT = state.makeLead+state.missLead;
+    var haEl = document.getElementById('hand-analysis');
+    if (haEl && tT > 0 && lT > 0) {
+      var tP = Math.round((tM/tT)*100), lP = Math.round((lM/lT)*100);
+      var diff = lP - tP;
+      haEl.textContent = Math.abs(diff) <= 8
+        ? 'Trail ' + tP + '% / Lead ' + lP + '% — Hands are balanced. Your two-handed stroke should be consistent.'
+        : diff > 8
+        ? 'Trail ' + tP + '% / Lead ' + lP + '% — Lead hand stronger. Left (trail) may be flipping. Focus trail hand reps.'
+        : 'Trail ' + tP + '% / Lead ' + lP + '% — Trail hand stronger. Right (lead) may be pulling across. Slow the follow-through.';
+    } else if (haEl) {
+      haEl.textContent = 'Log both hands to see your stroke diagnosis.';
+    }
+
+    updateGrade();
   }
 
-  function today() {
-    return new Date().toISOString().slice(0, 10);
+  function updateGrade() {
+    var levelSel = document.getElementById('log-level-input');
+    var levelKey = levelSel ? levelSel.value : 'L2';
+    var distData = {};
+    ['4','5','6','8'].forEach(function(d) {
+      distData[d] = { makes: state['make'+d], total: state['make'+d]+state['miss'+d] };
+    });
+    var trailData = { makes: state.makeTrail, total: state.makeTrail+state.missTrail };
+    var leadData  = { makes: state.makeLead,  total: state.makeLead+state.missLead };
+
+    var score = computeScore(distData, trailData, leadData, levelKey);
+    var gradeEl = document.getElementById('grade-letter');
+    var labelEl = document.getElementById('grade-label');
+    var scoreEl = document.getElementById('grade-score');
+    var barEl   = document.getElementById('grade-bar');
+    var brkEl   = document.getElementById('grade-breakdown');
+
+    if (score === null) {
+      if (gradeEl) gradeEl.textContent = '—';
+      if (labelEl) labelEl.textContent = 'No data yet';
+      if (scoreEl) scoreEl.textContent = '—';
+      if (barEl)   barEl.style.width = '0%';
+      if (brkEl)   brkEl.textContent = 'Hit some putts to generate your session grade.';
+      return;
+    }
+
+    var g = gradeFromScore(score);
+    if (gradeEl) { gradeEl.textContent = g; gradeEl.style.color = gradeColor(g); }
+    if (labelEl) labelEl.textContent = getGradeMsg(score);
+    if (scoreEl) scoreEl.textContent = score + ' / 100';
+    if (barEl)   { barEl.style.width = score + '%'; barEl.classList.toggle('warn', score < 73); }
+
+    var lines = [];
+    var lvl = LEVELS[levelKey] || LEVELS['L2'];
+    ['4','5','6','8'].forEach(function(d) {
+      var dd = distData[d];
+      if (!dd || dd.total === 0) return;
+      var pct = Math.round((dd.makes/dd.total)*100);
+      var perfect = lvl.rubric[d] ? lvl.rubric[d].perfect : 100;
+      var diff = pct - perfect;
+      var diffStr = diff >= 0 ? '+' + diff + '% vs target' : diff + '% vs target';
+      var dc = diff >= 0 ? '#7bc67e' : '#e07060';
+      lines.push('<span style="color:var(--chalk)">' + d + 'ft:</span> <strong style="color:var(--cream)">' + pct + '%</strong> <span style="font-size:0.75rem;color:' + dc + '">(' + diffStr + ')</span>');
+    });
+    if (brkEl) brkEl.innerHTML = lines.join('<br>');
   }
 
-  function friendlyDate(dateStr) {
-    var d = new Date(dateStr + 'T12:00:00');
-    return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+  function resetTracker(dist) {
+    var keys = dist === 'Trail' || dist === 'Lead' ? [dist] : [dist];
+    keys.forEach(function(k) {
+      state['make'+k] = 0; state['miss'+k] = 0;
+      document.getElementById('make'+k).textContent = '0';
+      document.getElementById('miss'+k).textContent = '0';
+    });
+    updatePct();
   }
 
-  // ── GRADE HELPER (reuse logic) ────────────────────────────────────────────
-  function gradeFromScore(score) {
-    if (score >= 93) return 'A';
-    if (score >= 90) return 'A-';
-    if (score >= 87) return 'B+';
-    if (score >= 83) return 'B';
-    if (score >= 80) return 'B-';
-    if (score >= 77) return 'C+';
-    if (score >= 73) return 'C';
-    return 'D';
+  function resetAll() {
+    ['4','5','6','8'].forEach(function(d) {
+      state['make'+d] = 0; state['miss'+d] = 0;
+      document.getElementById('make'+d).textContent = '0';
+      document.getElementById('miss'+d).textContent = '0';
+    });
+    ['Trail','Lead'].forEach(function(h) {
+      state['make'+h] = 0; state['miss'+h] = 0;
+      document.getElementById('make'+h).textContent = '0';
+      document.getElementById('miss'+h).textContent = '0';
+    });
+    updatePct();
   }
 
-  function gradeColor(g) {
-    if (g.startsWith('A')) return '#7bc67e';
-    if (g.startsWith('B')) return '#c9a84c';
-    if (g.startsWith('C')) return '#d4cfc6';
-    return '#e07060';
-  }
-
-  function pctStr(makes, total) {
-    return total > 0 ? Math.round((makes / total) * 100) + '%' : '—';
-  }
-
-  // ── LOG SESSION ──────────────────────────────────────────────────────────
+  // ── LOG SESSION ───────────────────────────────────────────────────────────
   function logSession() {
     var dateInput = document.getElementById('log-date-input').value;
+    var levelKey  = document.getElementById('log-level-input').value;
     var notes     = document.getElementById('log-notes-input').value.trim();
     var feedback  = document.getElementById('log-feedback');
 
-    if (!dateInput) {
-      feedback.style.color = '#e07060';
-      feedback.textContent = 'Please select a date before logging.';
-      return;
-    }
+    if (!dateInput) { feedback.style.color='#e07060'; feedback.textContent='Please select a date.'; return; }
 
-    // Gather current tracker state
     var distData = {};
     ['4','5','6','8'].forEach(function(d) {
-      distData[d] = { makes: state['make'+d], total: state['make'+d] + state['miss'+d] };
+      distData[d] = { makes: state['make'+d], total: state['make'+d]+state['miss'+d] };
     });
-    var trailData = { makes: state.makeTrail, total: state.makeTrail + state.missTrail };
-    var leadData  = { makes: state.makeLead,  total: state.makeLead  + state.missLead  };
+    var trailData = { makes: state.makeTrail, total: state.makeTrail+state.missTrail };
+    var leadData  = { makes: state.makeLead,  total: state.makeLead+state.missLead };
+    var score = computeScore(distData, trailData, leadData, levelKey);
 
-    // Compute weighted score (same logic as updateGrade)
-    var totalWeight = 0, weightedScore = 0;
-    var cfg = { '4':{w:0.20,avg:86}, '5':{w:0.25,avg:75}, '6':{w:0.30,avg:63}, '8':{w:0.25,avg:50} };
-    Object.keys(cfg).forEach(function(d) {
-      var dd = distData[d];
-      if (dd.total === 0) return;
-      var pct = (dd.makes / dd.total) * 100;
-      var raw = Math.min(100, (pct / cfg[d].avg) * 85);
-      weightedScore += raw * cfg[d].w;
-      totalWeight   += cfg[d].w;
-    });
-    var score = totalWeight > 0 ? Math.round(weightedScore / totalWeight) : null;
+    if (score === null) { feedback.style.color='#e07060'; feedback.textContent='No putt data found. Hit some putts in the Make Tracker first.'; return; }
 
-    if (score === null) {
-      feedback.style.color = '#e07060';
-      feedback.textContent = 'No putt data found. Log some makes/misses in the Make Tracker first.';
-      return;
-    }
-
-    var session = {
-      date: dateInput,
-      score: score,
-      grade: gradeFromScore(score),
-      notes: notes,
-      dist: distData,
-      trail: trailData,
-      lead: leadData
-    };
-
+    var session = { date: dateInput, level: levelKey, score: score, grade: gradeFromScore(score), notes: notes, dist: distData, trail: trailData, lead: leadData };
     var sessions = loadLog();
-    // Prevent duplicate date
     var existing = sessions.findIndex(function(s) { return s.date === dateInput; });
-    if (existing >= 0) {
-      sessions[existing] = session;
-      feedback.textContent = 'Session for ' + friendlyDate(dateInput) + ' updated.';
-    } else {
-      sessions.push(session);
-      feedback.textContent = 'Session logged! Grade: ' + session.grade + ' (' + score + ')';
-    }
+    if (existing >= 0) { sessions[existing] = session; feedback.textContent = 'Session updated for ' + friendlyDate(dateInput); }
+    else { sessions.push(session); feedback.textContent = 'Session logged! Grade: ' + session.grade + ' (' + score + ')'; }
     sessions.sort(function(a,b) { return a.date.localeCompare(b.date); });
     saveLog(sessions);
     feedback.style.color = '#7bc67e';
-    renderLog();
-
-  // Wake lock — keeps iPad screen on during garage sessions
-  async function keepScreenAwake() {
-    if ('wakeLock' in navigator) {
-      try {
-        await navigator.wakeLock.request('screen');
-      } catch(e) {}
-    }
-  }
-  keepScreenAwake();
-  document.addEventListener('visibilitychange', function() {
-    if (document.visibilityState === 'visible') keepScreenAwake();
-  });
-
-    // Update Tiger quote based on score
     var qEl = document.getElementById('tiger-quote-text');
-    if (qEl) qEl.textContent = getQuoteForScore(score);
+    if (qEl) qEl.textContent = tigerQuotes[score < 73 ? 6 : score < 83 ? 2 : score < 90 ? 0 : 14];
+    renderLog();
   }
 
-  // ── RENDER LOG ───────────────────────────────────────────────────────────
+  // ── LOG PREVIEW ───────────────────────────────────────────────────────────
+  function updateLogPreview() {
+    var el = document.getElementById('log-preview');
+    if (!el) return;
+    var hasData = ['4','5','6','8'].some(function(d) { return (state['make'+d]+state['miss'+d]) > 0; });
+    if (!hasData) { el.textContent = 'Go to Make Tracker, hit some putts, then come back here.'; el.style.color='var(--chalk)'; return; }
+    var levelKey = (document.getElementById('log-level-input') || {}).value || 'L2';
+    var distData = {};
+    ['4','5','6','8'].forEach(function(d) { distData[d] = { makes: state['make'+d], total: state['make'+d]+state['miss'+d] }; });
+    var trailData = { makes: state.makeTrail, total: state.makeTrail+state.missTrail };
+    var leadData  = { makes: state.makeLead,  total: state.makeLead+state.missLead };
+    var sc = computeScore(distData, trailData, leadData, levelKey);
+    var parts = [];
+    ['4','5','6','8'].forEach(function(d) {
+      var m=state['make'+d], t=state['make'+d]+state['miss'+d];
+      if (t > 0) parts.push(d+'ft: '+Math.round((m/t)*100)+'%');
+    });
+    el.textContent = parts.join('  |  ') + (sc !== null ? '  →  Score: ' + sc + ' (' + gradeFromScore(sc) + ')' : '');
+    el.style.color = 'var(--cream)';
+  }
+
+  // ── RENDER LOG ────────────────────────────────────────────────────────────
   function renderLog() {
     var sessions = loadLog();
     var n = sessions.length;
 
-    // Tiger quote (default rotation)
+    // Tiger quote
     var qEl = document.getElementById('tiger-quote-text');
-    if (qEl) qEl.textContent = getQuoteForScore(null);
+    if (qEl) qEl.textContent = tigerQuotes[Math.floor((new Date().getDate()) % tigerQuotes.length)];
+
+    // Career score
+    var career = computeCareerScore(sessions);
+    var csBig  = document.getElementById('career-score-big');
+    var cgBadge= document.getElementById('career-grade-badge');
+    if (csBig) csBig.textContent = career !== null ? career : '—';
+    if (cgBadge) {
+      var cg = career !== null ? gradeFromScore(career) : '—';
+      cgBadge.textContent = cg;
+      cgBadge.style.color = gradeColor(cg);
+    }
+
+    // Current level (most recent session's level, default L2)
+    var currentLevel = n > 0 ? (sessions[n-1].level || 'L2') : 'L2';
+    var lvlCfg = LEVELS[currentLevel] || LEVELS['L2'];
+    var lvlNameEl = document.getElementById('level-name');
+    var lvlDescEl = document.getElementById('level-desc');
+    if (lvlNameEl) lvlNameEl.textContent = lvlCfg.name;
+    if (lvlDescEl) lvlDescEl.textContent = lvlCfg.desc;
+
+    // Milestone
+    var ms = getMilestoneProgress(sessions, currentLevel);
+    var msLabel  = document.getElementById('milestone-label');
+    var msBar    = document.getElementById('milestone-bar');
+    var msDetail = document.getElementById('milestone-detail');
+    if (ms) {
+      var msP = Math.round((ms.qualifying / ms.required) * 100);
+      if (msLabel)  msLabel.textContent  = ms.qualifying + ' / ' + ms.required + ' qualifying sessions';
+      if (msBar)    msBar.style.width    = msP + '%';
+      var remaining = ms.required - ms.qualifying;
+      if (msDetail) msDetail.textContent = remaining > 0
+        ? 'Score ' + ms.minScore + '+ in ' + remaining + ' more consecutive session' + (remaining > 1 ? 's' : '') + ' to reach ' + ms.nextLevelName + '.'
+        : 'Milestone reached! Time to advance to ' + ms.nextLevelName + '.';
+    } else {
+      if (msLabel)  msLabel.textContent  = 'Max level reached';
+      if (msBar)    msBar.style.width    = '100%';
+      if (msDetail) msDetail.textContent = 'You have reached the highest level. Elite status.';
+    }
 
     // Total sessions
     var totEl = document.getElementById('log-total-sessions');
     if (totEl) totEl.textContent = n;
 
-    // Days since last session + streak
-    var streakEl    = document.getElementById('log-streak');
-    var streakMsg   = document.getElementById('log-streak-msg');
-    var sinceEl     = document.getElementById('log-days-since');
-    var sinceMsg    = document.getElementById('log-since-msg');
-
-    if (n === 0) {
-      if (streakEl) streakEl.textContent = '0';
-      if (sinceEl)  sinceEl.textContent  = '—';
-    } else {
+    // Streak + days since
+    var streakEl  = document.getElementById('log-streak');
+    var streakMsg = document.getElementById('log-streak-msg');
+    var sinceEl   = document.getElementById('log-days-since');
+    var sinceMsg  = document.getElementById('log-since-msg');
+    if (n > 0) {
       var last = sessions[n-1].date;
-      var sinceN = daysBetween(last, today());
+      var sinceN = daysBetween(last, todayStr());
       if (sinceEl) sinceEl.textContent = sinceN;
-      var sinceText = sinceN === 0 ? 'You practiced today. Keep it up.' :
-                      sinceN === 1 ? 'One day off. Get back on the mat.' :
-                      sinceN === 2 ? "Two days off. Don't let the feel fade." :
-                      sinceN <= 4  ? sinceN + " days off. Turning Stone won't wait. Get out there." :
-                                     sinceN + ' days off. Every day you skip, someone else is putting in the reps.';
-      if (sinceMsg) sinceMsg.textContent = sinceText;
-
-      // Streak calc
+      if (sinceMsg) sinceMsg.textContent = sinceN === 0 ? 'You practiced today. Keep it up.' :
+        sinceN === 1 ? 'One day off. Get back on the mat.' :
+        sinceN === 2 ? 'Two days off. Do not let the feel fade.' :
+        sinceN <= 4  ? sinceN + ' days off. Turning Stone will not wait.' :
+                       sinceN + ' days off. Someone else is putting in the reps.';
       var streak = 1;
       for (var i = n-1; i > 0; i--) {
         if (daysBetween(sessions[i-1].date, sessions[i].date) === 1) streak++;
@@ -1828,9 +1870,12 @@
       }
       if (streakEl)  streakEl.textContent  = streak;
       if (streakMsg) streakMsg.textContent = streak === 1 ? 'Start a streak — practice tomorrow.' :
-                                              streak < 4  ? streak + " days in a row. Keep going." :
-                                              streak < 7  ? "Hot streak. Don't break it." :
-                                                            "Elite consistency. Tiger-level commitment.";
+        streak < 4 ? streak + ' days in a row. Keep going.' :
+        streak < 7 ? 'Hot streak. Do not break it.' :
+                     'Elite consistency. Tiger-level commitment.';
+    } else {
+      if (streakEl)  streakEl.textContent  = '0';
+      if (sinceEl)   sinceEl.textContent   = '—';
     }
 
     // Best session
@@ -1838,48 +1883,48 @@
     var bestDate = document.getElementById('log-best-date');
     if (n > 0) {
       var best = sessions.reduce(function(a,b) { return b.score > a.score ? b : a; });
-      if (bestEl)   bestEl.textContent   = best.grade;
-      if (bestEl)   bestEl.style.color   = gradeColor(best.grade);
+      if (bestEl)   { bestEl.textContent = best.grade; bestEl.style.color = gradeColor(best.grade); }
       if (bestDate) bestDate.textContent = friendlyDate(best.date);
     }
 
-    // Trailing 3 sessions
+    // Last 3 sessions
     var t3Grid  = document.getElementById('trailing3-grid');
     var t3Empty = document.getElementById('trailing3-empty');
     var last3   = sessions.slice(-3);
+    var padded  = [null, null, null];
+    last3.forEach(function(s,i) { padded[3-last3.length+i] = s; });
     if (last3.length === 0) {
       if (t3Empty) t3Empty.style.display = 'block';
       if (t3Grid)  t3Grid.style.display  = 'none';
     } else {
       if (t3Empty) t3Empty.style.display = 'none';
       if (t3Grid)  t3Grid.style.display  = 'grid';
-      // Pad left with blanks if fewer than 3
-      var padded = [{},{},{}];
-      last3.forEach(function(s, i) { padded[3 - last3.length + i] = s; });
       padded.forEach(function(s, i) {
-        var gradeEl = document.getElementById('t3-grade-' + i);
-        var dateEl  = document.getElementById('t3-date-'  + i);
-        var scoreEl = document.getElementById('t3-score-' + i);
-        var cardEl  = document.getElementById('t3-' + i);
-        if (!s.grade) {
-          if (gradeEl) gradeEl.textContent = '—';
-          if (dateEl)  dateEl.textContent  = '—';
-          if (scoreEl) scoreEl.textContent = '';
-          if (cardEl)  cardEl.style.opacity = '0.3';
-          return;
+        var gEl = document.getElementById('t3-grade-' + i);
+        var dEl = document.getElementById('t3-date-'  + i);
+        var sEl = document.getElementById('t3-score-' + i);
+        var lEl = document.getElementById('t3-level-' + i);
+        if (!s) {
+          if (gEl) { gEl.textContent = '—'; gEl.style.color = 'var(--chalk)'; }
+          if (dEl)   dEl.textContent = '—';
+          if (sEl)   sEl.textContent = '';
+          if (lEl)   lEl.textContent = '';
+        } else {
+          var lvl2 = LEVELS[s.level] || LEVELS['L1'];
+          if (gEl) { gEl.textContent = s.grade; gEl.style.color = gradeColor(s.grade); }
+          if (dEl)   dEl.textContent = friendlyDate(s.date);
+          if (sEl)   sEl.textContent = s.score + ' / 100';
+          if (lEl)   lEl.textContent = lvl2.name;
         }
-        if (gradeEl) { gradeEl.textContent = s.grade; gradeEl.style.color = gradeColor(s.grade); }
-        if (dateEl)  dateEl.textContent  = friendlyDate(s.date);
-        if (scoreEl) scoreEl.textContent = s.score + ' / 100';
-        if (cardEl)  { cardEl.style.opacity = '1'; cardEl.style.borderColor = gradeColor(s.grade) + '44'; }
       });
     }
-    if (n > 0) {
-      var avgScore = Math.round(sessions.reduce(function(a,s) { return a + s.score; }, 0) / n);
-      var avgEl = document.getElementById('ytd-avg');
-      if (avgEl) { avgEl.textContent = gradeFromScore(avgScore); avgEl.style.color = gradeColor(gradeFromScore(avgScore)); }
 
-      // Best/worst distance YTD
+    // YTD
+    if (n > 0) {
+      var avgRaw = Math.round(sessions.reduce(function(a,s){return a+s.score;},0)/n);
+      var avgEl = document.getElementById('ytd-avg');
+      if (avgEl) { avgEl.textContent = gradeFromScore(avgRaw); avgEl.style.color = gradeColor(gradeFromScore(avgRaw)); }
+
       var distTotals = {'4':{m:0,t:0},'5':{m:0,t:0},'6':{m:0,t:0},'8':{m:0,t:0}};
       sessions.forEach(function(s) {
         ['4','5','6','8'].forEach(function(d) {
@@ -1890,41 +1935,32 @@
         });
       });
       var distPcts = {};
-      ['4','5','6','8'].forEach(function(d) {
-        distPcts[d] = distTotals[d].t > 0 ? (distTotals[d].m / distTotals[d].t * 100) : null;
-      });
-      var validDists = ['4','5','6','8'].filter(function(d) { return distPcts[d] !== null; });
-      if (validDists.length > 0) {
-        var bestD = validDists.reduce(function(a,b) { return distPcts[b] > distPcts[a] ? b : a; });
-        var weakD = validDists.reduce(function(a,b) { return distPcts[b] < distPcts[a] ? b : a; });
-        var bdEl = document.getElementById('ytd-best-dist');
-        var wdEl = document.getElementById('ytd-weak-dist');
-        if (bdEl) bdEl.textContent = bestD + 'ft (' + Math.round(distPcts[bestD]) + '%)';
-        if (wdEl) wdEl.textContent = weakD + 'ft (' + Math.round(distPcts[weakD]) + '%)';
+      ['4','5','6','8'].forEach(function(d) { distPcts[d] = distTotals[d].t > 0 ? distTotals[d].m/distTotals[d].t*100 : null; });
+      var valid = ['4','5','6','8'].filter(function(d){return distPcts[d]!==null;});
+      if (valid.length > 0) {
+        var bestD = valid.reduce(function(a,b){return distPcts[b]>distPcts[a]?b:a;});
+        var weakD = valid.reduce(function(a,b){return distPcts[b]<distPcts[a]?b:a;});
+        var bdEl=document.getElementById('ytd-best-dist'), wdEl=document.getElementById('ytd-weak-dist');
+        if (bdEl) bdEl.textContent = bestD+'ft ('+Math.round(distPcts[bestD])+'%)';
+        if (wdEl) wdEl.textContent = weakD+'ft ('+Math.round(distPcts[weakD])+'%)';
       }
 
-      // Longest streak
-      var longestStreak = 1, curStreak = 1;
-      for (var i = 1; i < n; i++) {
-        if (daysBetween(sessions[i-1].date, sessions[i].date) === 1) {
-          curStreak++;
-          if (curStreak > longestStreak) longestStreak = curStreak;
-        } else { curStreak = 1; }
+      var longestStreak = 1, curStreak2 = 1;
+      for (var j=1; j<n; j++) {
+        if (daysBetween(sessions[j-1].date, sessions[j].date)===1) { curStreak2++; if(curStreak2>longestStreak) longestStreak=curStreak2; }
+        else curStreak2=1;
       }
       var lsEl = document.getElementById('ytd-longest-streak');
-      if (lsEl) lsEl.textContent = longestStreak + (longestStreak === 1 ? ' day' : ' days');
+      if (lsEl) lsEl.textContent = longestStreak + (longestStreak===1?' day':' days');
 
-      // Narrative
       var narEl = document.getElementById('ytd-narrative');
       if (narEl) {
-        var trend = n >= 3 ? (sessions[n-1].score - sessions[n-3].score) : 0;
-        var trendTxt = trend > 5 ? 'Your scores are trending upward — the reps are paying off.' :
-                       trend < -5 ? 'Slight downward trend over the last 3 sessions. Check your routine consistency.' :
-                       n >= 3 ? 'Your scores are steady. Push the intensity to break through.' : '';
-        narEl.textContent = 'You have completed ' + n + ' session' + (n > 1 ? 's' : '') +
-          ' with an average grade of ' + gradeFromScore(avgScore) + '. ' +
-          (validDists.length > 0 ? 'Strongest distance: ' + bestD + 'ft. Focus distance: ' + weakD + 'ft. ' : '') +
-          trendTxt;
+        var trend = n>=3 ? sessions[n-1].score-sessions[n-3].score : 0;
+        var tTxt = trend>5 ? 'Scores are trending upward — the reps are paying off.' :
+                   trend<-5 ? 'Slight downward trend over last 3 sessions. Check your routine.' :
+                   n>=3 ? 'Scores are steady. Push the intensity to break through.' : '';
+        narEl.textContent = 'You have completed ' + n + ' session' + (n>1?'s':'') + ' with an average grade of ' + gradeFromScore(avgRaw) + '. ' +
+          (valid.length>0?'Strongest: '+bestD+'ft. Focus: '+weakD+'ft. ':'') + tTxt;
       }
     }
 
@@ -1932,229 +1968,150 @@
     var tbody = document.getElementById('history-body');
     if (tbody) {
       if (n === 0) {
-        tbody.innerHTML = '<tr><td colspan="10" style="text-align:center;padding:24px;color:var(--chalk);font-size:0.82rem;">No sessions logged yet.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="11" style="text-align:center;padding:24px;color:var(--chalk);font-size:0.82rem;">No sessions logged yet.</td></tr>';
       } else {
         tbody.innerHTML = '';
-        var reversed = sessions.slice().reverse();
-        reversed.forEach(function(s, i) {
-          var realIdx = n - 1 - i;
+        sessions.slice().reverse().forEach(function(s, i) {
+          var realIdx = n-1-i;
           var g = s.grade, gc = gradeColor(g);
+          var d = s.dist || {};
+          var lvlCfg2 = LEVELS[s.level] || LEVELS['L1'];
+          // Level badge color
+          var lc = s.level && s.level.startsWith('A') ? '#c084fc' : 'var(--gold)';
           var row = document.createElement('tr');
           row.style.borderBottom = '1px solid rgba(255,255,255,0.04)';
-          var d = s.dist || {};
           row.innerHTML =
-            '<td style="padding:8px 10px;color:var(--chalk);font-family:DM Mono,monospace;font-size:0.7rem;">' + (realIdx+1) + '</td>' +
-            '<td style="padding:8px 10px;font-size:0.82rem;color:var(--cream);">' + friendlyDate(s.date) + '</td>' +
-            '<td style="padding:8px 10px;text-align:center;font-family:Bebas Neue,sans-serif;font-size:1.1rem;color:' + gc + ';">' + g + '</td>' +
-            '<td style="padding:8px 10px;text-align:center;font-size:0.82rem;color:var(--chalk);">' + s.score + '</td>' +
-            '<td style="padding:8px 10px;text-align:center;font-size:0.82rem;color:var(--chalk);">' + (d['4'] ? pctStr(d['4'].makes, d['4'].total) : '—') + '</td>' +
-            '<td style="padding:8px 10px;text-align:center;font-size:0.82rem;color:var(--chalk);">' + (d['5'] ? pctStr(d['5'].makes, d['5'].total) : '—') + '</td>' +
-            '<td style="padding:8px 10px;text-align:center;font-size:0.82rem;color:var(--chalk);">' + (d['6'] ? pctStr(d['6'].makes, d['6'].total) : '—') + '</td>' +
-            '<td style="padding:8px 10px;text-align:center;font-size:0.82rem;color:var(--chalk);">' + (d['8'] ? pctStr(d['8'].makes, d['8'].total) : '—') + '</td>' +
-            '<td style="padding:8px 10px;font-size:0.78rem;color:var(--chalk);font-style:italic;">' + (s.notes || '') + '</td>' +
-            '<td style="padding:8px 4px;"><button onclick="deleteSession(' + realIdx + ')" style="background:none;border:none;color:rgba(192,57,43,0.5);cursor:pointer;font-size:0.9rem;" title="Delete">✕</button></td>';
+            '<td style="padding:8px;color:var(--chalk);font-family:DM Mono,monospace;font-size:0.7rem;">'+(realIdx+1)+'</td>'+
+            '<td style="padding:8px;font-size:0.82rem;color:var(--cream);">'+friendlyDate(s.date)+'</td>'+
+            '<td style="padding:8px;text-align:center;"><span style="font-family:DM Mono,monospace;font-size:0.55rem;letter-spacing:1px;color:'+lc+';border:1px solid '+lc+'33;padding:2px 6px;border-radius:2px;">'+lvlCfg2.name+'</span></td>'+
+            '<td style="padding:8px;text-align:center;font-family:Bebas Neue,sans-serif;font-size:1.1rem;color:'+gc+';">'+g+'</td>'+
+            '<td style="padding:8px;text-align:center;font-size:0.82rem;color:var(--chalk);">'+s.score+'</td>'+
+            '<td style="padding:8px;text-align:center;font-size:0.82rem;color:var(--chalk);">'+(d['4']?pctStr(d['4'].makes,d['4'].total):'—')+'</td>'+
+            '<td style="padding:8px;text-align:center;font-size:0.82rem;color:var(--chalk);">'+(d['5']?pctStr(d['5'].makes,d['5'].total):'—')+'</td>'+
+            '<td style="padding:8px;text-align:center;font-size:0.82rem;color:var(--chalk);">'+(d['6']?pctStr(d['6'].makes,d['6'].total):'—')+'</td>'+
+            '<td style="padding:8px;text-align:center;font-size:0.82rem;color:var(--chalk);">'+(d['8']?pctStr(d['8'].makes,d['8'].total):'—')+'</td>'+
+            '<td style="padding:8px;font-size:0.78rem;color:var(--chalk);font-style:italic;">'+(s.notes||'')+'</td>'+
+            '<td style="padding:8px 4px;"><button onclick="deleteSession('+realIdx+')" style="background:none;border:none;color:rgba(192,57,43,0.5);cursor:pointer;font-size:0.9rem;" title="Delete">✕</button></td>';
           tbody.appendChild(row);
         });
       }
     }
 
-    // Charts
     drawTrendChart(sessions);
     drawDistChart(sessions);
   }
 
-  // ── CHARTS (vanilla canvas — no external lib needed) ─────────────────────
+  // ── CHARTS ────────────────────────────────────────────────────────────────
   function drawTrendChart(sessions) {
-    var canvas = document.getElementById('trend-chart');
-    var empty  = document.getElementById('trend-empty');
+    var canvas=document.getElementById('trend-chart'), empty=document.getElementById('trend-empty');
     if (!canvas) return;
-    if (sessions.length < 2) {
-      canvas.style.display = 'none';
-      if (empty) empty.style.display = 'block';
-      return;
-    }
-    canvas.style.display = 'block';
-    if (empty) empty.style.display = 'none';
-    canvas.width = canvas.offsetWidth || 600;
-    var ctx = canvas.getContext('2d');
-    var W = canvas.width, H = canvas.height;
-    ctx.clearRect(0, 0, W, H);
-
-    var pad = { top: 16, right: 20, bottom: 32, left: 40 };
-    var gW = W - pad.left - pad.right;
-    var gH = H - pad.top  - pad.bottom;
-
-    var scores = sessions.map(function(s) { return s.score; });
-    var minS = Math.max(0, Math.min.apply(null, scores) - 10);
-    var maxS = Math.min(100, Math.max.apply(null, scores) + 10);
-
-    // Grid lines
-    ctx.strokeStyle = 'rgba(255,255,255,0.06)';
-    ctx.lineWidth = 1;
+    if (sessions.length < 2) { canvas.style.display='none'; if(empty) empty.style.display='block'; return; }
+    canvas.style.display='block'; if(empty) empty.style.display='none';
+    canvas.width=canvas.offsetWidth||600;
+    var ctx=canvas.getContext('2d'), W=canvas.width, H=canvas.height;
+    ctx.clearRect(0,0,W,H);
+    var pad={top:16,right:20,bottom:32,left:40};
+    var gW=W-pad.left-pad.right, gH=H-pad.top-pad.bottom;
+    var scores=sessions.map(function(s){return s.score;});
+    var minS=Math.max(0,Math.min.apply(null,scores)-10), maxS=Math.min(100,Math.max.apply(null,scores)+10);
+    ctx.strokeStyle='rgba(255,255,255,0.06)'; ctx.lineWidth=1;
     [73,80,87,93].forEach(function(g) {
-      var y = pad.top + gH - ((g - minS) / (maxS - minS)) * gH;
-      if (y < pad.top || y > pad.top + gH) return;
-      ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + gW, y); ctx.stroke();
-      ctx.fillStyle = 'rgba(255,255,255,0.25)';
-      ctx.font = '9px DM Mono,monospace';
-      ctx.fillText(g, 4, y + 3);
+      var y=pad.top+gH-((g-minS)/(maxS-minS))*gH;
+      if(y<pad.top||y>pad.top+gH) return;
+      ctx.beginPath(); ctx.moveTo(pad.left,y); ctx.lineTo(pad.left+gW,y); ctx.stroke();
+      ctx.fillStyle='rgba(255,255,255,0.25)'; ctx.font='9px DM Mono,monospace'; ctx.textAlign='right';
+      ctx.fillText(g,pad.left-4,y+3);
     });
-
-    // Line + fill
     ctx.beginPath();
-    scores.forEach(function(s, i) {
-      var x = pad.left + (i / (scores.length - 1)) * gW;
-      var y = pad.top  + gH - ((s - minS) / (maxS - minS)) * gH;
-      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    scores.forEach(function(s,i) {
+      var x=pad.left+(i/(scores.length-1))*gW, y=pad.top+gH-((s-minS)/(maxS-minS))*gH;
+      i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);
     });
-    ctx.strokeStyle = '#c9a84c';
-    ctx.lineWidth = 2;
-    ctx.stroke();
-
-    // Dots + labels
-    scores.forEach(function(s, i) {
-      var x = pad.left + (i / Math.max(scores.length - 1, 1)) * gW;
-      var y = pad.top  + gH - ((s - minS) / (maxS - minS)) * gH;
-      ctx.beginPath();
-      ctx.arc(x, y, 4, 0, Math.PI * 2);
-      ctx.fillStyle = '#c9a84c';
-      ctx.fill();
-      // X axis labels (date)
-      ctx.fillStyle = 'rgba(255,255,255,0.4)';
-      ctx.font = '8px DM Mono,monospace';
-      var d = new Date(sessions[i].date + 'T12:00:00');
-      var lbl = (d.getMonth()+1) + '/' + d.getDate();
-      ctx.textAlign = 'center';
-      ctx.fillText(lbl, x, pad.top + gH + 18);
+    ctx.strokeStyle='#c9a84c'; ctx.lineWidth=2; ctx.stroke();
+    scores.forEach(function(s,i) {
+      var x=pad.left+(i/Math.max(scores.length-1,1))*gW, y=pad.top+gH-((s-minS)/(maxS-minS))*gH;
+      ctx.beginPath(); ctx.arc(x,y,4,0,Math.PI*2); ctx.fillStyle='#c9a84c'; ctx.fill();
+      ctx.fillStyle='rgba(255,255,255,0.4)'; ctx.font='8px DM Mono,monospace'; ctx.textAlign='center';
+      var d=new Date(sessions[i].date+'T12:00:00');
+      ctx.fillText((d.getMonth()+1)+'/'+d.getDate(),x,pad.top+gH+18);
     });
   }
 
   function drawDistChart(sessions) {
-    var canvas = document.getElementById('dist-chart');
-    var empty  = document.getElementById('dist-empty');
+    var canvas=document.getElementById('dist-chart'), empty=document.getElementById('dist-empty');
     if (!canvas) return;
-    var last5 = sessions.slice(-5);
-    if (last5.length === 0) {
-      canvas.style.display = 'none';
-      if (empty) empty.style.display = 'block';
-      return;
-    }
-    canvas.style.display = 'block';
-    if (empty) empty.style.display = 'none';
-    canvas.width = canvas.offsetWidth || 600;
-    var ctx = canvas.getContext('2d');
-    var W = canvas.width, H = canvas.height;
-    ctx.clearRect(0, 0, W, H);
-
-    var dists = ['4','5','6','8'];
-    var colors = ['#7bc67e','#c9a84c','#7ec8e3','#c084fc'];
-    var n = last5.length;
-    var pad = { top: 16, right: 20, bottom: 32, left: 40 };
-    var gW = W - pad.left - pad.right;
-    var gH = H - pad.top  - pad.bottom;
-    var groupW = gW / n;
-    var barW   = (groupW - 8) / dists.length;
-
-    // Grid
-    ctx.strokeStyle = 'rgba(255,255,255,0.06)';
-    ctx.lineWidth = 1;
+    var last5=sessions.slice(-5);
+    if (last5.length===0) { canvas.style.display='none'; if(empty) empty.style.display='block'; return; }
+    canvas.style.display='block'; if(empty) empty.style.display='none';
+    canvas.width=canvas.offsetWidth||600;
+    var ctx=canvas.getContext('2d'), W=canvas.width, H=canvas.height;
+    ctx.clearRect(0,0,W,H);
+    var dists=['4','5','6','8'], colors=['#7bc67e','#c9a84c','#7ec8e3','#c084fc'];
+    var pad={top:16,right:20,bottom:32,left:40};
+    var gW=W-pad.left-pad.right, gH=H-pad.top-pad.bottom;
+    var groupW=gW/last5.length, barW=(groupW-8)/dists.length;
+    ctx.strokeStyle='rgba(255,255,255,0.06)'; ctx.lineWidth=1;
     [25,50,75,100].forEach(function(g) {
-      var y = pad.top + gH * (1 - g/100);
-      ctx.beginPath(); ctx.moveTo(pad.left, y); ctx.lineTo(pad.left + gW, y); ctx.stroke();
-      ctx.fillStyle = 'rgba(255,255,255,0.25)';
-      ctx.font = '9px DM Mono,monospace';
-      ctx.textAlign = 'right';
-      ctx.fillText(g + '%', pad.left - 4, y + 3);
+      var y=pad.top+gH*(1-g/100);
+      ctx.beginPath(); ctx.moveTo(pad.left,y); ctx.lineTo(pad.left+gW,y); ctx.stroke();
+      ctx.fillStyle='rgba(255,255,255,0.25)'; ctx.font='9px DM Mono,monospace'; ctx.textAlign='right';
+      ctx.fillText(g+'%',pad.left-4,y+3);
     });
-
-    last5.forEach(function(s, gi) {
-      var gx = pad.left + gi * groupW + 4;
-      dists.forEach(function(d, di) {
-        if (!s.dist || !s.dist[d] || s.dist[d].total === 0) return;
-        var pct = s.dist[d].makes / s.dist[d].total;
-        var bH  = pct * gH;
-        var bX  = gx + di * barW;
-        var bY  = pad.top + gH - bH;
-        ctx.fillStyle = colors[di];
-        ctx.globalAlpha = 0.75;
-        ctx.fillRect(bX, bY, barW - 2, bH);
-        ctx.globalAlpha = 1;
+    last5.forEach(function(s,gi) {
+      var gx=pad.left+gi*groupW+4;
+      dists.forEach(function(d,di) {
+        if(!s.dist||!s.dist[d]||s.dist[d].total===0) return;
+        var pct=s.dist[d].makes/s.dist[d].total, bH=pct*gH;
+        ctx.fillStyle=colors[di]; ctx.globalAlpha=0.75;
+        ctx.fillRect(gx+di*barW,pad.top+gH-bH,barW-2,bH); ctx.globalAlpha=1;
       });
-      // X label
-      var d = new Date(s.date + 'T12:00:00');
-      var lbl = (d.getMonth()+1) + '/' + d.getDate();
-      ctx.fillStyle = 'rgba(255,255,255,0.4)';
-      ctx.font = '8px DM Mono,monospace';
-      ctx.textAlign = 'center';
-      ctx.fillText(lbl, gx + groupW/2 - 4, pad.top + gH + 18);
+      var d2=new Date(s.date+'T12:00:00');
+      ctx.fillStyle='rgba(255,255,255,0.4)'; ctx.font='8px DM Mono,monospace'; ctx.textAlign='center';
+      ctx.fillText((d2.getMonth()+1)+'/'+d2.getDate(),gx+groupW/2-4,pad.top+gH+18);
     });
-
-    // Legend
-    var legX = pad.left;
-    dists.forEach(function(d, i) {
-      ctx.fillStyle = colors[i];
-      ctx.fillRect(legX, 2, 10, 8);
-      ctx.fillStyle = 'rgba(255,255,255,0.5)';
-      ctx.font = '8px DM Mono,monospace';
-      ctx.textAlign = 'left';
-      ctx.fillText(d + 'ft', legX + 13, 10);
-      legX += 42;
+    var legX=pad.left;
+    dists.forEach(function(d,i) {
+      ctx.fillStyle=colors[i]; ctx.fillRect(legX,2,10,8);
+      ctx.fillStyle='rgba(255,255,255,0.5)'; ctx.font='8px DM Mono,monospace'; ctx.textAlign='left';
+      ctx.fillText(d+'ft',legX+13,10); legX+=42;
     });
   }
 
-  // ── INIT LOG ─────────────────────────────────────────────────────────────
-  // Set today's date as default in date input
-  var dateInput = document.getElementById('log-date-input');
-  if (dateInput) dateInput.value = today();
-
-  // Update log preview whenever tracker state changes
-  var origUpdatePct = updatePct;
-  function updateLogPreview() {
-    var previewEl = document.getElementById('log-preview');
-    if (!previewEl) return;
-    var hasData = ['4','5','6','8'].some(function(d) {
-      return (state['make'+d] + state['miss'+d]) > 0;
-    });
-    if (!hasData) {
-      previewEl.textContent = 'Go to Make Tracker, hit some putts, then come back here.';
-      previewEl.style.color = 'var(--chalk)';
-    } else {
-      var parts = [];
-      var cfg2 = { '4':{w:0.20,avg:86},'5':{w:0.25,avg:75},'6':{w:0.30,avg:63},'8':{w:0.25,avg:50} };
-      var tw = 0, ws = 0;
-      ['4','5','6','8'].forEach(function(d) {
-        var m = state['make'+d], t = state['make'+d]+state['miss'+d];
-        if (t > 0) {
-          var pct = m/t*100;
-          parts.push(d + 'ft: ' + Math.round(pct) + '%');
-          ws += Math.min(100,(pct/cfg2[d].avg)*85) * cfg2[d].w;
-          tw += cfg2[d].w;
-        }
-      });
-      var sc = tw > 0 ? Math.round(ws/tw) : 0;
-      previewEl.textContent = parts.join('  |  ') + '  →  Score: ' + sc + ' (' + gradeFromScore(sc) + ')';
-      previewEl.style.color = 'var(--cream)';
+  // ── TRIP COUNTDOWN ────────────────────────────────────────────────────────
+  (function() {
+    var tripDate  = new Date('2026-07-23');
+    var startDate = new Date('2026-05-12');
+    var today2 = new Date(); today2.setHours(0,0,0,0);
+    var totalDays   = Math.round((tripDate-startDate)/86400000);
+    var daysElapsed = Math.round((today2-startDate)/86400000);
+    var daysLeft    = Math.round((tripDate-today2)/86400000);
+    var countEl = document.getElementById('days-countdown');
+    if (countEl) countEl.textContent = daysLeft > 0 ? daysLeft : 'Go time!';
+    var fill   = document.getElementById('trip-progress-fill');
+    var marker = document.getElementById('trip-ball-marker');
+    var urgency= document.getElementById('trip-urgency');
+    var pct = Math.min(100, Math.max(0, (daysElapsed/totalDays)*100));
+    if (fill)   fill.style.width = pct + '%';
+    if (marker) marker.style.left = pct + '%';
+    if (urgency) {
+      urgency.textContent = daysLeft > 60 ? 'Plenty of runway — build the habits now.' :
+        daysLeft > 45 ? 'Getting closer. Every session counts.' :
+        daysLeft > 30 ? 'One month out. Routine needs to be locked in.' :
+        daysLeft > 14 ? 'Under 30 days. This is crunch time, Tucker.' :
+        daysLeft > 7  ? 'Two weeks out. Dial it in. Every. Single. Putt.' :
+        daysLeft > 0  ? 'Game week. Go own those greens.' :
+                        'It is go time. Turning Stone awaits.';
     }
-  }
+  })();
 
-  // Patch adjust to also update preview
-  var _origAdjust = adjust;
-  function adjust(key, delta) {
-    state[key] = Math.max(0, state[key] + delta);
-    document.getElementById(key).textContent = state[key];
-    updatePct();
-    updateLogPreview();
-  }
+  // ── INIT ──────────────────────────────────────────────────────────────────
+  var dateInputEl = document.getElementById('log-date-input');
+  if (dateInputEl) dateInputEl.value = todayStr();
 
   renderLog();
 
-  // Wake lock — keeps iPad screen on during garage sessions
   async function keepScreenAwake() {
-    if ('wakeLock' in navigator) {
-      try {
-        await navigator.wakeLock.request('screen');
-      } catch(e) {}
-    }
+    if ('wakeLock' in navigator) { try { await navigator.wakeLock.request('screen'); } catch(e) {} }
   }
   keepScreenAwake();
   document.addEventListener('visibilitychange', function() {
@@ -2162,5 +2119,3 @@
   });
 
 </script>
-</body>
-</html>
