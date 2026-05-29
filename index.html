@@ -1192,44 +1192,67 @@
       <p>Your master record. Every session logged, every trend tracked. This is where the garage work becomes a story.</p>
     </div>
 
-    <!-- LEVEL STATUS CARD -->
-    <div id="level-card" style="
-      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%);
-      border: 1px solid rgba(201,168,76,0.5);
-      border-radius: 4px;
-      padding: 24px 28px;
-      margin-bottom:20px;
-    ">
-      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
-        <div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Current Level</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:2rem;letter-spacing:3px;color:var(--cream);" id="level-name">Intermediate L2</div>
-          <div style="font-size:0.82rem;color:var(--chalk);margin-top:4px;" id="level-desc">Scored one-handed reps, consecutive 8ft pressure game, tighter rubric.</div>
+    <!-- LEVEL STATUS CARD - DUAL TRACK -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
+
+      <!-- MAT TRACK -->
+      <div style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%);border:1px solid rgba(201,168,76,0.5);border-radius:4px;padding:20px 24px;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+          <div style="flex:1;">
+            <div style="font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Mat Track</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:2px;color:var(--cream);line-height:1.1;" id="level-name">Intermediate L2</div>
+            <div style="font-size:0.75rem;color:var(--chalk);margin-top:4px;line-height:1.4;" id="level-desc">Scored one-handed reps, consecutive 8ft.</div>
+          </div>
+          <div style="text-align:center;min-width:70px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);line-height:1;" id="career-score-big">—</div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1px;text-transform:uppercase;color:var(--chalk);">Career</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;margin-top:2px;" id="career-grade-badge">—</div>
+          </div>
         </div>
-        <div style="text-align:center;min-width:120px;">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--gold);line-height:1;" id="career-score-big">—</div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);">Career Score</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:1.2rem;margin-top:2px;" id="career-grade-badge">—</div>
+        <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08);">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+            <div style="font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);">Next Milestone</div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--gold);" id="milestone-label">—</div>
+          </div>
+          <div style="height:6px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;">
+            <div id="milestone-bar" style="height:100%;background:linear-gradient(90deg,var(--green-light),var(--gold));border-radius:3px;transition:width 0.4s ease;width:0%;"></div>
+          </div>
+          <div style="font-size:0.72rem;color:var(--chalk);margin-top:6px;line-height:1.4;" id="milestone-detail">—</div>
         </div>
       </div>
 
-      <!-- Next milestone progress -->
-      <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);">
-        <div style="display:flex;justify-content:space-between;margin-bottom:8px;">
-          <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);">Next Milestone</div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.6rem;color:var(--gold);" id="milestone-label">—</div>
+      <!-- COURSE TRACK -->
+      <div style="background:linear-gradient(135deg,#1a2e1a 0%,#162e16 60%,#0f3a0f 100%);border:1px solid rgba(123,198,126,0.4);border-radius:4px;padding:20px 24px;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
+          <div style="flex:1;">
+            <div style="font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:3px;text-transform:uppercase;color:#7bc67e;margin-bottom:6px;">Course Track</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;letter-spacing:2px;color:var(--cream);line-height:1.1;" id="course-level-name">No sessions yet</div>
+            <div style="font-size:0.75rem;color:var(--chalk);margin-top:4px;line-height:1.4;" id="course-level-desc">Log an on-course session to start.</div>
+          </div>
+          <div style="text-align:center;min-width:70px;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:#7bc67e;line-height:1;" id="course-career-score-big">—</div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1px;text-transform:uppercase;color:var(--chalk);">Career</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1rem;margin-top:2px;" id="course-career-grade-badge">—</div>
+          </div>
         </div>
-        <div style="height:8px;background:rgba(255,255,255,0.07);border-radius:4px;overflow:hidden;">
-          <div id="milestone-bar" style="height:100%;background:linear-gradient(90deg,var(--green-light),var(--gold));border-radius:4px;transition:width 0.4s ease;width:0%;"></div>
+        <div style="margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.08);">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px;">
+            <div style="font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);">Next Milestone</div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.5rem;color:#7bc67e;" id="course-milestone-label">—</div>
+          </div>
+          <div style="height:6px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;">
+            <div id="course-milestone-bar" style="height:100%;background:linear-gradient(90deg,#2d5c3f,#7bc67e);border-radius:3px;transition:width 0.4s ease;width:0%;"></div>
+          </div>
+          <div style="font-size:0.72rem;color:var(--chalk);margin-top:6px;line-height:1.4;" id="course-milestone-detail">—</div>
         </div>
-        <div style="font-size:0.78rem;color:var(--chalk);margin-top:8px;" id="milestone-detail">—</div>
       </div>
+
     </div>
 
     <!-- ROW 1: stat cards -->
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-bottom:16px;">
       <div class="tracker-card" style="text-align:center;">
-        <div class="meta-label" style="margin-bottom:6px;">Current Streak</div>
+        <div class="meta-label" style="margin-bottom:6px;">Session Streak</div>
         <div class="stat-big" id="log-streak">—</div>
         <div class="stat-context" id="log-streak-msg">No sessions logged yet.</div>
       </div>
@@ -1302,6 +1325,21 @@
           <input type="date" id="log-date-input" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:3px;color:var(--cream);font-family:'DM Mono',monospace;font-size:0.8rem;padding:8px 12px;outline:none;">
         </div>
         <div>
+          <div class="meta-label" style="margin-bottom:4px;">Session #</div>
+          <select id="log-session-num" style="background:#1a3a2a;border:1px solid rgba(255,255,255,0.15);border-radius:3px;color:var(--cream);font-family:'DM Mono',monospace;font-size:0.8rem;padding:8px 12px;outline:none;">
+            <option value="1">Session 1</option>
+            <option value="2">Session 2</option>
+            <option value="3">Session 3</option>
+          </select>
+        </div>
+        <div>
+          <div class="meta-label" style="margin-bottom:4px;">Session Type</div>
+          <select id="log-type-input" onchange="updateLevelOptions()" style="background:#1a3a2a;border:1px solid rgba(255,255,255,0.15);border-radius:3px;color:var(--cream);font-family:'DM Mono',monospace;font-size:0.8rem;padding:8px 12px;outline:none;">
+            <option value="mat">🏠 Mat Session</option>
+            <option value="course">⛳ On-Course Session</option>
+          </select>
+        </div>
+        <div>
           <div class="meta-label" style="margin-bottom:4px;">Level</div>
           <select id="log-level-input" style="background:#1a3a2a;border:1px solid rgba(255,255,255,0.15);border-radius:3px;color:var(--cream);font-family:'DM Mono',monospace;font-size:0.8rem;padding:8px 12px;outline:none;">
             <option value="L1">Intermediate L1</option>
@@ -1313,7 +1351,7 @@
         </div>
         <div>
           <div class="meta-label" style="margin-bottom:4px;">Session Notes (optional)</div>
-          <input type="text" id="log-notes-input" placeholder="e.g. felt rusty, good rhythm..." style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:3px;color:var(--cream);font-family:'DM Mono',monospace;font-size:0.8rem;padding:8px 12px;outline:none;width:240px;">
+          <input type="text" id="log-notes-input" placeholder="e.g. AM session, felt great..." style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.15);border-radius:3px;color:var(--cream);font-family:'DM Mono',monospace;font-size:0.8rem;padding:8px 12px;outline:none;width:200px;">
         </div>
       </div>
       <div style="margin-top:12px;font-size:0.82rem;color:var(--chalk);">
@@ -1395,6 +1433,7 @@
           <thead>
             <tr style="border-bottom:1px solid rgba(255,255,255,0.1);">
               <th style="text-align:left;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">#</th>
+              <th style="text-align:center;padding:6px 4px;font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--chalk);font-weight:400;">Type</th>
               <th style="text-align:left;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Date</th>
               <th style="text-align:center;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Level</th>
               <th style="text-align:center;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Grade</th>
@@ -1408,7 +1447,7 @@
             </tr>
           </thead>
           <tbody id="history-body">
-            <tr><td colspan="11" style="text-align:center;padding:24px;color:var(--chalk);font-size:0.82rem;">No sessions logged yet.</td></tr>
+            <tr><td colspan="12" style="text-align:center;padding:24px;color:var(--chalk);font-size:0.82rem;">No sessions logged yet.</td></tr>
           </tbody>
         </table>
       </div>
@@ -1421,43 +1460,84 @@
 <script>
 
   // ── LEVEL CONFIG ─────────────────────────────────────────────────────────
+  // ── MAT LEVELS ───────────────────────────────────────────────────────────
   var LEVELS = {
     'L1': {
-      name: 'Intermediate L1',
+      name: 'Intermediate L1', track: 'mat',
       desc: 'Foundation level. Building habits and feel.',
       careerWeight: 0.6,
       rubric: { '4':{w:0.20,perfect:86}, '5':{w:0.25,perfect:75}, '6':{w:0.30,perfect:63}, '8':{w:0.25,perfect:50} },
       nextGoal: { level: 'L2', sessions: 5, minScore: 95 }
     },
     'L2': {
-      name: 'Intermediate L2',
+      name: 'Intermediate L2', track: 'mat',
       desc: 'Scored one-handed reps, consecutive 8ft pressure game, tighter rubric.',
       careerWeight: 0.8,
       rubric: { '4':{w:0.15,perfect:100}, '5':{w:0.20,perfect:95}, '6':{w:0.25,perfect:90}, '8':{w:0.25,perfect:80}, 'hand':{w:0.15,perfect:75} },
       nextGoal: { level: 'L3', sessions: 5, minScore: 95 }
     },
     'L3': {
-      name: 'Intermediate L3',
+      name: 'Intermediate L3', track: 'mat',
       desc: 'Elite amateur standard. Near-perfect required.',
       careerWeight: 1.0,
       rubric: { '4':{w:0.15,perfect:100}, '5':{w:0.20,perfect:98}, '6':{w:0.25,perfect:95}, '8':{w:0.25,perfect:88}, 'hand':{w:0.15,perfect:85} },
       nextGoal: { level: 'A1', sessions: 5, minScore: 90 }
     },
     'A1': {
-      name: 'Advanced L1',
+      name: 'Advanced L1', track: 'mat',
       desc: 'Tour-standard pressure. Every miss counts.',
       careerWeight: 1.2,
       rubric: { '4':{w:0.15,perfect:100}, '5':{w:0.20,perfect:100}, '6':{w:0.25,perfect:98}, '8':{w:0.25,perfect:92}, 'hand':{w:0.15,perfect:90} },
       nextGoal: { level: 'A2', sessions: 5, minScore: 85 }
     },
     'A2': {
-      name: 'Advanced L2',
+      name: 'Advanced L2', track: 'mat',
       desc: 'The ceiling. Reserved for the elite.',
       careerWeight: 1.5,
       rubric: { '4':{w:0.15,perfect:100}, '5':{w:0.20,perfect:100}, '6':{w:0.25,perfect:100}, '8':{w:0.25,perfect:95}, 'hand':{w:0.15,perfect:95} },
       nextGoal: null
     }
   };
+
+  // ── COURSE LEVELS ─────────────────────────────────────────────────────────
+  var COURSE_LEVELS = {
+    'CL1': {
+      name: 'Course L1', track: 'course',
+      desc: 'Real green foundation. Learning to adapt to conditions.',
+      careerWeight: 0.7,
+      rubric: { '4':{w:0.15,perfect:65}, '5':{w:0.20,perfect:50}, '6':{w:0.25,perfect:40}, '8':{w:0.25,perfect:35}, 'hand':{w:0.15,perfect:50} },
+      nextGoal: { level: 'CL2', sessions: 3, minScore: 75 }
+    },
+    'CL2': {
+      name: 'Course L2', track: 'course',
+      desc: 'Consistent on real greens. Reading and adapting.',
+      careerWeight: 0.9,
+      rubric: { '4':{w:0.15,perfect:72}, '5':{w:0.20,perfect:58}, '6':{w:0.25,perfect:48}, '8':{w:0.25,perfect:42}, 'hand':{w:0.15,perfect:58} },
+      nextGoal: { level: 'CL3', sessions: 3, minScore: 82 }
+    },
+    'CL3': {
+      name: 'Course L3', track: 'course',
+      desc: 'Strong real-green performer. Conditions are an advantage.',
+      careerWeight: 1.1,
+      rubric: { '4':{w:0.15,perfect:80}, '5':{w:0.20,perfect:65}, '6':{w:0.25,perfect:55}, '8':{w:0.25,perfect:48}, 'hand':{w:0.15,perfect:65} },
+      nextGoal: { level: 'CA1', sessions: 3, minScore: 88 }
+    },
+    'CA1': {
+      name: 'Course Advanced', track: 'course',
+      desc: 'Elite on-course putter. Tour feel on real greens.',
+      careerWeight: 1.4,
+      rubric: { '4':{w:0.15,perfect:88}, '5':{w:0.20,perfect:72}, '6':{w:0.25,perfect:62}, '8':{w:0.25,perfect:55}, 'hand':{w:0.15,perfect:72} },
+      nextGoal: null
+    }
+  };
+
+  function getLevelConfig(levelKey) {
+    return LEVELS[levelKey] || COURSE_LEVELS[levelKey] || LEVELS['L2'];
+  }
+
+  function isCoursLevel(levelKey) {
+    return levelKey && levelKey.startsWith('C');
+  }
 
   // ── GRADING ───────────────────────────────────────────────────────────────
   function gradeFromScore(s) {
@@ -1504,7 +1584,7 @@
 
   // ── COMPUTE SESSION SCORE (level-aware) ──────────────────────────────────
   function computeScore(distData, trailData, leadData, levelKey) {
-    var lvl = LEVELS[levelKey] || LEVELS['L2'];
+    var lvl = getLevelConfig(levelKey);
     var rubric = lvl.rubric;
     var totalWeight = 0, weightedScore = 0;
 
@@ -1552,15 +1632,17 @@
     var goal = lvl.nextGoal;
     var nextLvl = LEVELS[goal.level];
 
-    // Count consecutive qualifying sessions at current level from the end
+    // Count consecutive qualifying SESSIONS (not days) from the most recent
+    // A session at a different level breaks the streak; a non-qualifying session breaks it too
     var qualifying = 0;
     var reversed = sessions.slice().reverse();
     for (var i = 0; i < reversed.length; i++) {
-      if (reversed[i].level === currentLevelKey && reversed[i].score >= goal.minScore) {
+      var s = reversed[i];
+      if (s.level === currentLevelKey && s.score >= goal.minScore) {
         qualifying++;
         if (qualifying >= goal.sessions) break;
-      } else if (reversed[i].level === currentLevelKey) {
-        break; // streak broken
+      } else {
+        break; // any miss or level change breaks the streak
       }
     }
 
@@ -1743,7 +1825,7 @@
     if (barEl)   { barEl.style.width = score + '%'; barEl.classList.toggle('warn', score < 73); }
 
     var lines = [];
-    var lvl = LEVELS[levelKey] || LEVELS['L2'];
+    var lvl = getLevelConfig(levelKey);
     ['4','5','6','8'].forEach(function(d) {
       var dd = distData[d];
       if (!dd || dd.total === 0) return;
@@ -1783,10 +1865,11 @@
 
   // ── LOG SESSION ───────────────────────────────────────────────────────────
   function logSession() {
-    var dateInput = document.getElementById('log-date-input').value;
-    var levelKey  = document.getElementById('log-level-input').value;
-    var notes     = document.getElementById('log-notes-input').value.trim();
-    var feedback  = document.getElementById('log-feedback');
+    var dateInput  = document.getElementById('log-date-input').value;
+    var sessionNum = document.getElementById('log-session-num').value;
+    var levelKey   = document.getElementById('log-level-input').value;
+    var notes      = document.getElementById('log-notes-input').value.trim();
+    var feedback   = document.getElementById('log-feedback');
 
     if (!dateInput) { feedback.style.color='#e07060'; feedback.textContent='Please select a date.'; return; }
 
@@ -1800,12 +1883,25 @@
 
     if (score === null) { feedback.style.color='#e07060'; feedback.textContent='No putt data found. Hit some putts in the Make Tracker first.'; return; }
 
-    var session = { date: dateInput, level: levelKey, score: score, grade: gradeFromScore(score), notes: notes, dist: distData, trail: trailData, lead: leadData };
+    // Unique key = date + session number
+    var sessionKey = dateInput + '-S' + sessionNum;
+    var typeEl2 = document.getElementById('log-type-input');
+    var sessionType = typeEl2 ? typeEl2.value : 'mat';
+    var session = { key: sessionKey, date: dateInput, sessionNum: parseInt(sessionNum), sessionType: sessionType, level: levelKey, score: score, grade: gradeFromScore(score), notes: notes, dist: distData, trail: trailData, lead: leadData };
     var sessions = loadLog();
-    var existing = sessions.findIndex(function(s) { return s.date === dateInput; });
-    if (existing >= 0) { sessions[existing] = session; feedback.textContent = 'Session updated for ' + friendlyDate(dateInput); }
-    else { sessions.push(session); feedback.textContent = 'Session logged! Grade: ' + session.grade + ' (' + score + ')'; }
-    sessions.sort(function(a,b) { return a.date.localeCompare(b.date); });
+    var existing = sessions.findIndex(function(s) { return s.key === sessionKey; });
+    if (existing >= 0) {
+      sessions[existing] = session;
+      feedback.textContent = 'Session updated: ' + friendlyDate(dateInput) + ' #' + sessionNum;
+    } else {
+      sessions.push(session);
+      feedback.textContent = 'Logged: ' + friendlyDate(dateInput) + ' #' + sessionNum + ' — ' + session.grade + ' (' + score + ')';
+    }
+    // Sort by date then session number
+    sessions.sort(function(a,b) {
+      if (a.date !== b.date) return a.date.localeCompare(b.date);
+      return (a.sessionNum||1) - (b.sessionNum||1);
+    });
     saveLog(sessions);
     feedback.style.color = '#7bc67e';
     var qEl = document.getElementById('tiger-quote-text');
@@ -1843,42 +1939,82 @@
     var qEl = document.getElementById('tiger-quote-text');
     if (qEl) qEl.textContent = tigerQuotes[Math.floor((new Date().getDate()) % tigerQuotes.length)];
 
-    // Career score
-    var career = computeCareerScore(sessions);
+    // Split sessions by track
+    var matSessions    = sessions.filter(function(s) { return !isCoursLevel(s.level); });
+    var courseSessions = sessions.filter(function(s) { return isCoursLevel(s.level); });
+
+    // Mat career score
+    var matCareer = computeCareerScore(matSessions);
     var csBig  = document.getElementById('career-score-big');
     var cgBadge= document.getElementById('career-grade-badge');
-    if (csBig) csBig.textContent = career !== null ? career : '—';
+    if (csBig) csBig.textContent = matCareer !== null ? matCareer : '—';
     if (cgBadge) {
-      var cg = career !== null ? gradeFromScore(career) : '—';
+      var cg = matCareer !== null ? gradeFromScore(matCareer) : '—';
       cgBadge.textContent = cg;
       cgBadge.style.color = gradeColor(cg);
     }
 
-    // Current level (most recent session's level, default L2)
-    var currentLevel = n > 0 ? (sessions[n-1].level || 'L2') : 'L2';
-    var lvlCfg = LEVELS[currentLevel] || LEVELS['L2'];
+    // Course career score
+    var courseCareer = computeCareerScore(courseSessions);
+    var ccsBig  = document.getElementById('course-career-score-big');
+    var ccBadge = document.getElementById('course-career-grade-badge');
+    if (ccsBig) ccsBig.textContent = courseCareer !== null ? courseCareer : '—';
+    if (ccBadge) {
+      var ccg = courseCareer !== null ? gradeFromScore(courseCareer) : '—';
+      ccBadge.textContent = ccg;
+      ccBadge.style.color = gradeColor(ccg);
+    }
+
+    // Mat level + milestone
+    var currentMatLevel = matSessions.length > 0 ? (matSessions[matSessions.length-1].level || 'L2') : 'L2';
+    var matLvlCfg = getLevelConfig(currentMatLevel);
     var lvlNameEl = document.getElementById('level-name');
     var lvlDescEl = document.getElementById('level-desc');
-    if (lvlNameEl) lvlNameEl.textContent = lvlCfg.name;
-    if (lvlDescEl) lvlDescEl.textContent = lvlCfg.desc;
+    if (lvlNameEl) lvlNameEl.textContent = '🏠 ' + matLvlCfg.name;
+    if (lvlDescEl) lvlDescEl.textContent = matLvlCfg.desc;
 
-    // Milestone
-    var ms = getMilestoneProgress(sessions, currentLevel);
+    var ms = getMilestoneProgress(matSessions, currentMatLevel);
     var msLabel  = document.getElementById('milestone-label');
     var msBar    = document.getElementById('milestone-bar');
     var msDetail = document.getElementById('milestone-detail');
     if (ms) {
       var msP = Math.round((ms.qualifying / ms.required) * 100);
-      if (msLabel)  msLabel.textContent  = ms.qualifying + ' / ' + ms.required + ' qualifying sessions';
+      if (msLabel)  msLabel.textContent  = 'Mat: ' + ms.qualifying + ' / ' + ms.required + ' qualifying sessions';
       if (msBar)    msBar.style.width    = msP + '%';
       var remaining = ms.required - ms.qualifying;
       if (msDetail) msDetail.textContent = remaining > 0
-        ? 'Score ' + ms.minScore + '+ in ' + remaining + ' more consecutive session' + (remaining > 1 ? 's' : '') + ' to reach ' + ms.nextLevelName + '.'
-        : 'Milestone reached! Time to advance to ' + ms.nextLevelName + '.';
+        ? 'Score ' + ms.minScore + '+ in ' + remaining + ' more consecutive mat session' + (remaining > 1 ? 's' : '') + ' to reach ' + ms.nextLevelName + '.'
+        : 'Mat milestone reached! Time to advance to ' + ms.nextLevelName + '.';
     } else {
-      if (msLabel)  msLabel.textContent  = 'Max level reached';
+      if (msLabel)  msLabel.textContent  = 'Mat: Max level reached';
       if (msBar)    msBar.style.width    = '100%';
-      if (msDetail) msDetail.textContent = 'You have reached the highest level. Elite status.';
+      if (msDetail) msDetail.textContent = 'Elite mat status achieved.';
+    }
+
+    // Course level + milestone
+    var currentCourseLevel = courseSessions.length > 0 ? (courseSessions[courseSessions.length-1].level || 'CL1') : 'CL1';
+    var courseLvlCfg = getLevelConfig(currentCourseLevel);
+    var clNameEl = document.getElementById('course-level-name');
+    var clDescEl = document.getElementById('course-level-desc');
+    if (clNameEl) clNameEl.textContent = '⛳ ' + (courseSessions.length > 0 ? courseLvlCfg.name : 'No sessions yet');
+    if (clDescEl) clDescEl.textContent = courseSessions.length > 0 ? courseLvlCfg.desc : 'Log an on-course session to start your course track.';
+
+    var cms = getMilestoneProgress(courseSessions, currentCourseLevel);
+    var cmsLabel  = document.getElementById('course-milestone-label');
+    var cmsBar    = document.getElementById('course-milestone-bar');
+    var cmsDetail = document.getElementById('course-milestone-detail');
+    if (courseSessions.length > 0 && cms) {
+      var cmsP = Math.round((cms.qualifying / cms.required) * 100);
+      if (cmsLabel)  cmsLabel.textContent = 'Course: ' + cms.qualifying + ' / ' + cms.required + ' qualifying sessions';
+      if (cmsBar)    cmsBar.style.width   = cmsP + '%';
+      var cremaining = cms.required - cms.qualifying;
+      if (cmsDetail) cmsDetail.textContent = cremaining > 0
+        ? 'Score ' + cms.minScore + '+ in ' + cremaining + ' more consecutive course session' + (cremaining > 1 ? 's' : '') + ' to reach ' + cms.nextLevelName + '.'
+        : 'Course milestone reached! Time to advance to ' + cms.nextLevelName + '.';
+    } else {
+      if (cmsLabel)  cmsLabel.textContent  = courseSessions.length === 0 ? 'No course sessions yet' : 'Course: Max level reached';
+      if (cmsBar)    cmsBar.style.width    = courseSessions.length === 0 ? '0%' : '100%';
+      if (cmsDetail) cmsDetail.textContent = courseSessions.length === 0 ? 'Log an on-course session to begin.' : 'Elite course status.';
     }
 
     // Total sessions
@@ -1899,14 +2035,17 @@
         sinceN === 2 ? 'Two days off. Do not let the feel fade.' :
         sinceN <= 4  ? sinceN + ' days off. Turning Stone will not wait.' :
                        sinceN + ' days off. Someone else is putting in the reps.';
+      // Streak = consecutive sessions logged (any session counts)
       var streak = 1;
       for (var i = n-1; i > 0; i--) {
-        if (daysBetween(sessions[i-1].date, sessions[i].date) === 1) streak++;
+        // Sessions are consecutive if same day (multiple sessions) or next day
+        var d1 = sessions[i-1].date, d2 = sessions[i].date;
+        if (d1 === d2 || daysBetween(d1, d2) === 1) streak++;
         else break;
       }
       if (streakEl)  streakEl.textContent  = streak;
-      if (streakMsg) streakMsg.textContent = streak === 1 ? 'Start a streak — practice tomorrow.' :
-        streak < 4 ? streak + ' days in a row. Keep going.' :
+      if (streakMsg) streakMsg.textContent = streak === 1 ? 'Start a streak — log your next session.' :
+        streak < 4 ? streak + ' sessions in a row. Keep going.' :
         streak < 7 ? 'Hot streak. Do not break it.' :
                      'Elite consistency. Tiger-level commitment.';
     } else {
@@ -1955,14 +2094,16 @@
       });
     }
 
-    // YTD
-    if (n > 0) {
-      var avgRaw = Math.round(sessions.reduce(function(a,s){return a+s.score;},0)/n);
+    // YTD — mat sessions only for main stats
+    var ytdSessions = matSessions.length > 0 ? matSessions : sessions;
+    var ytdN = ytdSessions.length;
+    if (ytdN > 0) {
+      var avgRaw = Math.round(ytdSessions.reduce(function(a,s){return a+s.score;},0)/ytdN);
       var avgEl = document.getElementById('ytd-avg');
       if (avgEl) { avgEl.textContent = gradeFromScore(avgRaw); avgEl.style.color = gradeColor(gradeFromScore(avgRaw)); }
 
       var distTotals = {'4':{m:0,t:0},'5':{m:0,t:0},'6':{m:0,t:0},'8':{m:0,t:0}};
-      sessions.forEach(function(s) {
+      ytdSessions.forEach(function(s) {
         ['4','5','6','8'].forEach(function(d) {
           if (s.dist && s.dist[d] && s.dist[d].total > 0) {
             distTotals[d].m += s.dist[d].makes;
@@ -2023,11 +2164,11 @@
 
       var narEl = document.getElementById('ytd-narrative');
       if (narEl) {
-        var trend = n>=3 ? sessions[n-1].score-sessions[n-3].score : 0;
+        var trend = ytdN>=3 ? ytdSessions[ytdN-1].score-ytdSessions[ytdN-3].score : 0;
         var tTxt = trend>5 ? 'Scores are trending upward — the reps are paying off.' :
                    trend<-5 ? 'Slight downward trend over last 3 sessions. Check your routine.' :
                    n>=3 ? 'Scores are steady. Push the intensity to break through.' : '';
-        narEl.textContent = 'You have completed ' + n + ' session' + (n>1?'s':'') + ' with an average grade of ' + gradeFromScore(avgRaw) + '. ' +
+        narEl.textContent = 'Mat track: ' + ytdN + ' session' + (ytdN>1?'s':'') + ', average grade ' + gradeFromScore(avgRaw) + '. ' +
           (valid.length>0?'Strongest: '+bestD+'ft. Focus: '+weakD+'ft. ':'') + tTxt;
       }
     }
@@ -2036,21 +2177,24 @@
     var tbody = document.getElementById('history-body');
     if (tbody) {
       if (n === 0) {
-        tbody.innerHTML = '<tr><td colspan="11" style="text-align:center;padding:24px;color:var(--chalk);font-size:0.82rem;">No sessions logged yet.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;padding:24px;color:var(--chalk);font-size:0.82rem;">No sessions logged yet.</td></tr>';
       } else {
         tbody.innerHTML = '';
         sessions.slice().reverse().forEach(function(s, i) {
           var realIdx = n-1-i;
           var g = s.grade, gc = gradeColor(g);
           var d = s.dist || {};
-          var lvlCfg2 = LEVELS[s.level] || LEVELS['L1'];
+          var lvlCfg2 = getLevelConfig(s.level);
           // Level badge color
-          var lc = s.level && s.level.startsWith('A') ? '#c084fc' : 'var(--gold)';
+          var lc = isCoursLevel(s.level) ? '#7bc67e' : (s.level && s.level.startsWith('A') ? '#c084fc' : 'var(--gold)');
           var row = document.createElement('tr');
           row.style.borderBottom = '1px solid rgba(255,255,255,0.04)';
+          var sessionLabel = friendlyDate(s.date) + (s.sessionNum > 1 ? ' <span style="font-family:DM Mono,monospace;font-size:0.6rem;color:var(--gold);">#'+s.sessionNum+'</span>' : '');
+          var typeIcon = (s.sessionType === 'course') ? '⛳' : '🏠';
           row.innerHTML =
             '<td style="padding:8px;color:var(--chalk);font-family:DM Mono,monospace;font-size:0.7rem;">'+(realIdx+1)+'</td>'+
-            '<td style="padding:8px;font-size:0.82rem;color:var(--cream);">'+friendlyDate(s.date)+'</td>'+
+            '<td style="padding:8px;text-align:center;font-size:1rem;">'+typeIcon+'</td>'+
+            '<td style="padding:8px;font-size:0.82rem;color:var(--cream);">'+sessionLabel+'</td>'+
             '<td style="padding:8px;text-align:center;"><span style="font-family:DM Mono,monospace;font-size:0.55rem;letter-spacing:1px;color:'+lc+';border:1px solid '+lc+'33;padding:2px 6px;border-radius:2px;">'+lvlCfg2.name+'</span></td>'+
             '<td style="padding:8px;text-align:center;font-family:Bebas Neue,sans-serif;font-size:1.1rem;color:'+gc+';">'+g+'</td>'+
             '<td style="padding:8px;text-align:center;font-size:0.82rem;color:var(--chalk);">'+s.score+'</td>'+
@@ -2175,6 +2319,16 @@
   // ── INIT ──────────────────────────────────────────────────────────────────
   var dateInputEl = document.getElementById('log-date-input');
   if (dateInputEl) dateInputEl.value = todayStr();
+
+  function updateLevelOptions() {
+    var typeEl  = document.getElementById('log-type-input');
+    var levelEl = document.getElementById('log-level-input');
+    if (!typeEl || !levelEl) return;
+    var isCourse = typeEl.value === 'course';
+    levelEl.innerHTML = isCourse
+      ? '<option value="CL1">Course L1</option><option value="CL2">Course L2</option><option value="CL3">Course L3</option><option value="CA1">Course Advanced</option>'
+      : '<option value="L1">Intermediate L1</option><option value="L2" selected>Intermediate L2</option><option value="L3">Intermediate L3</option><option value="A1">Advanced L1</option><option value="A2">Advanced L2</option>';
+  }
 
   renderLog();
 
