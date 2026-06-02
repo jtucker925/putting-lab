@@ -1401,16 +1401,7 @@
           <div class="meta-label" style="margin-bottom:4px;">Longest Streak</div>
           <div class="stat-big" id="ytd-longest-streak">—</div>
         </div>
-        <div style="text-align:center;">
-          <div class="meta-label" style="margin-bottom:4px;">Total Scored Putts</div>
-          <div class="stat-big" id="ytd-total-putts">—</div>
-          <div class="stat-context" id="ytd-total-pct">—% overall make rate</div>
-        </div>
-        <div style="text-align:center;">
-          <div class="meta-label" style="margin-bottom:4px;">Est. Total Reps</div>
-          <div class="stat-big" id="ytd-est-reps">—</div>
-          <div class="stat-context">incl. eyes closed + gate drill</div>
-        </div>
+
       </div>
 
       <!-- Distance breakdown table -->
@@ -1429,6 +1420,20 @@
           </thead>
           <tbody id="ytd-dist-body"></tbody>
         </table>
+      </div>
+
+      <!-- Totals row under distance breakdown -->
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);">
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:3px;padding:16px 20px;">
+          <div class="meta-label" style="margin-bottom:6px;">Total Scored Putts</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);line-height:1;" id="ytd-total-putts">—</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--chalk);margin-top:4px;" id="ytd-total-pct">— overall make rate</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:3px;padding:16px 20px;">
+          <div class="meta-label" style="margin-bottom:6px;">Est. Total Reps</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);line-height:1;" id="ytd-est-reps">—</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--chalk);margin-top:4px;">incl. eyes closed + gate drill</div>
+        </div>
       </div>
 
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);font-size:0.85rem;color:var(--chalk);line-height:1.7;" id="ytd-narrative">Log sessions to generate your YTD narrative.</div>
@@ -1842,7 +1847,8 @@
       var pct = Math.round((dd.makes/dd.total)*100);
       var perfect = lvl.rubric[d] ? lvl.rubric[d].perfect : 100;
       var diff = pct - perfect;
-      var diffStr = diff >= 0 ? '+' + diff + '% vs target' : diff + '% vs target';
+      var lvlLabel = LEVELS[levelKey] ? LEVELS[levelKey].name : (COURSE_LEVELS[levelKey] ? COURSE_LEVELS[levelKey].name : 'L2');
+      var diffStr = diff >= 0 ? '+' + diff + '% vs ' + lvlLabel : diff + '% vs ' + lvlLabel;
       var dc = diff >= 0 ? '#7bc67e' : '#e07060';
       lines.push('<span style="color:var(--chalk)">' + d + 'ft:</span> <strong style="color:var(--cream)">' + pct + '%</strong> <span style="font-size:0.75rem;color:' + dc + '">(' + diffStr + ')</span>');
     });
@@ -2172,12 +2178,35 @@
         });
       }
 
+      // Total scored putts + overall make %
+      var totalMakes = 0, totalAttempts = 0;
+      ytdSessions.forEach(function(s) {
+        ['4','5','6','8'].forEach(function(d) {
+          if (s.dist && s.dist[d]) {
+            totalMakes    += (s.dist[d].makes || 0);
+            totalAttempts += (s.dist[d].total || 0);
+          }
+        });
+        if (s.trail) { totalMakes += (s.trail.makes||0); totalAttempts += (s.trail.total||0); }
+        if (s.lead)  { totalMakes += (s.lead.makes||0);  totalAttempts += (s.lead.total||0); }
+      });
+      var tpEl  = document.getElementById('ytd-total-putts');
+      var tpPct = document.getElementById('ytd-total-pct');
+      if (tpEl)  tpEl.textContent  = totalAttempts > 0 ? totalAttempts.toLocaleString() : '—';
+      if (tpPct) tpPct.textContent = totalAttempts > 0 ? Math.round((totalMakes/totalAttempts)*100) + '% overall make rate' : '—';
+
+      // Est total reps: scored + unscored (~39 per session: eyes closed 9 + gate drill 20 + warmup 10)
+      var unscoredPerSess = 39;
+      var estReps = totalAttempts + (ytdN * unscoredPerSess);
+      var erEl = document.getElementById('ytd-est-reps');
+      if (erEl) erEl.textContent = estReps > 0 ? estReps.toLocaleString() : '—';
+
       var narEl = document.getElementById('ytd-narrative');
       if (narEl) {
         var trend = ytdN>=3 ? ytdSessions[ytdN-1].score-ytdSessions[ytdN-3].score : 0;
         var tTxt = trend>5 ? 'Scores are trending upward — the reps are paying off.' :
                    trend<-5 ? 'Slight downward trend over last 3 sessions. Check your routine.' :
-                   n>=3 ? 'Scores are steady. Push the intensity to break through.' : '';
+                   ytdN>=3 ? 'Scores are steady. Push the intensity to break through.' : '';
         narEl.textContent = 'Mat track: ' + ytdN + ' session' + (ytdN>1?'s':'') + ', average grade ' + gradeFromScore(avgRaw) + '. ' +
           (valid.length>0?'Strongest: '+bestD+'ft. Focus: '+weakD+'ft. ':'') + tTxt;
       }
