@@ -1422,17 +1422,30 @@
         </table>
       </div>
 
-      <!-- Totals row under distance breakdown -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);">
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:3px;padding:16px 20px;">
-          <div class="meta-label" style="margin-bottom:6px;">Total Scored Putts</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);line-height:1;" id="ytd-total-putts">—</div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--chalk);margin-top:4px;" id="ytd-total-pct">— overall make rate</div>
+      <!-- TOTALS ROW — same format as distance table, sits below 8ft -->
+      <div style="margin-top:4px;" id="ytd-totals-row" style="display:none;">
+        <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
+          <tbody>
+            <tr style="border-top:2px solid rgba(201,168,76,0.3);background:rgba(201,168,76,0.05);">
+              <td style="padding:10px 10px;color:var(--gold);font-family:Bebas Neue,monospace;font-size:1rem;letter-spacing:1px;font-weight:400;">All Distances</td>
+              <td style="padding:10px 10px;text-align:center;font-family:Bebas Neue,sans-serif;font-size:1.3rem;" id="ytd-total-pct-cell">—</td>
+              <td style="padding:10px 10px;text-align:center;color:var(--chalk);font-family:DM Mono,monospace;font-size:0.75rem;" id="ytd-total-makes-cell">— / —</td>
+              <td style="padding:10px 10px;text-align:center;color:var(--chalk);font-size:0.82rem;" id="ytd-tour-avg-cell">—</td>
+              <td style="padding:10px 10px;font-family:DM Mono,monospace;font-size:0.75rem;" id="ytd-tour-diff-cell">—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- EST TOTAL REPS COUNTER -->
+      <div style="margin-top:16px;padding:16px 20px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:3px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <div class="meta-label" style="margin-bottom:4px;">Estimated Total Reps</div>
+          <div style="font-size:0.78rem;color:var(--chalk);line-height:1.5;">Scored putts + eyes closed (~9) + gate drill (~20) + warmup (~10) per session</div>
         </div>
-        <div style="background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);border-radius:3px;padding:16px 20px;">
-          <div class="meta-label" style="margin-bottom:6px;">Est. Total Reps</div>
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:2.5rem;color:var(--gold);line-height:1;" id="ytd-est-reps">—</div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--chalk);margin-top:4px;">incl. eyes closed + gate drill</div>
+        <div style="text-align:right;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--gold);line-height:1;" id="ytd-est-reps">—</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);">Total Reps in the Garage</div>
         </div>
       </div>
 
@@ -1708,6 +1721,83 @@
     sessions.splice(idx, 1);
     saveLog(sessions);
     renderLog();
+  }
+
+  function editSession(idx) {
+    var sessions = loadLog();
+    var s = sessions[idx];
+    if (!s) return;
+
+    // Pre-fill the log form
+    var dateEl   = document.getElementById('log-date-input');
+    var numEl    = document.getElementById('log-session-num');
+    var typeEl   = document.getElementById('log-type-input');
+    var levelEl  = document.getElementById('log-level-input');
+    var notesEl  = document.getElementById('log-notes-input');
+
+    if (dateEl)  dateEl.value  = s.date;
+    if (numEl)   numEl.value   = s.sessionNum || 1;
+    if (notesEl) notesEl.value = s.notes || '';
+
+    // Set type then update level options, then set level
+    var isCourse = isCoursLevel(s.level);
+    if (typeEl) {
+      typeEl.value = isCourse ? 'course' : 'mat';
+      updateLevelOptions();
+    }
+    if (levelEl) levelEl.value = s.level || 'L2';
+
+    // Pre-fill tracker state with session data so score recomputes correctly
+    ['4','5','6','8'].forEach(function(d) {
+      if (s.dist && s.dist[d]) {
+        state['make'+d] = s.dist[d].makes || 0;
+        state['miss'+d] = (s.dist[d].total || 0) - (s.dist[d].makes || 0);
+        var mEl = document.getElementById('make'+d);
+        var misEl = document.getElementById('miss'+d);
+        if (mEl)  mEl.textContent  = state['make'+d];
+        if (misEl) misEl.textContent = state['miss'+d];
+      }
+    });
+    if (s.trail) {
+      state.makeTrail = s.trail.makes || 0;
+      state.missTrail = (s.trail.total || 0) - (s.trail.makes || 0);
+      var mtEl = document.getElementById('makeTrail');
+      var msEl = document.getElementById('missTrail');
+      if (mtEl) mtEl.textContent = state.makeTrail;
+      if (msEl) msEl.textContent = state.missTrail;
+    }
+    if (s.lead) {
+      state.makeLead = s.lead.makes || 0;
+      state.missLead = (s.lead.total || 0) - (s.lead.makes || 0);
+      var mlEl = document.getElementById('makeLead');
+      var mslEl = document.getElementById('missLead');
+      if (mlEl)  mlEl.textContent  = state.makeLead;
+      if (mslEl) mslEl.textContent = state.missLead;
+    }
+    updatePct();
+
+    // Scroll to log form and highlight it
+    var logCard = document.getElementById('log-date-input');
+    if (logCard) {
+      logCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      logCard.style.borderColor = 'var(--gold)';
+      setTimeout(function() { logCard.style.borderColor = 'rgba(255,255,255,0.15)'; }, 2000);
+    }
+
+    // Update feedback
+    var fb = document.getElementById('log-feedback');
+    if (fb) {
+      fb.style.color = 'var(--gold)';
+      fb.textContent = 'Editing session from ' + friendlyDate(s.date) + ' — adjust level and hit Log to save.';
+    }
+
+    // Switch to tracker tab first so user can see the pre-filled data, then back to log
+    document.querySelectorAll('.section').forEach(function(sec) { sec.classList.remove('active'); });
+    document.querySelectorAll('.nav-tab').forEach(function(t) { t.classList.remove('active'); });
+    document.getElementById('section-log').classList.add('active');
+    document.querySelectorAll('.nav-tab').forEach(function(t) {
+      if (t.getAttribute('data-section') === 'log') t.classList.add('active');
+    });
   }
 
   // ── DATE HELPERS ──────────────────────────────────────────────────────────
@@ -2178,24 +2268,55 @@
         });
       }
 
-      // Total scored putts + overall make %
+      // Total scored putts across all distances + hands
       var totalMakes = 0, totalAttempts = 0;
+      var distOnlyMakes = 0, distOnlyAttempts = 0;
       ytdSessions.forEach(function(s) {
         ['4','5','6','8'].forEach(function(d) {
           if (s.dist && s.dist[d]) {
-            totalMakes    += (s.dist[d].makes || 0);
-            totalAttempts += (s.dist[d].total || 0);
+            totalMakes      += (s.dist[d].makes || 0);
+            totalAttempts   += (s.dist[d].total || 0);
+            distOnlyMakes   += (s.dist[d].makes || 0);
+            distOnlyAttempts+= (s.dist[d].total || 0);
           }
         });
         if (s.trail) { totalMakes += (s.trail.makes||0); totalAttempts += (s.trail.total||0); }
         if (s.lead)  { totalMakes += (s.lead.makes||0);  totalAttempts += (s.lead.total||0); }
       });
-      var tpEl  = document.getElementById('ytd-total-putts');
-      var tpPct = document.getElementById('ytd-total-pct');
-      if (tpEl)  tpEl.textContent  = totalAttempts > 0 ? totalAttempts.toLocaleString() : '—';
-      if (tpPct) tpPct.textContent = totalAttempts > 0 ? Math.round((totalMakes/totalAttempts)*100) + '% overall make rate' : '—';
 
-      // Est total reps: scored + unscored (~39 per session: eyes closed 9 + gate drill 20 + warmup 10)
+      // Weighted tour avg across distances (by attempts)
+      var tourAvgsByDist = {'4':86,'5':75,'6':63,'8':50};
+      var weightedTourSum = 0, weightedTourTotal = 0;
+      ['4','5','6','8'].forEach(function(d) {
+        if (distTotals[d] && distTotals[d].t > 0) {
+          weightedTourSum   += tourAvgsByDist[d] * distTotals[d].t;
+          weightedTourTotal += distTotals[d].t;
+        }
+      });
+      var blendedTourAvg = weightedTourTotal > 0 ? Math.round(weightedTourSum / weightedTourTotal) : null;
+
+      // Populate totals row in distance table
+      var tRow = document.getElementById('ytd-totals-row');
+      if (tRow) tRow.style.display = distOnlyAttempts > 0 ? 'block' : 'none';
+      var overallPct = distOnlyAttempts > 0 ? Math.round((distOnlyMakes/distOnlyAttempts)*100) : null;
+      var pctCell   = document.getElementById('ytd-total-pct-cell');
+      var makesCell = document.getElementById('ytd-total-makes-cell');
+      var tourCell  = document.getElementById('ytd-tour-avg-cell');
+      var diffCell  = document.getElementById('ytd-tour-diff-cell');
+      if (pctCell && overallPct !== null) {
+        var pctColor = overallPct >= 85 ? '#7bc67e' : overallPct >= 70 ? '#c9a84c' : '#e07060';
+        pctCell.style.color = pctColor;
+        pctCell.textContent = overallPct + '%';
+      }
+      if (makesCell) makesCell.textContent = distOnlyAttempts > 0 ? distOnlyMakes + ' / ' + distOnlyAttempts : '—';
+      if (tourCell && blendedTourAvg !== null) tourCell.textContent = blendedTourAvg + '%';
+      if (diffCell && overallPct !== null && blendedTourAvg !== null) {
+        var d = overallPct - blendedTourAvg;
+        diffCell.textContent = (d >= 0 ? '+' : '') + d + '%';
+        diffCell.style.color = d >= 0 ? '#7bc67e' : '#e07060';
+      }
+
+      // Est total reps counter
       var unscoredPerSess = 39;
       var estReps = totalAttempts + (ytdN * unscoredPerSess);
       var erEl = document.getElementById('ytd-est-reps');
@@ -2242,7 +2363,10 @@
             '<td style="padding:8px;text-align:center;font-size:0.82rem;color:var(--chalk);">'+(d['6']?pctStr(d['6'].makes,d['6'].total):'—')+'</td>'+
             '<td style="padding:8px;text-align:center;font-size:0.82rem;color:var(--chalk);">'+(d['8']?pctStr(d['8'].makes,d['8'].total):'—')+'</td>'+
             '<td style="padding:8px;font-size:0.78rem;color:var(--chalk);font-style:italic;">'+(s.notes||'')+'</td>'+
-            '<td style="padding:8px 4px;"><button onclick="deleteSession('+realIdx+')" style="background:none;border:none;color:rgba(192,57,43,0.5);cursor:pointer;font-size:0.9rem;" title="Delete">✕</button></td>';
+            '<td style="padding:8px 4px;white-space:nowrap;">'+
+            '<button onclick="editSession('+realIdx+')" style="background:none;border:none;color:rgba(201,168,76,0.6);cursor:pointer;font-size:0.9rem;margin-right:6px;" title="Edit">✏️</button>'+
+            '<button onclick="deleteSession('+realIdx+')" style="background:none;border:none;color:rgba(192,57,43,0.5);cursor:pointer;font-size:0.9rem;" title="Delete">✕</button>'+
+            '</td>';
           tbody.appendChild(row);
         });
       }
