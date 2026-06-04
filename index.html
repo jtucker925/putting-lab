@@ -687,7 +687,7 @@
 
     <div class="session-banner">
       <h2>28-Minute Garage Session</h2>
-      <p>A structured practice routine built around your Remossy mat. You're putting from an 8-foot max to keep the backswing clear of the garage floor. Intermediate Level 2. Tighter gates, scored one-handed reps at 3 distances, and consecutive 8ft pressure game. The easy A is gone — earn it.</p>
+      <p>A structured practice routine built around your Remossy mat. You're putting from an 8-foot max to keep the backswing clear of the garage floor. Intermediate Level 3. 7ft added to the pressure game. Near-perfect required. The A+ is earned, not given.</p>
       <div class="session-meta">
         <div class="meta-item">
           <span class="meta-label">Total Time</span>
@@ -703,7 +703,7 @@
         </div>
         <div class="meta-item">
           <span class="meta-label">Difficulty</span>
-          <span class="meta-value">INT. L2</span>
+          <span class="meta-value">INT. L3</span>
         </div>
       </div>
     </div>
@@ -727,7 +727,7 @@
       </div>
       <div class="schedule-row">
         <div class="schedule-dot dot-pressure"></div>
-        <span class="schedule-name">Pressure Game — 4ft / 5ft / 6ft + 8ft Bonus</span>
+        <span class="schedule-name">Pressure Game — 4ft / 5ft / 6ft / 7ft / 8ft</span>
         <span class="schedule-time">7 MIN</span>
       </div>
     </div>
@@ -864,7 +864,8 @@
             <li>Make it: count goes up. Miss it: count resets to zero. Stay at 4 feet until you string 5 together.</li>
             <li>Once you make 5 in a row from 4 feet, advance to 5 feet. Same rules — miss and the count resets (but you stay at 5 feet).</li>
             <li>Make 5 in a row from 5 feet, advance to 6 feet. This is where it gets real — routine or chaos.</li>
-            <li><strong style="color:var(--gold)">8 feet — Intermediate L2 rules:</strong> Step back to your mat max. Same rules as 4/5/6ft — miss and the count resets to zero. 5 consecutive makes required. This is where the pressure game gets real. Log every make and miss in the tracker.</li>
+            <li>Make 5 in a row from 6 feet, advance to <strong style="color:var(--gold)">7 feet</strong> — the new L3 stage. Same rules, count resets on any miss.</li>
+            <li><strong style="color:var(--gold)">8 feet — final stage:</strong> 5 consecutive makes required. Full pressure. Log every make and miss in the tracker.</li>
           </ol>
           <div class="pro-tip">
             <strong>Pro Tip</strong>
@@ -1039,10 +1040,38 @@
         <button class="reset-btn" onclick="resetTracker('6')">Reset</button>
       </div>
 
+      <!-- 7ft -->
+      <div class="tracker-card">
+        <h3>7-Foot Makes</h3>
+        <div class="sub">Pressure Game stage 4 — consecutive makes required</div>
+        <div class="counter-row">
+          <span class="counter-label">Makes</span>
+          <div class="counter-btns">
+            <button class="btn-count make" onclick="adjust('make7', -1)">−</button>
+            <span class="count-display" id="make7">0</span>
+            <button class="btn-count make" onclick="adjust('make7', 1)">+</button>
+          </div>
+        </div>
+        <div class="counter-row">
+          <span class="counter-label">Misses</span>
+          <div class="counter-btns">
+            <button class="btn-count miss" onclick="adjust('miss7', -1)">−</button>
+            <span class="count-display" id="miss7">0</span>
+            <button class="btn-count miss" onclick="adjust('miss7', 1)">+</button>
+          </div>
+        </div>
+        <div class="pct-bar-wrap">
+          <div class="pct-bar-label"><span>Make %</span><span id="pct7-label">—</span></div>
+          <div class="pct-bar"><div class="pct-fill" id="pct7-bar" style="width:0%"></div></div>
+        </div>
+        <div class="stat-context" style="margin-top:10px;">Tour avg: <strong style="color:var(--cream)">57%</strong> &nbsp;|&nbsp; Target: <strong style="color:var(--cream)">45%+</strong></div>
+        <button class="reset-btn" onclick="resetTracker('7')">Reset</button>
+      </div>
+
       <!-- 8ft -->
       <div class="tracker-card">
         <h3>8-Foot Makes</h3>
-        <div class="sub">Pressure Game stage 4 — consecutive makes required</div>
+        <div class="sub">Pressure Game stage 5 — consecutive makes required</div>
         <div class="counter-row">
           <span class="counter-label">Makes</span>
           <div class="counter-btns">
@@ -1358,6 +1387,7 @@
         Preview: <span id="log-preview" style="color:var(--cream);">Go to Make Tracker, hit some putts, then come back here.</span>
       </div>
       <button onclick="logSession()" style="margin-top:14px;font-family:'DM Mono',monospace;font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;background:linear-gradient(135deg,var(--green-mid),var(--green-light));border:1px solid rgba(123,198,126,0.4);color:var(--cream);padding:10px 24px;border-radius:3px;cursor:pointer;touch-action:manipulation;min-height:44px;">⛳ Log This Session</button>
+      <input type="hidden" id="log-edit-key" value="">
       <div id="log-feedback" style="margin-top:10px;font-size:0.82rem;color:var(--accent);min-height:20px;"></div>
     </div>
 
@@ -1412,30 +1442,18 @@
           <thead>
             <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
               <th style="text-align:left;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Distance</th>
-              <th style="text-align:center;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Make %</th>
-              <th style="text-align:center;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Makes / Attempts</th>
-              <th style="text-align:center;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Tour Avg</th>
+              <th style="text-align:left;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Make %</th>
+              <th style="text-align:left;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Makes / Attempts</th>
+              <th style="text-align:left;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Tour Avg</th>
               <th style="text-align:left;padding:6px 10px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">vs Tour</th>
             </tr>
           </thead>
           <tbody id="ytd-dist-body"></tbody>
+          <tbody id="ytd-totals-tbody"></tbody>
         </table>
       </div>
 
-      <!-- TOTALS ROW — same format as distance table, sits below 8ft -->
-      <div style="margin-top:4px;" id="ytd-totals-row" style="display:none;">
-        <table style="width:100%;border-collapse:collapse;font-size:0.82rem;">
-          <tbody>
-            <tr style="border-top:2px solid rgba(201,168,76,0.3);background:rgba(201,168,76,0.05);">
-              <td style="padding:10px 10px;color:var(--gold);font-family:Bebas Neue,monospace;font-size:1rem;letter-spacing:1px;font-weight:400;">All Distances</td>
-              <td style="padding:10px 10px;text-align:center;font-family:Bebas Neue,sans-serif;font-size:1.3rem;" id="ytd-total-pct-cell">—</td>
-              <td style="padding:10px 10px;text-align:center;color:var(--chalk);font-family:DM Mono,monospace;font-size:0.75rem;" id="ytd-total-makes-cell">— / —</td>
-              <td style="padding:10px 10px;text-align:center;color:var(--chalk);font-size:0.82rem;" id="ytd-tour-avg-cell">—</td>
-              <td style="padding:10px 10px;font-family:DM Mono,monospace;font-size:0.75rem;" id="ytd-tour-diff-cell">—</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+<div id="ytd-totals-row"></div>
 
       <!-- EST TOTAL REPS COUNTER -->
       <div style="margin-top:16px;padding:16px 20px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:3px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
@@ -1469,13 +1487,14 @@
               <th style="text-align:center;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">4ft</th>
               <th style="text-align:center;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">5ft</th>
               <th style="text-align:center;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">6ft</th>
+              <th style="text-align:center;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">7ft</th>
               <th style="text-align:center;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">8ft</th>
               <th style="text-align:left;padding:6px 8px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--chalk);font-weight:400;">Notes</th>
               <th style="padding:6px 4px;"></th>
             </tr>
           </thead>
           <tbody id="history-body">
-            <tr><td colspan="12" style="text-align:center;padding:24px;color:var(--chalk);font-size:0.82rem;">No sessions logged yet.</td></tr>
+            <tr><td colspan="13" style="text-align:center;padding:24px;color:var(--chalk);font-size:0.82rem;">No sessions logged yet.</td></tr>
           </tbody>
         </table>
       </div>
@@ -1506,9 +1525,9 @@
     },
     'L3': {
       name: 'Intermediate L3', track: 'mat',
-      desc: 'Elite amateur standard. Near-perfect required.',
+      desc: 'Elite standard. 7ft added. Near-perfect required at every distance.',
       careerWeight: 1.0,
-      rubric: { '4':{w:0.15,perfect:100}, '5':{w:0.20,perfect:98}, '6':{w:0.25,perfect:95}, '8':{w:0.25,perfect:88}, 'hand':{w:0.15,perfect:85} },
+      rubric: { '4':{w:0.12,perfect:100}, '5':{w:0.18,perfect:98}, '6':{w:0.20,perfect:95}, '7':{w:0.22,perfect:88}, '8':{w:0.18,perfect:85}, 'hand':{w:0.10,perfect:85} },
       nextGoal: { level: 'A1', sessions: 5, minScore: 90 }
     },
     'A1': {
@@ -1616,7 +1635,7 @@
     var rubric = lvl.rubric;
     var totalWeight = 0, weightedScore = 0;
 
-    ['4','5','6','8'].forEach(function(d) {
+    ['4','5','6','7','8'].forEach(function(d) {
       if (!rubric[d]) return;
       var dd = distData[d];
       if (!dd || dd.total === 0) return;
@@ -1702,7 +1721,7 @@
   ];
 
   // ── TRACKER STATE ─────────────────────────────────────────────────────────
-  var state = { make4:0, miss4:0, make5:0, miss5:0, make6:0, miss6:0, make8:0, miss8:0, makeTrail:0, missTrail:0, makeLead:0, missLead:0 };
+  var state = { make4:0, miss4:0, make5:0, miss5:0, make6:0, miss6:0, make7:0, miss7:0, make8:0, miss8:0, makeTrail:0, missTrail:0, makeLead:0, missLead:0 };
 
   // ── STORAGE ───────────────────────────────────────────────────────────────
   var STORAGE_KEY = 'tucker-putting-log';
@@ -1748,7 +1767,7 @@
     if (levelEl) levelEl.value = s.level || 'L2';
 
     // Pre-fill tracker state with session data so score recomputes correctly
-    ['4','5','6','8'].forEach(function(d) {
+    ['4','5','6','7','8'].forEach(function(d) {
       if (s.dist && s.dist[d]) {
         state['make'+d] = s.dist[d].makes || 0;
         state['miss'+d] = (s.dist[d].total || 0) - (s.dist[d].makes || 0);
@@ -1783,6 +1802,10 @@
       logCard.style.borderColor = 'var(--gold)';
       setTimeout(function() { logCard.style.borderColor = 'rgba(255,255,255,0.15)'; }, 2000);
     }
+
+    // Store original key so logSession can overwrite it directly
+    var editKeyEl = document.getElementById('log-edit-key');
+    if (editKeyEl) editKeyEl.value = s.key || '';
 
     // Update feedback
     var fb = document.getElementById('log-feedback');
@@ -1842,7 +1865,7 @@
   }
 
   function updatePct() {
-    ['4','5','6','8'].forEach(function(d) {
+    ['4','5','6','7','8'].forEach(function(d) {
       var m = state['make'+d], t = state['make'+d]+state['miss'+d];
       var pct = t > 0 ? Math.round((m/t)*100) : null;
       var bar = document.getElementById('pct'+d+'-bar');
@@ -1901,7 +1924,7 @@
     var levelSel = document.getElementById('log-level-input');
     var levelKey = levelSel ? levelSel.value : 'L2';
     var distData = {};
-    ['4','5','6','8'].forEach(function(d) {
+    ['4','5','6','7','8'].forEach(function(d) {
       distData[d] = { makes: state['make'+d], total: state['make'+d]+state['miss'+d] };
     });
     var trailData = { makes: state.makeTrail, total: state.makeTrail+state.missTrail };
@@ -1931,7 +1954,7 @@
 
     var lines = [];
     var lvl = getLevelConfig(levelKey);
-    ['4','5','6','8'].forEach(function(d) {
+    ['4','5','6','7','8'].forEach(function(d) {
       var dd = distData[d];
       if (!dd || dd.total === 0) return;
       var pct = Math.round((dd.makes/dd.total)*100);
@@ -1956,10 +1979,12 @@
   }
 
   function resetAll() {
-    ['4','5','6','8'].forEach(function(d) {
+    ['4','5','6','7','8'].forEach(function(d) {
       state['make'+d] = 0; state['miss'+d] = 0;
-      document.getElementById('make'+d).textContent = '0';
-      document.getElementById('miss'+d).textContent = '0';
+      var mel = document.getElementById('make'+d);
+      var misel = document.getElementById('miss'+d);
+      if (mel) mel.textContent = '0';
+      if (misel) misel.textContent = '0';
     });
     ['Trail','Lead'].forEach(function(h) {
       state['make'+h] = 0; state['miss'+h] = 0;
@@ -1980,7 +2005,7 @@
     if (!dateInput) { feedback.style.color='#e07060'; feedback.textContent='Please select a date.'; return; }
 
     var distData = {};
-    ['4','5','6','8'].forEach(function(d) {
+    ['4','5','6','7','8'].forEach(function(d) {
       distData[d] = { makes: state['make'+d], total: state['make'+d]+state['miss'+d] };
     });
     var trailData = { makes: state.makeTrail, total: state.makeTrail+state.missTrail };
@@ -1995,13 +2020,24 @@
     var sessionType = typeEl2 ? typeEl2.value : 'mat';
     var session = { key: sessionKey, date: dateInput, sessionNum: parseInt(sessionNum), sessionType: sessionType, level: levelKey, score: score, grade: gradeFromScore(score), notes: notes, dist: distData, trail: trailData, lead: leadData };
     var sessions = loadLog();
+
+    // Check if editing — remove old entry first to avoid duplicates
+    var editKeyEl3 = document.getElementById('log-edit-key');
+    var editKey = editKeyEl3 ? editKeyEl3.value : '';
+    if (editKey) {
+      sessions = sessions.filter(function(s) { return s.key !== editKey; });
+      if (editKeyEl3) editKeyEl3.value = '';
+    }
+
     var existing = sessions.findIndex(function(s) { return s.key === sessionKey; });
     if (existing >= 0) {
       sessions[existing] = session;
       feedback.textContent = 'Session updated: ' + friendlyDate(dateInput) + ' #' + sessionNum;
     } else {
       sessions.push(session);
-      feedback.textContent = 'Logged: ' + friendlyDate(dateInput) + ' #' + sessionNum + ' — ' + session.grade + ' (' + score + ')';
+      feedback.textContent = editKey
+        ? 'Edit saved: ' + friendlyDate(dateInput) + ' #' + sessionNum + ' — ' + session.grade + ' (' + score + ')'
+        : 'Logged: ' + friendlyDate(dateInput) + ' #' + sessionNum + ' — ' + session.grade + ' (' + score + ')';
     }
     // Sort by date then session number
     sessions.sort(function(a,b) {
@@ -2208,9 +2244,9 @@
       var avgEl = document.getElementById('ytd-avg');
       if (avgEl) { avgEl.textContent = gradeFromScore(avgRaw); avgEl.style.color = gradeColor(gradeFromScore(avgRaw)); }
 
-      var distTotals = {'4':{m:0,t:0},'5':{m:0,t:0},'6':{m:0,t:0},'8':{m:0,t:0}};
+      var distTotals = {'4':{m:0,t:0},'5':{m:0,t:0},'6':{m:0,t:0},'7':{m:0,t:0},'8':{m:0,t:0}};
       ytdSessions.forEach(function(s) {
-        ['4','5','6','8'].forEach(function(d) {
+        ['4','5','6','7','8'].forEach(function(d) {
           if (s.dist && s.dist[d] && s.dist[d].total > 0) {
             distTotals[d].m += s.dist[d].makes;
             distTotals[d].t += s.dist[d].total;
@@ -2218,8 +2254,8 @@
         });
       });
       var distPcts = {};
-      ['4','5','6','8'].forEach(function(d) { distPcts[d] = distTotals[d].t > 0 ? distTotals[d].m/distTotals[d].t*100 : null; });
-      var valid = ['4','5','6','8'].filter(function(d){return distPcts[d]!==null;});
+      ['4','5','6','7','8'].forEach(function(d) { distPcts[d] = distTotals[d].t > 0 ? distTotals[d].m/distTotals[d].t*100 : null; });
+      var valid = ['4','5','6','7','8'].filter(function(d){return distPcts[d]!==null;});
       if (valid.length > 0) {
         var bestD = valid.reduce(function(a,b){return distPcts[b]>distPcts[a]?b:a;});
         var weakD = valid.reduce(function(a,b){return distPcts[b]<distPcts[a]?b:a;});
@@ -2238,7 +2274,7 @@
 
       // Distance breakdown table
       var tourAvgs = {'4':86,'5':75,'6':63,'8':50};
-      var distLabels = {'4':'4 Feet','5':'5 Feet','6':'6 Feet','8':'8 Feet'};
+      var distLabels = {'4':'4 Feet','5':'5 Feet','6':'6 Feet','7':'7 Feet','8':'8 Feet'};
       var distEmpty = document.getElementById('ytd-dist-empty');
       var distTable = document.getElementById('ytd-dist-table');
       var distBody  = document.getElementById('ytd-dist-body');
@@ -2247,7 +2283,7 @@
         var hasAny = valid.length > 0;
         if (distEmpty) distEmpty.style.display = hasAny ? 'none' : 'block';
         if (distTable) distTable.style.display  = hasAny ? 'table' : 'none';
-        ['4','5','6','8'].forEach(function(d) {
+        ['4','5','6','7','8'].forEach(function(d) {
           if (!distTotals[d] || distTotals[d].t === 0) return;
           var m = distTotals[d].m, t = distTotals[d].t;
           var pct = Math.round((m/t)*100);
@@ -2260,10 +2296,10 @@
           row.style.borderBottom = '1px solid rgba(255,255,255,0.04)';
           row.innerHTML =
             '<td style="padding:8px 10px;color:var(--cream);font-family:Bebas Neue,monospace;font-size:1rem;letter-spacing:1px;">'+distLabels[d]+'</td>'+
-            '<td style="padding:8px 10px;text-align:center;font-family:Bebas Neue,sans-serif;font-size:1.3rem;color:'+pctColor+';">'+pct+'%</td>'+
-            '<td style="padding:8px 10px;text-align:center;color:var(--chalk);font-family:DM Mono,monospace;font-size:0.75rem;">'+m+' / '+t+'</td>'+
-            '<td style="padding:8px 10px;text-align:center;color:var(--chalk);font-size:0.82rem;">'+tour+'%</td>'+
-            '<td style="padding:8px 10px;font-family:DM Mono,monospace;font-size:0.75rem;color:'+diffColor+';">'+diffStr+'</td>';
+            '<td style="padding:8px 10px;text-align:left;font-family:Bebas Neue,sans-serif;font-size:1.3rem;color:'+pctColor+';">'+pct+'%</td>'+
+            '<td style="padding:8px 10px;text-align:left;color:var(--chalk);font-family:DM Mono,monospace;font-size:0.75rem;">'+m+' / '+t+'</td>'+
+            '<td style="padding:8px 10px;text-align:left;color:var(--chalk);font-size:0.82rem;">'+tour+'%</td>'+
+            '<td style="padding:8px 10px;text-align:left;font-family:DM Mono,monospace;font-size:0.75rem;color:'+diffColor+';">'+diffStr+'</td>';
           distBody.appendChild(row);
         });
       }
@@ -2272,7 +2308,7 @@
       var totalMakes = 0, totalAttempts = 0;
       var distOnlyMakes = 0, distOnlyAttempts = 0;
       ytdSessions.forEach(function(s) {
-        ['4','5','6','8'].forEach(function(d) {
+        ['4','5','6','7','8'].forEach(function(d) {
           if (s.dist && s.dist[d]) {
             totalMakes      += (s.dist[d].makes || 0);
             totalAttempts   += (s.dist[d].total || 0);
@@ -2285,7 +2321,7 @@
       });
 
       // Weighted tour avg across distances (by attempts)
-      var tourAvgsByDist = {'4':86,'5':75,'6':63,'8':50};
+      var tourAvgsByDist = {'4':86,'5':75,'6':63,'7':57,'8':50};
       var weightedTourSum = 0, weightedTourTotal = 0;
       ['4','5','6','8'].forEach(function(d) {
         if (distTotals[d] && distTotals[d].t > 0) {
@@ -2295,25 +2331,26 @@
       });
       var blendedTourAvg = weightedTourTotal > 0 ? Math.round(weightedTourSum / weightedTourTotal) : null;
 
-      // Populate totals row in distance table
-      var tRow = document.getElementById('ytd-totals-row');
-      if (tRow) tRow.style.display = distOnlyAttempts > 0 ? 'block' : 'none';
-      var overallPct = distOnlyAttempts > 0 ? Math.round((distOnlyMakes/distOnlyAttempts)*100) : null;
-      var pctCell   = document.getElementById('ytd-total-pct-cell');
-      var makesCell = document.getElementById('ytd-total-makes-cell');
-      var tourCell  = document.getElementById('ytd-tour-avg-cell');
-      var diffCell  = document.getElementById('ytd-tour-diff-cell');
-      if (pctCell && overallPct !== null) {
-        var pctColor = overallPct >= 85 ? '#7bc67e' : overallPct >= 70 ? '#c9a84c' : '#e07060';
-        pctCell.style.color = pctColor;
-        pctCell.textContent = overallPct + '%';
-      }
-      if (makesCell) makesCell.textContent = distOnlyAttempts > 0 ? distOnlyMakes + ' / ' + distOnlyAttempts : '—';
-      if (tourCell && blendedTourAvg !== null) tourCell.textContent = blendedTourAvg + '%';
-      if (diffCell && overallPct !== null && blendedTourAvg !== null) {
-        var d = overallPct - blendedTourAvg;
-        diffCell.textContent = (d >= 0 ? '+' : '') + d + '%';
-        diffCell.style.color = d >= 0 ? '#7bc67e' : '#e07060';
+      // Populate totals row inside same table as distance rows
+      var totalsTbody = document.getElementById('ytd-totals-tbody');
+      if (totalsTbody) {
+        totalsTbody.innerHTML = '';
+        if (distOnlyAttempts > 0) {
+          var overallPct = Math.round((distOnlyMakes/distOnlyAttempts)*100);
+          var pctColor = overallPct >= 85 ? '#7bc67e' : overallPct >= 70 ? '#c9a84c' : '#e07060';
+          var tDiff = blendedTourAvg !== null ? overallPct - blendedTourAvg : null;
+          var tDiffStr = tDiff !== null ? (tDiff >= 0 ? '+' : '') + tDiff + '%' : '—';
+          var tDiffColor = tDiff !== null ? (tDiff >= 0 ? '#7bc67e' : '#e07060') : 'var(--chalk)';
+          var tr = document.createElement('tr');
+          tr.style.cssText = 'border-top:2px solid rgba(201,168,76,0.3);background:rgba(201,168,76,0.04);';
+          tr.innerHTML =
+            '<td style="padding:10px 10px;color:var(--gold);font-family:Bebas Neue,monospace;font-size:1rem;letter-spacing:1px;">All Distances</td>'+
+            '<td style="padding:10px 10px;text-align:left;font-family:Bebas Neue,sans-serif;font-size:1.3rem;color:'+pctColor+';">'+overallPct+'%</td>'+
+            '<td style="padding:10px 10px;text-align:left;color:var(--chalk);font-family:DM Mono,monospace;font-size:0.75rem;">'+distOnlyMakes+' / '+distOnlyAttempts+'</td>'+
+            '<td style="padding:10px 10px;text-align:left;color:var(--chalk);font-size:0.82rem;">'+(blendedTourAvg !== null ? blendedTourAvg+'%' : '—')+'</td>'+
+            '<td style="padding:10px 10px;text-align:left;font-family:DM Mono,monospace;font-size:0.75rem;color:'+tDiffColor+';">'+tDiffStr+'</td>';
+          totalsTbody.appendChild(tr);
+        }
       }
 
       // Est total reps counter
@@ -2337,7 +2374,7 @@
     var tbody = document.getElementById('history-body');
     if (tbody) {
       if (n === 0) {
-        tbody.innerHTML = '<tr><td colspan="12" style="text-align:center;padding:24px;color:var(--chalk);font-size:0.82rem;">No sessions logged yet.</td></tr>';
+        tbody.innerHTML = '<tr><td colspan="13" style="text-align:center;padding:24px;color:var(--chalk);font-size:0.82rem;">No sessions logged yet.</td></tr>';
       } else {
         tbody.innerHTML = '';
         sessions.slice().reverse().forEach(function(s, i) {
@@ -2361,6 +2398,7 @@
             '<td style="padding:8px;text-align:center;font-size:0.82rem;color:var(--chalk);">'+(d['4']?pctStr(d['4'].makes,d['4'].total):'—')+'</td>'+
             '<td style="padding:8px;text-align:center;font-size:0.82rem;color:var(--chalk);">'+(d['5']?pctStr(d['5'].makes,d['5'].total):'—')+'</td>'+
             '<td style="padding:8px;text-align:center;font-size:0.82rem;color:var(--chalk);">'+(d['6']?pctStr(d['6'].makes,d['6'].total):'—')+'</td>'+
+            '<td style="padding:8px;text-align:center;font-size:0.82rem;color:var(--chalk);">'+(d['7']?pctStr(d['7'].makes,d['7'].total):'—')+'</td>'+
             '<td style="padding:8px;text-align:center;font-size:0.82rem;color:var(--chalk);">'+(d['8']?pctStr(d['8'].makes,d['8'].total):'—')+'</td>'+
             '<td style="padding:8px;font-size:0.78rem;color:var(--chalk);font-style:italic;">'+(s.notes||'')+'</td>'+
             '<td style="padding:8px 4px;white-space:nowrap;">'+
