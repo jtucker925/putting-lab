@@ -1456,12 +1456,15 @@
 <div id="ytd-totals-row"></div>
 
       <!-- EST TOTAL REPS COUNTER -->
-      <div style="margin-top:16px;padding:28px 24px;background:linear-gradient(135deg,rgba(201,168,76,0.08) 0%,rgba(13,31,22,0.8) 100%);border:1px solid rgba(201,168,76,0.35);border-radius:4px;text-align:center;position:relative;overflow:hidden;">
-        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:8rem;opacity:0.04;pointer-events:none;">⛳</div>
-        <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;">Total Reps in the Garage</div>
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:5rem;color:var(--gold);line-height:1;text-shadow:0 0 40px rgba(201,168,76,0.4);" id="ytd-est-reps">—</div>
-        <div style="font-size:0.78rem;color:var(--chalk);margin-top:8px;line-height:1.6;">Scored putts + eyes closed (~9) + gate drill (~20) + warmup (~10) per session</div>
-        <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);margin-top:12px;opacity:0.7;" id="ytd-reps-context"></div>
+      <div style="margin-top:16px;padding:16px 20px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:3px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+        <div>
+          <div class="meta-label" style="margin-bottom:4px;">Estimated Total Reps</div>
+          <div style="font-size:0.78rem;color:var(--chalk);line-height:1.5;">Scored putts + eyes closed (~9) + gate drill (~20) + warmup (~10) per session</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--gold);line-height:1;" id="ytd-est-reps">—</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);">Total Reps in the Garage</div>
+        </div>
       </div>
 
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);font-size:0.85rem;color:var(--chalk);line-height:1.7;" id="ytd-narrative">Log sessions to generate your YTD narrative.</div>
@@ -2284,7 +2287,7 @@
           if (!distTotals[d] || distTotals[d].t === 0) return;
           var m = distTotals[d].m, t = distTotals[d].t;
           var pct = Math.round((m/t)*100);
-          var tour = tourAvgsByDist[d];
+          var tour = tourAvgs[d];
           var diff = pct - tour;
           var diffStr = (diff >= 0 ? '+' : '') + diff + '%';
           var diffColor = diff >= 0 ? '#7bc67e' : '#e07060';
@@ -2295,7 +2298,7 @@
             '<td style="padding:8px 10px;color:var(--cream);font-family:Bebas Neue,monospace;font-size:1rem;letter-spacing:1px;">'+distLabels[d]+'</td>'+
             '<td style="padding:8px 10px;text-align:left;font-family:Bebas Neue,sans-serif;font-size:1.3rem;color:'+pctColor+';">'+pct+'%</td>'+
             '<td style="padding:8px 10px;text-align:left;color:var(--chalk);font-family:DM Mono,monospace;font-size:0.75rem;">'+m+' / '+t+'</td>'+
-            '<td style="padding:8px 10px;text-align:left;color:var(--chalk);font-size:0.82rem);">'+( tourAvgsByDist[d] !== undefined ? tourAvgsByDist[d]+'%' : tour+'%' )+'</td>'+
+            '<td style="padding:8px 10px;text-align:left;color:var(--chalk);font-size:0.82rem;">'+tour+'%</td>'+
             '<td style="padding:8px 10px;text-align:left;font-family:DM Mono,monospace;font-size:0.75rem;color:'+diffColor+';">'+diffStr+'</td>';
           distBody.appendChild(row);
         });
@@ -2318,8 +2321,7 @@
       });
 
       // Weighted tour avg across distances (by attempts)
-      var tourAvgsByDist = {'4':86,'5':75,'6':63,'7':57,'8':50}; // tour avgs by distance
-      var distLabelsYTD = {'4':'4 Feet','5':'5 Feet','6':'6 Feet','7':'7 Feet','8':'8 Feet'};
+      var tourAvgsByDist = {'4':86,'5':75,'6':63,'7':57,'8':50};
       var weightedTourSum = 0, weightedTourTotal = 0;
       ['4','5','6','8'].forEach(function(d) {
         if (distTotals[d] && distTotals[d].t > 0) {
@@ -2356,26 +2358,14 @@
       var estReps = totalAttempts + (ytdN * unscoredPerSess);
       var erEl = document.getElementById('ytd-est-reps');
       if (erEl) erEl.textContent = estReps > 0 ? estReps.toLocaleString() : '—';
-      var repsCtx = document.getElementById('ytd-reps-context');
-      if (repsCtx && estReps > 0) {
-        var tripDate2 = new Date('2026-07-23');
-        var today3 = new Date(); today3.setHours(0,0,0,0);
-        var daysLeft2 = Math.round((tripDate2 - today3) / 86400000);
-        var projectedReps = estReps + (daysLeft2 > 0 ? Math.round((estReps / ytdN) * (daysLeft2 / 7) * 3) : 0);
-        repsCtx.textContent = daysLeft2 > 0
-          ? 'Projected by July 23rd at 3x/week: ~' + projectedReps.toLocaleString() + ' reps'
-          : 'Turning Stone was ' + Math.abs(daysLeft2) + ' days ago. Well earned.';
-      }
 
       var narEl = document.getElementById('ytd-narrative');
       if (narEl) {
         var trend = ytdN>=3 ? ytdSessions[ytdN-1].score-ytdSessions[ytdN-3].score : 0;
         var tTxt = trend>5 ? 'Scores are trending upward — the reps are paying off.' :
                    trend<-5 ? 'Slight downward trend over last 3 sessions. Check your routine.' :
-                   ytdN>=3 ? 'Scores are consistent. Keep pushing the benchmarks.' : '';
-        var currentMatLvl = matSessions.length > 0 ? (matSessions[matSessions.length-1].level || 'L2') : 'L2';
-        var currentMatLvlName = getLevelConfig(currentMatLvl).name;
-        narEl.textContent = 'Mat track: ' + ytdN + ' session' + (ytdN>1?'s':'') + ' — current level: ' + currentMatLvlName + '. Average grade: ' + gradeFromScore(avgRaw) + '. ' +
+                   ytdN>=3 ? 'Scores are steady. Push the intensity to break through.' : '';
+        narEl.textContent = 'Mat track: ' + ytdN + ' session' + (ytdN>1?'s':'') + ', average grade ' + gradeFromScore(avgRaw) + '. ' +
           (valid.length>0?'Strongest: '+bestD+'ft. Focus: '+weakD+'ft. ':'') + tTxt;
       }
     }
