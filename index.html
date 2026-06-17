@@ -21,6 +21,11 @@
     --dark: #0d1f16;
     --accent: #7bc67e;
     --red: #c0392b;
+    /* Phase-aware accent — shifts by current mat level via JS. Defaults to Foundation (L1/L2). */
+    --phase-accent: var(--gold);
+    --phase-accent-light: var(--gold-light);
+    --phase-glow: rgba(201,168,76,0.4);
+    --phase-border: rgba(201,168,76,0.5);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -55,8 +60,9 @@
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
-    border-bottom: 1px solid rgba(201,168,76,0.2);
+    border-bottom: 1px solid var(--phase-glow);
     padding-bottom: 24px;
+    transition: border-color 0.8s ease;
   }
 
   .logo-block h1 {
@@ -68,7 +74,8 @@
   }
 
   .logo-block h1 span {
-    color: var(--gold);
+    color: var(--phase-accent);
+    transition: color 0.8s ease;
   }
 
   .logo-block p {
@@ -122,8 +129,9 @@
 
   .nav-tab:hover { color: var(--cream); }
   .nav-tab.active {
-    color: var(--gold);
-    border-bottom: 2px solid var(--gold);
+    color: var(--phase-accent);
+    border-bottom: 2px solid var(--phase-accent);
+    transition: color 0.6s ease, border-color 0.6s ease;
   }
 
   /* MAIN LAYOUT */
@@ -641,8 +649,9 @@
       margin-bottom: 20px;
       position: relative;
       overflow: hidden;
+      transition: background 1.2s ease;
     ">
-      <div style="position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:5rem;opacity:0.05;">🏌️</div>
+      <div style="position:absolute;right:24px;top:50%;transform:translateY(-50%);font-size:5rem;opacity:0.05;" id="trip-icon">🏌️</div>
 
       <!-- Top: label + text centered -->
       <div style="text-align:center;margin-bottom:4px;">
@@ -682,6 +691,25 @@
           ">⚪</div>
         </div>
         <div style="font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:1px;color:var(--chalk);text-align:center;margin-top:8px;" id="trip-urgency"></div>
+      </div>
+
+      <!-- ASCENT TRACKER — overall level progression -->
+      <div style="margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.08);">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+          <span style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);">🚀 The Ascent</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.58rem;color:var(--gold);" id="ascent-current-label">—</span>
+        </div>
+        <div style="position:relative;height:10px;background:rgba(255,255,255,0.06);border-radius:5px;overflow:visible;">
+          <div id="ascent-fill" style="height:100%;border-radius:5px;background:linear-gradient(90deg,#2d5c3f,#7bc67e,#c9a84c);transition:width 0.6s ease;width:0%;"></div>
+          <div id="ascent-marker" style="position:absolute;top:50%;transform:translate(-50%,-50%);font-size:1.1rem;left:0%;transition:left 0.6s ease;">🪂</div>
+        </div>
+        <div style="display:flex;justify-content:space-between;margin-top:6px;">
+          <span style="font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--chalk);opacity:0.5;">L1</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--chalk);opacity:0.5;">L2</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--chalk);opacity:0.5;">L3</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--chalk);opacity:0.5;">A1</span>
+          <span style="font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--gold);">A2 ☁️</span>
+        </div>
       </div>
     </div>
 
@@ -1225,7 +1253,8 @@
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px;">
 
       <!-- MAT TRACK -->
-      <div style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%);border:1px solid rgba(201,168,76,0.5);border-radius:4px;padding:20px 24px;">
+      <div id="mat-track-card" style="background:linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%);border:1px solid rgba(201,168,76,0.5);border-radius:4px;padding:20px 24px;transition:background 1s ease,border-color 1s ease;position:relative;overflow:hidden;">
+        <div id="mat-track-badge" style="position:absolute;top:10px;right:10px;font-size:1.1rem;opacity:0;transition:opacity 0.6s ease;">🚀</div>
         <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;">
           <div style="flex:1;">
             <div style="font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:6px;">Mat Track</div>
@@ -1276,6 +1305,19 @@
         </div>
       </div>
 
+    </div>
+
+    <!-- LEVEL HISTORY — milestone dates achieved -->
+    <div class="tracker-card" style="margin-bottom:20px;">
+      <h3>🗓️ Level History</h3>
+      <div class="sub">When you reached each milestone</div>
+      <div id="level-history-empty" style="font-size:0.82rem;color:var(--chalk);margin-top:8px;">Log sessions to build your level history.</div>
+      <div id="level-history-row" style="display:none;margin-top:12px;">
+        <div style="position:relative;padding-left:4px;">
+          <div id="level-history-track" style="position:absolute;left:11px;top:6px;bottom:6px;width:2px;background:rgba(255,255,255,0.08);"></div>
+          <div id="level-history-list" style="display:flex;flex-direction:column;gap:14px;"></div>
+        </div>
+      </div>
     </div>
 
     <!-- ROW 1: stat cards -->
@@ -1456,15 +1498,12 @@
 <div id="ytd-totals-row"></div>
 
       <!-- EST TOTAL REPS COUNTER -->
-      <div style="margin-top:16px;padding:16px 20px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:3px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-        <div>
-          <div class="meta-label" style="margin-bottom:4px;">Estimated Total Reps</div>
-          <div style="font-size:0.78rem;color:var(--chalk);line-height:1.5;">Scored putts + eyes closed (~9) + gate drill (~20) + warmup (~10) per session</div>
-        </div>
-        <div style="text-align:right;">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:3rem;color:var(--gold);line-height:1;" id="ytd-est-reps">—</div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);">Total Reps in the Garage</div>
-        </div>
+      <div style="margin-top:16px;padding:28px 24px;background:linear-gradient(135deg,rgba(201,168,76,0.08) 0%,rgba(13,31,22,0.8) 100%);border:1px solid rgba(201,168,76,0.35);border-radius:4px;text-align:center;position:relative;overflow:hidden;">
+        <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:8rem;opacity:0.04;pointer-events:none;">⛳</div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:8px;position:relative;">Total Reps — Mat &amp; Course Combined</div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:5rem;color:var(--gold);line-height:1;text-shadow:0 0 40px rgba(201,168,76,0.4);position:relative;" id="ytd-est-reps">—</div>
+        <div style="font-size:0.78rem;color:var(--chalk);margin-top:8px;line-height:1.6;position:relative;">Scored putts + eyes closed (~9) + gate drill (~20) + warmup (~10) per session</div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);margin-top:12px;opacity:0.7;position:relative;" id="ytd-reps-context"></div>
       </div>
 
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);font-size:0.85rem;color:var(--chalk);line-height:1.7;" id="ytd-narrative">Log sessions to generate your YTD narrative.</div>
@@ -1552,28 +1591,28 @@
       name: 'Course L1', track: 'course',
       desc: 'Real green foundation. Learning to adapt to conditions.',
       careerWeight: 0.7,
-      rubric: { '4':{w:0.15,perfect:65}, '5':{w:0.20,perfect:50}, '6':{w:0.25,perfect:40}, '8':{w:0.25,perfect:35}, 'hand':{w:0.15,perfect:50} },
+      rubric: { '4':{w:0.12,perfect:65}, '5':{w:0.18,perfect:50}, '6':{w:0.20,perfect:40}, '7':{w:0.20,perfect:37}, '8':{w:0.18,perfect:35}, 'hand':{w:0.12,perfect:50} },
       nextGoal: { level: 'CL2', sessions: 3, minScore: 75 }
     },
     'CL2': {
       name: 'Course L2', track: 'course',
       desc: 'Consistent on real greens. Reading and adapting.',
       careerWeight: 0.9,
-      rubric: { '4':{w:0.15,perfect:72}, '5':{w:0.20,perfect:58}, '6':{w:0.25,perfect:48}, '8':{w:0.25,perfect:42}, 'hand':{w:0.15,perfect:58} },
+      rubric: { '4':{w:0.12,perfect:72}, '5':{w:0.18,perfect:58}, '6':{w:0.20,perfect:48}, '7':{w:0.20,perfect:45}, '8':{w:0.18,perfect:42}, 'hand':{w:0.12,perfect:58} },
       nextGoal: { level: 'CL3', sessions: 3, minScore: 82 }
     },
     'CL3': {
       name: 'Course L3', track: 'course',
       desc: 'Strong real-green performer. Conditions are an advantage.',
       careerWeight: 1.1,
-      rubric: { '4':{w:0.15,perfect:80}, '5':{w:0.20,perfect:65}, '6':{w:0.25,perfect:55}, '8':{w:0.25,perfect:48}, 'hand':{w:0.15,perfect:65} },
+      rubric: { '4':{w:0.12,perfect:80}, '5':{w:0.18,perfect:65}, '6':{w:0.20,perfect:55}, '7':{w:0.20,perfect:51}, '8':{w:0.18,perfect:48}, 'hand':{w:0.12,perfect:65} },
       nextGoal: { level: 'CA1', sessions: 3, minScore: 88 }
     },
     'CA1': {
       name: 'Course Advanced', track: 'course',
       desc: 'Elite on-course putter. Tour feel on real greens.',
       careerWeight: 1.4,
-      rubric: { '4':{w:0.15,perfect:88}, '5':{w:0.20,perfect:72}, '6':{w:0.25,perfect:62}, '8':{w:0.25,perfect:55}, 'hand':{w:0.15,perfect:72} },
+      rubric: { '4':{w:0.12,perfect:88}, '5':{w:0.18,perfect:72}, '6':{w:0.20,perfect:62}, '7':{w:0.20,perfect:58}, '8':{w:0.18,perfect:55}, 'hand':{w:0.12,perfect:72} },
       nextGoal: null
     }
   };
@@ -1733,6 +1772,17 @@
 
   function saveLog(sessions) {
     try { localStorage.setItem(STORAGE_KEY, JSON.stringify(sessions)); } catch(e) {}
+  }
+
+  // ── LEVEL UNLOCK DATES — computed from session history, no separate storage needed ──
+  // Returns { 'L1': '2026-05-12', 'L2': '2026-05-24', ... } based on first session logged at each level
+  function getLevelUnlockDates(sessions) {
+    var dates = {};
+    var sorted = sessions.slice().sort(function(a,b) { return a.date.localeCompare(b.date); });
+    sorted.forEach(function(s) {
+      if (s.level && !dates[s.level]) dates[s.level] = s.date;
+    });
+    return dates;
   }
 
   function deleteSession(idx) {
@@ -2073,6 +2123,36 @@
   }
 
   // ── RENDER LOG ────────────────────────────────────────────────────────────
+  // ── PHASE THEME DEFINITIONS ─────────────────────────────────────────────
+  function applyPhaseTheme(levelKey) {
+    var root = document.documentElement.style;
+    if (levelKey === 'A2') {
+      // Ceiling phase — full violet/starlight
+      root.setProperty('--phase-accent', '#c9a8ff');
+      root.setProperty('--phase-accent-light', '#e0c4ff');
+      root.setProperty('--phase-glow', 'rgba(201,168,255,0.45)');
+      root.setProperty('--phase-border', 'rgba(201,168,255,0.55)');
+    } else if (levelKey === 'A1') {
+      // Advanced phase — dusk purple-blue
+      root.setProperty('--phase-accent', '#a89cff');
+      root.setProperty('--phase-accent-light', '#c4baff');
+      root.setProperty('--phase-glow', 'rgba(168,156,255,0.4)');
+      root.setProperty('--phase-border', 'rgba(168,156,255,0.5)');
+    } else if (levelKey === 'L3') {
+      // Heating up phase — amber/copper
+      root.setProperty('--phase-accent', '#e0954c');
+      root.setProperty('--phase-accent-light', '#f0b87a');
+      root.setProperty('--phase-glow', 'rgba(224,149,76,0.4)');
+      root.setProperty('--phase-border', 'rgba(224,149,76,0.5)');
+    } else {
+      // Foundation phase — original gold (L1/L2 default)
+      root.setProperty('--phase-accent', '#c9a84c');
+      root.setProperty('--phase-accent-light', '#e8c97a');
+      root.setProperty('--phase-glow', 'rgba(201,168,76,0.4)');
+      root.setProperty('--phase-border', 'rgba(201,168,76,0.5)');
+    }
+  }
+
   function renderLog() {
     var sessions = loadLog();
     var n = sessions.length;
@@ -2115,6 +2195,25 @@
     if (lvlNameEl) lvlNameEl.textContent = '🏠 ' + matLvlCfg.name;
     if (lvlDescEl) lvlDescEl.textContent = matLvlCfg.desc;
 
+    // Level-based sky theming on the Mat Track card
+    var matCard  = document.getElementById('mat-track-card');
+    var matBadge = document.getElementById('mat-track-badge');
+    if (matCard) {
+      if (currentMatLevel === 'A2') {
+        matCard.style.background = 'linear-gradient(135deg,#1a1a3e 0%,#2d2a6b 45%,#4a3a8a 100%)';
+        matCard.style.borderColor = 'rgba(224,196,255,0.5)';
+        if (matBadge) { matBadge.textContent = '🌟'; matBadge.style.opacity = '1'; }
+      } else if (currentMatLevel === 'A1') {
+        matCard.style.background = 'linear-gradient(135deg,#1a1a2e 0%,#2a2a5e 50%,#3a3a7e 100%)';
+        matCard.style.borderColor = 'rgba(201,168,255,0.45)';
+        if (matBadge) { matBadge.textContent = '🚀'; matBadge.style.opacity = '1'; }
+      } else {
+        matCard.style.background = 'linear-gradient(135deg,#1a1a2e 0%,#16213e 60%,#0f3460 100%)';
+        matCard.style.borderColor = 'rgba(201,168,76,0.5)';
+        if (matBadge) matBadge.style.opacity = '0';
+      }
+    }
+
     var ms = getMilestoneProgress(matSessions, currentMatLevel);
     var msLabel  = document.getElementById('milestone-label');
     var msBar    = document.getElementById('milestone-bar');
@@ -2127,10 +2226,75 @@
       if (msDetail) msDetail.textContent = remaining > 0
         ? 'Score ' + ms.minScore + '+ in ' + remaining + ' more consecutive mat session' + (remaining > 1 ? 's' : '') + ' to reach ' + ms.nextLevelName + '.'
         : 'Mat milestone reached! Time to advance to ' + ms.nextLevelName + '.';
+
+      // Milestone intensity glow — builds as qualifying sessions stack up
+      if (msBar) {
+        if (ms.qualifying >= ms.required - 1 && ms.qualifying > 0) {
+          msBar.style.boxShadow = '0 0 14px rgba(201,168,76,0.9)';
+          msBar.style.background = 'linear-gradient(90deg,var(--accent),#ffe27a)';
+        } else if (ms.qualifying >= Math.ceil(ms.required/2)) {
+          msBar.style.boxShadow = '0 0 8px rgba(201,168,76,0.5)';
+          msBar.style.background = 'linear-gradient(90deg,var(--green-light),var(--gold))';
+        } else {
+          msBar.style.boxShadow = 'none';
+          msBar.style.background = 'linear-gradient(90deg,var(--green-light),var(--gold))';
+        }
+      }
     } else {
       if (msLabel)  msLabel.textContent  = 'Mat: Max level reached';
-      if (msBar)    msBar.style.width    = '100%';
+      if (msBar)  { msBar.style.width    = '100%'; msBar.style.boxShadow = '0 0 16px rgba(201,168,76,1)'; }
       if (msDetail) msDetail.textContent = 'Elite mat status achieved.';
+    }
+
+    // ── ASCENT TRACKER — overall altitude across L1 → A2 ─────────────────
+    var ASCENT_ORDER = ['L1','L2','L3','A1','A2'];
+    var ascentIdx = ASCENT_ORDER.indexOf(currentMatLevel);
+    if (ascentIdx < 0) ascentIdx = 0;
+    var ascentPct = (ascentIdx / (ASCENT_ORDER.length - 1)) * 100;
+    var ascFill   = document.getElementById('ascent-fill');
+    var ascMarker = document.getElementById('ascent-marker');
+    var ascLabel  = document.getElementById('ascent-current-label');
+    if (ascFill)   ascFill.style.width = ascentPct + '%';
+    if (ascMarker) {
+      ascMarker.style.left = ascentPct + '%';
+      ascMarker.textContent = ascentIdx >= 4 ? '🌟' : ascentIdx >= 3 ? '🚀' : ascentIdx >= 2 ? '🪂' : ascentIdx >= 1 ? '🧗' : '🥾';
+    }
+    if (ascLabel) {
+      var ascNames = {'L1':'Intermediate L1','L2':'Intermediate L2','L3':'Intermediate L3','A1':'Advanced L1','A2':'Advanced L2 — Ceiling'};
+      ascLabel.textContent = ascNames[currentMatLevel] || 'Intermediate L1';
+    }
+
+    // ── PHASE THEMING — global accent shift by current level ─────────────
+    applyPhaseTheme(currentMatLevel);
+
+    // ── LEVEL HISTORY — unlock dates ──────────────────────────────────────
+    var unlockDates = getLevelUnlockDates(matSessions);
+    var lhEmpty = document.getElementById('level-history-empty');
+    var lhRow   = document.getElementById('level-history-row');
+    var lhList  = document.getElementById('level-history-list');
+    var unlockKeys = Object.keys(unlockDates);
+    if (lhList && unlockKeys.length > 0) {
+      lhEmpty.style.display = 'none';
+      lhRow.style.display = 'block';
+      lhList.innerHTML = '';
+      var levelOrder = ['L1','L2','L3','A1','A2'];
+      var levelIcons = {'L1':'🥾','L2':'🧗','L3':'🔥','A1':'🚀','A2':'🌟'};
+      levelOrder.forEach(function(lvlKey) {
+        if (!unlockDates[lvlKey]) return;
+        var lvlCfgH = getLevelConfig(lvlKey);
+        var item = document.createElement('div');
+        item.style.cssText = 'display:flex;align-items:center;gap:12px;position:relative;padding-left:28px;';
+        item.innerHTML =
+          '<div style="position:absolute;left:0;width:24px;height:24px;border-radius:50%;background:rgba(201,168,76,0.15);border:1px solid rgba(201,168,76,0.4);display:flex;align-items:center;justify-content:center;font-size:0.8rem;">'+(levelIcons[lvlKey]||'⛳')+'</div>'+
+          '<div style="flex:1;">'+
+            '<div style="font-family:Bebas Neue,sans-serif;font-size:0.95rem;letter-spacing:1px;color:var(--cream);">'+lvlCfgH.name+'</div>'+
+            '<div style="font-family:DM Mono,monospace;font-size:0.65rem;color:var(--chalk);margin-top:1px;">Unlocked '+friendlyDate(unlockDates[lvlKey])+'</div>'+
+          '</div>';
+        lhList.appendChild(item);
+      });
+    } else if (lhEmpty) {
+      lhEmpty.style.display = 'block';
+      if (lhRow) lhRow.style.display = 'none';
     }
 
     // Course level + milestone
@@ -2273,7 +2437,7 @@
       if (lsEl) lsEl.textContent = longestStreak + (longestStreak===1?' day':' days');
 
       // Distance breakdown table
-      var tourAvgs = {'4':86,'5':75,'6':63,'8':50};
+      var tourAvgs = {'4':86,'5':75,'6':63,'7':57,'8':50};
       var distLabels = {'4':'4 Feet','5':'5 Feet','6':'6 Feet','7':'7 Feet','8':'8 Feet'};
       var distEmpty = document.getElementById('ytd-dist-empty');
       var distTable = document.getElementById('ytd-dist-table');
@@ -2287,7 +2451,7 @@
           if (!distTotals[d] || distTotals[d].t === 0) return;
           var m = distTotals[d].m, t = distTotals[d].t;
           var pct = Math.round((m/t)*100);
-          var tour = tourAvgs[d];
+          var tour = tourAvgs[d] || 0;
           var diff = pct - tour;
           var diffStr = (diff >= 0 ? '+' : '') + diff + '%';
           var diffColor = diff >= 0 ? '#7bc67e' : '#e07060';
@@ -2320,10 +2484,20 @@
         if (s.lead)  { totalMakes += (s.lead.makes||0);  totalAttempts += (s.lead.total||0); }
       });
 
+      // All-session totals (mat + course) for the Est Total Reps counter
+      var allSessAttempts = 0, allSessCount = sessions.length;
+      sessions.forEach(function(s) {
+        ['4','5','6','7','8'].forEach(function(d) {
+          if (s.dist && s.dist[d]) allSessAttempts += (s.dist[d].total || 0);
+        });
+        if (s.trail) allSessAttempts += (s.trail.total || 0);
+        if (s.lead)  allSessAttempts += (s.lead.total || 0);
+      });
+
       // Weighted tour avg across distances (by attempts)
       var tourAvgsByDist = {'4':86,'5':75,'6':63,'7':57,'8':50};
       var weightedTourSum = 0, weightedTourTotal = 0;
-      ['4','5','6','8'].forEach(function(d) {
+      ['4','5','6','7','8'].forEach(function(d) {
         if (distTotals[d] && distTotals[d].t > 0) {
           weightedTourSum   += tourAvgsByDist[d] * distTotals[d].t;
           weightedTourTotal += distTotals[d].t;
@@ -2353,19 +2527,37 @@
         }
       }
 
-      // Est total reps counter
+      // Est total reps counter — includes mat + course sessions
       var unscoredPerSess = 39;
-      var estReps = totalAttempts + (ytdN * unscoredPerSess);
+      var estReps = allSessAttempts + (allSessCount * unscoredPerSess);
       var erEl = document.getElementById('ytd-est-reps');
       if (erEl) erEl.textContent = estReps > 0 ? estReps.toLocaleString() : '—';
+      var repsCtx = document.getElementById('ytd-reps-context');
+      if (repsCtx && estReps > 0) {
+        var tripDate2 = new Date('2026-07-23');
+        var today3 = new Date(); today3.setHours(0,0,0,0);
+        var daysLeft2 = Math.round((tripDate2 - today3) / 86400000);
+        if (daysLeft2 > 0 && allSessCount > 0) {
+          var perSessionAvg = estReps / allSessCount;
+          var projectedSessions = Math.round((daysLeft2 / 7) * 3); // ~3x/week
+          var projectedReps = estReps + Math.round(perSessionAvg * projectedSessions);
+          repsCtx.textContent = 'Projected by July 23rd at 3x/week: ~' + projectedReps.toLocaleString() + ' reps';
+        } else if (daysLeft2 <= 0) {
+          repsCtx.textContent = 'Turning Stone day has arrived. Well earned.';
+        } else {
+          repsCtx.textContent = '';
+        }
+      }
 
       var narEl = document.getElementById('ytd-narrative');
       if (narEl) {
         var trend = ytdN>=3 ? ytdSessions[ytdN-1].score-ytdSessions[ytdN-3].score : 0;
         var tTxt = trend>5 ? 'Scores are trending upward — the reps are paying off.' :
                    trend<-5 ? 'Slight downward trend over last 3 sessions. Check your routine.' :
-                   ytdN>=3 ? 'Scores are steady. Push the intensity to break through.' : '';
-        narEl.textContent = 'Mat track: ' + ytdN + ' session' + (ytdN>1?'s':'') + ', average grade ' + gradeFromScore(avgRaw) + '. ' +
+                   ytdN>=3 ? 'Scores are consistent. Keep pushing the benchmarks.' : '';
+        var currentMatLvl2 = matSessions.length > 0 ? (matSessions[matSessions.length-1].level || 'L2') : 'L2';
+        var currentMatLvlName2 = getLevelConfig(currentMatLvl2).name;
+        narEl.textContent = 'Mat track: ' + ytdN + ' session' + (ytdN>1?'s':'') + ' — current level: ' + currentMatLvlName2 + '. Average grade: ' + gradeFromScore(avgRaw) + '. ' +
           (valid.length>0?'Strongest: '+bestD+'ft. Focus: '+weakD+'ft. ':'') + tTxt;
       }
     }
@@ -2490,7 +2682,7 @@
     });
   }
 
-  // ── TRIP COUNTDOWN ────────────────────────────────────────────────────────
+  // ── TRIP COUNTDOWN + DAWN GRADIENT ──────────────────────────────────────────
   (function() {
     var tripDate  = new Date('2026-07-23');
     var startDate = new Date('2026-05-12');
@@ -2514,6 +2706,26 @@
         daysLeft > 7  ? 'Two weeks out. Dial it in. Every. Single. Putt.' :
         daysLeft > 0  ? 'Game week. Go own those greens.' :
                         'It is go time. Turning Stone awaits.';
+    }
+
+    // Dawn gradient — banner shifts from night toward sunrise as trip approaches
+    var banner = document.getElementById('trip-banner');
+    var iconEl = document.getElementById('trip-icon');
+    if (banner) {
+      var bg, icon;
+      if (daysLeft > 45) {
+        bg = 'linear-gradient(135deg, #1a1a2e 0%, #16213e 60%, #0f3460 100%)'; icon = '🌙';
+      } else if (daysLeft > 21) {
+        bg = 'linear-gradient(135deg, #1a1a2e 0%, #1f2a4a 50%, #2d3a6b 100%)'; icon = '🌃';
+      } else if (daysLeft > 7) {
+        bg = 'linear-gradient(135deg, #1f2a4a 0%, #3d3a6b 45%, #5a4a7a 100%)'; icon = '🌆';
+      } else if (daysLeft > 0) {
+        bg = 'linear-gradient(135deg, #3d3a6b 0%, #a8527a 45%, #d98a4f 100%)'; icon = '🌅';
+      } else {
+        bg = 'linear-gradient(135deg, #d98a4f 0%, #e8b84f 50%, #f5d76e 100%)'; icon = '☀️';
+      }
+      banner.style.background = bg;
+      if (iconEl) iconEl.textContent = icon;
     }
   })();
 
