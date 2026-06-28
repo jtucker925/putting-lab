@@ -28,6 +28,95 @@
     --phase-border: rgba(201,168,76,0.5);
   }
 
+  /* ── A2 BLURPLE OVERHAUL ─────────────────────────────────────────────── */
+  body.phase-a2 {
+    background: radial-gradient(ellipse at 20% 20%, #0d0f2e 0%, #050818 55%, #0a0515 100%);
+  }
+
+  body.phase-a2::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 15% 25%, rgba(129,140,248,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 72% 14%, rgba(165,180,252,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 43% 68%, rgba(129,140,248,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 88% 42%, rgba(196,181,253,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 31% 88%, rgba(129,140,248,0.3) 0%, transparent 100%),
+      radial-gradient(1px 1px at 61% 52%, rgba(165,180,252,0.4) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 8% 72%, rgba(196,181,253,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 94% 81%, rgba(129,140,248,0.5) 0%, transparent 100%),
+      radial-gradient(1px 1px at 52% 35%, rgba(165,180,252,0.3) 0%, transparent 100%),
+      radial-gradient(1.5px 1.5px at 77% 63%, rgba(129,140,248,0.6) 0%, transparent 100%),
+      radial-gradient(1px 1px at 24% 47%, rgba(196,181,253,0.4) 0%, transparent 100%),
+      radial-gradient(1px 1px at 66% 91%, rgba(129,140,248,0.3) 0%, transparent 100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  body.phase-a2 header {
+    background: linear-gradient(180deg, rgba(13,15,46,0.98) 0%, rgba(5,8,24,0.95) 100%);
+    border-bottom-color: rgba(129,140,248,0.3);
+  }
+
+  body.phase-a2 .logo-block h1 span {
+    text-shadow: 0 0 20px rgba(129,140,248,0.6);
+  }
+
+  body.phase-a2 nav {
+    background: rgba(5,8,24,0.97);
+    border-bottom-color: rgba(129,140,248,0.15);
+  }
+
+  body.phase-a2 .tracker-card,
+  body.phase-a2 .drill-card,
+  body.phase-a2 .fundamental-card {
+    background: rgba(129,140,248,0.04);
+    border-color: rgba(129,140,248,0.12);
+  }
+
+  body.phase-a2 .tracker-card:hover {
+    border-color: rgba(129,140,248,0.25);
+  }
+
+  body.phase-a2 .btn-count.make {
+    border-color: rgba(129,140,248,0.4);
+    color: #a5b4fc;
+  }
+
+  body.phase-a2 .btn-count.make:active {
+    background: rgba(129,140,248,0.15);
+  }
+
+  body.phase-a2 .pct-fill {
+    background: linear-gradient(90deg, #1a2456, #818cf8);
+  }
+
+  body.phase-a2 .grade-card-reveal {
+    background: linear-gradient(135deg, rgba(13,15,46,0.98) 0%, rgba(26,36,86,0.8) 100%);
+    border-color: rgba(129,140,248,0.4);
+  }
+
+  body.phase-a2 main {
+    position: relative;
+    z-index: 1;
+  }
+
+  /* A1 subtle tweaks */
+  body.phase-a1 .tracker-card {
+    border-color: rgba(168,156,255,0.1);
+  }
+
+  body.phase-a1 .pct-fill {
+    background: linear-gradient(90deg, #2d2a6b, #a89cff);
+  }
+
+  @keyframes gradeReveal {
+    0%   { transform: scale(0.5); opacity: 0; }
+    60%  { transform: scale(1.08); opacity: 1; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
   body {
@@ -768,6 +857,16 @@
 
   <!-- DRILLS -->
   <div id="section-drills" class="section">
+
+    <!-- PRE-SESSION CHECKLIST -->
+    <div style="background:linear-gradient(135deg,rgba(224,112,96,0.08) 0%,rgba(13,31,22,0.6) 100%);border:1px solid rgba(224,112,96,0.3);border-radius:4px;padding:16px 20px;margin-bottom:16px;display:flex;align-items:center;gap:14px;">
+      <div style="font-size:1.4rem;flex-shrink:0;">📐</div>
+      <div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:#e07060;margin-bottom:4px;">Before You Start — Check This</div>
+        <div style="font-size:0.85rem;color:var(--chalk);line-height:1.5;"><strong style="color:var(--cream)">Mat alignment.</strong> A skewed mat creates false misses at 7ft and 8ft that corrupt your session data. Take 10 seconds — confirm the mat runs straight to your target line. Every session.</div>
+      </div>
+    </div>
+
     <div class="drills-grid">
 
       <!-- DRILL 1 -->
@@ -913,71 +1012,227 @@
       <p>Track your makes and misses across all distances. Your session grade is calculated live — weighted by distance difficulty, just like on the course.</p>
     </div>
 
-    <!-- ONE-HANDED TRACKER -->
+    <!-- ONE-HANDED TRACKER — per distance (A1/A2 weighted scoring) -->
     <div style="margin-top:20px;">
-      <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--phase-accent);margin-bottom:12px;transition:color 0.8s ease;">One-Handed Challenge — Drill 03</div>
+      <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--phase-accent);margin-bottom:6px;transition:color 0.8s ease;">One-Handed Challenge — Trail Hand (Left)</div>
+      <div style="font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--chalk);margin-bottom:10px;opacity:0.7;">Weighted: 4ft 35% · 5ft 30% · 6ft 20% · 7ft 15%</div>
       <div class="tracker-grid">
-
         <div class="tracker-card">
-          <h3>Trail Hand</h3>
-          <div class="sub">Left hand — cumulative across 4ft / 5ft / 6ft / 7ft (20 putts total)</div>
+          <h3>4ft — Trail</h3>
+          <div class="sub">Left hand · weighted 35% of hand score</div>
           <div class="counter-row">
             <span class="counter-label">Makes</span>
             <div class="counter-btns">
-              <button class="btn-count make" onclick="adjust('makeTrail', -1)">−</button>
-              <span class="count-display" id="makeTrail">0</span>
-              <button class="btn-count make" onclick="adjust('makeTrail', 1)">+</button>
+              <button class="btn-count make" onclick="adjust('makeTrail4', 1)">+</button>
+              <span class="count-display" id="makeTrail4">0</span>
+              <button class="btn-count miss" onclick="adjust('makeTrail4', -1)">−</button>
             </div>
           </div>
           <div class="counter-row">
             <span class="counter-label">Misses</span>
             <div class="counter-btns">
-              <button class="btn-count miss" onclick="adjust('missTrail', -1)">−</button>
-              <span class="count-display" id="missTrail">0</span>
-              <button class="btn-count miss" onclick="adjust('missTrail', 1)">+</button>
+              <button class="btn-count make" onclick="adjust('missTrail4', 1)">+</button>
+              <span class="count-display" id="missTrail4">0</span>
+              <button class="btn-count miss" onclick="adjust('missTrail4', -1)">−</button>
             </div>
           </div>
           <div class="pct-bar-wrap">
-            <div class="pct-bar-label"><span>Make %</span><span id="pctTrail-label">—</span></div>
-            <div class="pct-bar"><div class="pct-fill" id="pctTrail-bar" style="width:0%"></div></div>
+            <div class="pct-bar-label"><span>Make %</span><span id="pctTrail4-label">—</span></div>
+            <div class="pct-bar"><div class="pct-fill" id="pctTrail4-bar" style="width:0%"></div></div>
           </div>
-          <div class="stat-context" style="margin-top:10px;" id="trail-verdict">Hit 10 scored putts to log.</div>
-          <button class="reset-btn" onclick="resetTracker('Trail')">Reset</button>
         </div>
-
         <div class="tracker-card">
-          <h3>Lead Hand</h3>
-          <div class="sub">Right hand — cumulative across 4ft / 5ft / 6ft / 7ft (20 putts total)</div>
+          <h3>5ft — Trail</h3>
+          <div class="sub">Left hand · weighted 30% of hand score</div>
           <div class="counter-row">
             <span class="counter-label">Makes</span>
             <div class="counter-btns">
-              <button class="btn-count make" onclick="adjust('makeLead', -1)">−</button>
-              <span class="count-display" id="makeLead">0</span>
-              <button class="btn-count make" onclick="adjust('makeLead', 1)">+</button>
+              <button class="btn-count make" onclick="adjust('makeTrail5', 1)">+</button>
+              <span class="count-display" id="makeTrail5">0</span>
+              <button class="btn-count miss" onclick="adjust('makeTrail5', -1)">−</button>
             </div>
           </div>
           <div class="counter-row">
             <span class="counter-label">Misses</span>
             <div class="counter-btns">
-              <button class="btn-count miss" onclick="adjust('missLead', -1)">−</button>
-              <span class="count-display" id="missLead">0</span>
-              <button class="btn-count miss" onclick="adjust('missLead', 1)">+</button>
+              <button class="btn-count make" onclick="adjust('missTrail5', 1)">+</button>
+              <span class="count-display" id="missTrail5">0</span>
+              <button class="btn-count miss" onclick="adjust('missTrail5', -1)">−</button>
             </div>
           </div>
           <div class="pct-bar-wrap">
-            <div class="pct-bar-label"><span>Make %</span><span id="pctLead-label">—</span></div>
-            <div class="pct-bar"><div class="pct-fill" id="pctLead-bar" style="width:0%"></div></div>
+            <div class="pct-bar-label"><span>Make %</span><span id="pctTrail5-label">—</span></div>
+            <div class="pct-bar"><div class="pct-fill" id="pctTrail5-bar" style="width:0%"></div></div>
           </div>
-          <div class="stat-context" style="margin-top:10px;" id="lead-verdict">Hit 10 scored putts to log.</div>
-          <button class="reset-btn" onclick="resetTracker('Lead')">Reset</button>
         </div>
-
+        <div class="tracker-card">
+          <h3>6ft — Trail</h3>
+          <div class="sub">Left hand · weighted 20% of hand score</div>
+          <div class="counter-row">
+            <span class="counter-label">Makes</span>
+            <div class="counter-btns">
+              <button class="btn-count make" onclick="adjust('makeTrail6', 1)">+</button>
+              <span class="count-display" id="makeTrail6">0</span>
+              <button class="btn-count miss" onclick="adjust('makeTrail6', -1)">−</button>
+            </div>
+          </div>
+          <div class="counter-row">
+            <span class="counter-label">Misses</span>
+            <div class="counter-btns">
+              <button class="btn-count make" onclick="adjust('missTrail6', 1)">+</button>
+              <span class="count-display" id="missTrail6">0</span>
+              <button class="btn-count miss" onclick="adjust('missTrail6', -1)">−</button>
+            </div>
+          </div>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar-label"><span>Make %</span><span id="pctTrail6-label">—</span></div>
+            <div class="pct-bar"><div class="pct-fill" id="pctTrail6-bar" style="width:0%"></div></div>
+          </div>
+        </div>
+        <div class="tracker-card">
+          <h3>7ft — Trail</h3>
+          <div class="sub">Left hand · weighted 15% of hand score</div>
+          <div class="counter-row">
+            <span class="counter-label">Makes</span>
+            <div class="counter-btns">
+              <button class="btn-count make" onclick="adjust('makeTrail7', 1)">+</button>
+              <span class="count-display" id="makeTrail7">0</span>
+              <button class="btn-count miss" onclick="adjust('makeTrail7', -1)">−</button>
+            </div>
+          </div>
+          <div class="counter-row">
+            <span class="counter-label">Misses</span>
+            <div class="counter-btns">
+              <button class="btn-count make" onclick="adjust('missTrail7', 1)">+</button>
+              <span class="count-display" id="missTrail7">0</span>
+              <button class="btn-count miss" onclick="adjust('missTrail7', -1)">−</button>
+            </div>
+          </div>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar-label"><span>Make %</span><span id="pctTrail7-label">—</span></div>
+            <div class="pct-bar"><div class="pct-fill" id="pctTrail7-bar" style="width:0%"></div></div>
+          </div>
+        </div>
       </div>
 
-      <!-- Hand comparison -->
+      <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--phase-accent);margin-bottom:6px;margin-top:16px;transition:color 0.8s ease;">One-Handed Challenge — Lead Hand (Right)</div>
+      <div style="font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--chalk);margin-bottom:10px;opacity:0.7;">Weighted: 4ft 35% · 5ft 30% · 6ft 20% · 7ft 15%</div>
+      <div class="tracker-grid">
+        <div class="tracker-card">
+          <h3>4ft — Lead</h3>
+          <div class="sub">Right hand · weighted 35% of hand score</div>
+          <div class="counter-row">
+            <span class="counter-label">Makes</span>
+            <div class="counter-btns">
+              <button class="btn-count make" onclick="adjust('makeLead4', 1)">+</button>
+              <span class="count-display" id="makeLead4">0</span>
+              <button class="btn-count miss" onclick="adjust('makeLead4', -1)">−</button>
+            </div>
+          </div>
+          <div class="counter-row">
+            <span class="counter-label">Misses</span>
+            <div class="counter-btns">
+              <button class="btn-count make" onclick="adjust('missLead4', 1)">+</button>
+              <span class="count-display" id="missLead4">0</span>
+              <button class="btn-count miss" onclick="adjust('missLead4', -1)">−</button>
+            </div>
+          </div>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar-label"><span>Make %</span><span id="pctLead4-label">—</span></div>
+            <div class="pct-bar"><div class="pct-fill" id="pctLead4-bar" style="width:0%"></div></div>
+          </div>
+        </div>
+        <div class="tracker-card">
+          <h3>5ft — Lead</h3>
+          <div class="sub">Right hand · weighted 30% of hand score</div>
+          <div class="counter-row">
+            <span class="counter-label">Makes</span>
+            <div class="counter-btns">
+              <button class="btn-count make" onclick="adjust('makeLead5', 1)">+</button>
+              <span class="count-display" id="makeLead5">0</span>
+              <button class="btn-count miss" onclick="adjust('makeLead5', -1)">−</button>
+            </div>
+          </div>
+          <div class="counter-row">
+            <span class="counter-label">Misses</span>
+            <div class="counter-btns">
+              <button class="btn-count make" onclick="adjust('missLead5', 1)">+</button>
+              <span class="count-display" id="missLead5">0</span>
+              <button class="btn-count miss" onclick="adjust('missLead5', -1)">−</button>
+            </div>
+          </div>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar-label"><span>Make %</span><span id="pctLead5-label">—</span></div>
+            <div class="pct-bar"><div class="pct-fill" id="pctLead5-bar" style="width:0%"></div></div>
+          </div>
+        </div>
+        <div class="tracker-card">
+          <h3>6ft — Lead</h3>
+          <div class="sub">Right hand · weighted 20% of hand score</div>
+          <div class="counter-row">
+            <span class="counter-label">Makes</span>
+            <div class="counter-btns">
+              <button class="btn-count make" onclick="adjust('makeLead6', 1)">+</button>
+              <span class="count-display" id="makeLead6">0</span>
+              <button class="btn-count miss" onclick="adjust('makeLead6', -1)">−</button>
+            </div>
+          </div>
+          <div class="counter-row">
+            <span class="counter-label">Misses</span>
+            <div class="counter-btns">
+              <button class="btn-count make" onclick="adjust('missLead6', 1)">+</button>
+              <span class="count-display" id="missLead6">0</span>
+              <button class="btn-count miss" onclick="adjust('missLead6', -1)">−</button>
+            </div>
+          </div>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar-label"><span>Make %</span><span id="pctLead6-label">—</span></div>
+            <div class="pct-bar"><div class="pct-fill" id="pctLead6-bar" style="width:0%"></div></div>
+          </div>
+        </div>
+        <div class="tracker-card">
+          <h3>7ft — Lead</h3>
+          <div class="sub">Right hand · weighted 15% of hand score</div>
+          <div class="counter-row">
+            <span class="counter-label">Makes</span>
+            <div class="counter-btns">
+              <button class="btn-count make" onclick="adjust('makeLead7', 1)">+</button>
+              <span class="count-display" id="makeLead7">0</span>
+              <button class="btn-count miss" onclick="adjust('makeLead7', -1)">−</button>
+            </div>
+          </div>
+          <div class="counter-row">
+            <span class="counter-label">Misses</span>
+            <div class="counter-btns">
+              <button class="btn-count make" onclick="adjust('missLead7', 1)">+</button>
+              <span class="count-display" id="missLead7">0</span>
+              <button class="btn-count miss" onclick="adjust('missLead7', -1)">−</button>
+            </div>
+          </div>
+          <div class="pct-bar-wrap">
+            <div class="pct-bar-label"><span>Make %</span><span id="pctLead7-label">—</span></div>
+            <div class="pct-bar"><div class="pct-fill" id="pctLead7-bar" style="width:0%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hand summary totals (auto-computed) -->
       <div class="tracker-card" style="margin-top:12px;padding:16px 24px;">
-        <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);margin-bottom:10px;">Hand Analysis</div>
-        <div style="font-size:0.85rem;color:var(--chalk);line-height:1.7;" id="hand-analysis">Log both hands to see your stroke diagnosis.</div>
+        <div style="font-family:'DM Mono',monospace;font-size:0.55rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);margin-bottom:10px;">Hand Summary — Weighted Score</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;text-align:center;">
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--chalk);margin-bottom:4px;">Trail Total</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--phase-accent);" id="pctTrail-label">—</div>
+          </div>
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--chalk);margin-bottom:4px;">Lead Total</div>
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:1.5rem;color:var(--phase-accent);" id="pctLead-label">—</div>
+          </div>
+          <div>
+            <div style="font-family:'DM Mono',monospace;font-size:0.5rem;color:var(--chalk);margin-bottom:4px;">Hand Analysis</div>
+            <div style="font-size:0.75rem;color:var(--chalk);line-height:1.5;" id="hand-analysis">Log both hands.</div>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -1131,18 +1386,45 @@
     <!-- SESSION GRADE -->
     <div class="tracker-card" style="margin-top:20px;">
       <h3>Session Performance Eval</h3>
-      <div class="sub">Weighted score across all distances · updates live</div>
-      <div style="display:flex; align-items:center; gap:40px; flex-wrap:wrap; margin-top:16px;">
-        <div style="text-align:center;">
-          <div style="font-family:'Bebas Neue',sans-serif;font-size:5rem;line-height:1;" id="grade-letter">—</div>
-          <div style="font-family:'DM Mono',monospace;font-size:0.6rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);margin-top:4px;" id="grade-label">No data yet</div>
+      <div class="sub">Distance breakdown updates live · grade revealed when you're ready</div>
+
+      <!-- Live distance breakdown — always visible -->
+      <div style="margin-top:16px;">
+        <div class="pct-bar-wrap" style="margin-bottom:12px;">
+          <div class="pct-bar-label"><span>Session Score</span><span id="grade-score">—</span></div>
+          <div class="pct-bar" style="height:10px;"><div class="pct-fill" id="grade-bar" style="width:0%"></div></div>
         </div>
-        <div style="flex:1;min-width:200px;">
-          <div class="pct-bar-wrap" style="margin-bottom:12px;">
-            <div class="pct-bar-label"><span>Session Score</span><span id="grade-score">—</span></div>
-            <div class="pct-bar" style="height:10px;"><div class="pct-fill" id="grade-bar" style="width:0%"></div></div>
-          </div>
-          <div style="font-size:0.8rem;color:var(--chalk);line-height:1.7;" id="grade-breakdown">Hit some putts to generate your session grade.</div>
+        <div style="font-size:0.8rem;color:var(--chalk);line-height:1.7;" id="grade-breakdown">Hit some putts to generate your session grade.</div>
+      </div>
+
+      <!-- BIG REVEAL -->
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);">
+        <div id="reveal-btn-wrap" style="text-align:center;padding:16px 0;">
+          <button onclick="revealGrade()" style="
+            font-family:'Bebas Neue',sans-serif;
+            font-size:1.4rem;
+            letter-spacing:4px;
+            background:linear-gradient(135deg,var(--green-mid),var(--green-light));
+            border:1px solid var(--phase-border);
+            color:var(--phase-accent);
+            padding:16px 40px;
+            border-radius:4px;
+            cursor:pointer;
+            touch-action:manipulation;
+            min-height:56px;
+            width:100%;
+            max-width:400px;
+            transition:all 0.2s;
+            text-shadow:0 0 20px var(--phase-glow);
+          ">⛳ Reveal My Grade</button>
+          <div style="font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);margin-top:8px;opacity:0.6;">Confirm your level is correct before revealing</div>
+        </div>
+
+        <div id="grade-reveal-panel" style="display:none;text-align:center;padding:24px 0;">
+          <div style="font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:3px;text-transform:uppercase;color:var(--phase-accent);margin-bottom:8px;opacity:0.8;" id="grade-reveal-level">—</div>
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:8rem;line-height:1;animation:gradeReveal 0.4s ease-out;" id="grade-letter">—</div>
+          <div style="font-family:'DM Mono',monospace;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--chalk);margin-top:8px;" id="grade-label">—</div>
+          <button onclick="hideGrade()" style="margin-top:16px;font-family:'DM Mono',monospace;font-size:0.5rem;letter-spacing:2px;text-transform:uppercase;background:none;border:1px solid rgba(255,255,255,0.1);color:var(--chalk);padding:8px 20px;border-radius:2px;cursor:pointer;">Hide Grade</button>
         </div>
       </div>
       <div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.06);">
@@ -1686,13 +1968,36 @@
     });
 
     if (rubric['hand']) {
-      var tTotal = (trailData ? trailData.total : 0) + (leadData ? leadData.total : 0);
-      var tMakes = (trailData ? trailData.makes : 0) + (leadData ? leadData.makes : 0);
-      if (tTotal > 0) {
-        var hPct = (tMakes / tTotal) * 100;
-        var hRaw = Math.min(100, (hPct / rubric['hand'].perfect) * 100);
-        weightedScore += hRaw * rubric['hand'].w;
-        totalWeight   += rubric['hand'].w;
+      // For A1/A2: use distance-weighted hand scoring if per-dist data available
+      var handDistWeights = {'4':0.35,'5':0.30,'6':0.20,'7':0.15};
+      var hasPerDist = trailData && trailData.byDist;
+      if (hasPerDist) {
+        var handWeightedScore = 0, handWeightedTotal = 0;
+        ['4','5','6','7'].forEach(function(d) {
+          var tm = (trailData.byDist[d]||{}).makes||0, tt = (trailData.byDist[d]||{}).total||0;
+          var lm = (leadData.byDist[d]||{}).makes||0,  lt = (leadData.byDist[d]||{}).total||0;
+          var tot = tt+lt, mak = tm+lm;
+          if (tot > 0) {
+            var dPct = (mak/tot)*100;
+            var dRaw = Math.min(100,(dPct/rubric['hand'].perfect)*100);
+            handWeightedScore += dRaw * handDistWeights[d];
+            handWeightedTotal += handDistWeights[d];
+          }
+        });
+        if (handWeightedTotal > 0) {
+          weightedScore += (handWeightedScore/handWeightedTotal) * rubric['hand'].w;
+          totalWeight   += rubric['hand'].w;
+        }
+      } else {
+        // Legacy combined scoring for L1-L3
+        var tTotal = (trailData ? trailData.total : 0) + (leadData ? leadData.total : 0);
+        var tMakes = (trailData ? trailData.makes : 0) + (leadData ? leadData.makes : 0);
+        if (tTotal > 0) {
+          var hPct = (tMakes / tTotal) * 100;
+          var hRaw = Math.min(100, (hPct / rubric['hand'].perfect) * 100);
+          weightedScore += hRaw * rubric['hand'].w;
+          totalWeight   += rubric['hand'].w;
+        }
       }
     }
 
@@ -1761,7 +2066,16 @@
   ];
 
   // ── TRACKER STATE ─────────────────────────────────────────────────────────
-  var state = { make4:0, miss4:0, make5:0, miss5:0, make6:0, miss6:0, make7:0, miss7:0, make8:0, miss8:0, makeTrail:0, missTrail:0, makeLead:0, missLead:0 };
+  var state = {
+    make4:0, miss4:0, make5:0, miss5:0, make6:0, miss6:0, make7:0, miss7:0, make8:0, miss8:0,
+    // Per-distance hand counters (A1/A2 weighted hand scoring)
+    makeTrail4:0, missTrail4:0, makeTrail5:0, missTrail5:0,
+    makeTrail6:0, missTrail6:0, makeTrail7:0, missTrail7:0,
+    makeLead4:0,  missLead4:0,  makeLead5:0,  missLead5:0,
+    makeLead6:0,  missLead6:0,  makeLead7:0,  missLead7:0,
+    // Legacy combined (used for L1-L3 scoring, course sessions)
+    makeTrail:0, missTrail:0, makeLead:0, missLead:0
+  };
 
   // ── STORAGE ───────────────────────────────────────────────────────────────
   var STORAGE_KEY = 'tucker-putting-log';
@@ -1911,7 +2225,15 @@
   // ── TRACKER FUNCTIONS ─────────────────────────────────────────────────────
   function adjust(key, delta) {
     state[key] = Math.max(0, state[key] + delta);
-    document.getElementById(key).textContent = state[key];
+    var el = document.getElementById(key);
+    if (el) el.textContent = state[key];
+    // Keep legacy combined trail/lead totals in sync for L1-L3 scoring
+    ['4','5','6','7'].forEach(function(d) {
+      state.makeTrail = (state['makeTrail4']||0)+(state['makeTrail5']||0)+(state['makeTrail6']||0)+(state['makeTrail7']||0);
+      state.missTrail = (state['missTrail4']||0)+(state['missTrail5']||0)+(state['missTrail6']||0)+(state['missTrail7']||0);
+      state.makeLead  = (state['makeLead4']||0) +(state['makeLead5']||0) +(state['makeLead6']||0) +(state['makeLead7']||0);
+      state.missLead  = (state['missLead4']||0) +(state['missLead5']||0) +(state['missLead6']||0) +(state['missLead7']||0);
+    });
     updatePct();
     updateLogPreview();
   }
@@ -1932,26 +2254,40 @@
       }
     });
 
-    // One-handed trackers
-    ['Trail','Lead'].forEach(function(hand) {
-      var m = state['make'+hand], t = state['make'+hand]+state['miss'+hand];
-      var pct = t > 0 ? Math.round((m/t)*100) : null;
-      var bar = document.getElementById('pct'+hand+'-bar');
-      var lbl = document.getElementById('pct'+hand+'-label');
-      var vrd = document.getElementById(hand.toLowerCase()+'-verdict');
-      if (pct !== null) {
-        bar.style.width = pct + '%';
-        bar.classList.toggle('warn', pct < 50);
-        lbl.textContent = pct + '%';
-        vrd.textContent = pct >= 80 ? 'Strong — this hand is an asset.' :
-                          pct >= 60 ? 'Solid. Room to improve.' :
-                          pct >= 40 ? 'Needs work — focus here next session.' :
-                                      'Weak link found. This is the priority.';
-      } else {
-        bar.style.width = '0%'; lbl.textContent = '—';
-        vrd.textContent = 'Hit scored putts to log.';
-      }
+    // Per-distance hand bars
+    ['4','5','6','7'].forEach(function(d) {
+      ['Trail','Lead'].forEach(function(hand) {
+        var mk = state['make'+hand+d]||0, ms = state['miss'+hand+d]||0;
+        var t = mk+ms, pct = t>0 ? Math.round((mk/t)*100) : null;
+        var bar = document.getElementById('pct'+hand+d+'-bar');
+        var lbl = document.getElementById('pct'+hand+d+'-label');
+        if (bar) { bar.style.width = (pct||0)+'%'; bar.classList.toggle('warn', pct!==null && pct<50); }
+        if (lbl)   lbl.textContent = pct!==null ? pct+'%' : '—';
+      });
     });
+
+    // Summary totals for hand summary card
+    var tTrailM=0, tTrailT=0, tLeadM=0, tLeadT=0;
+    ['4','5','6','7'].forEach(function(d) {
+      tTrailM+=state['makeTrail'+d]||0; tTrailT+=state['makeTrail'+d]+state['missTrail'+d]||0;
+      tLeadM +=state['makeLead'+d]||0;  tLeadT +=state['makeLead'+d]+state['missLead'+d]||0;
+    });
+    var trailLbl = document.getElementById('pctTrail-label');
+    var leadLbl  = document.getElementById('pctLead-label');
+    if (trailLbl) trailLbl.textContent = tTrailT>0 ? Math.round((tTrailM/tTrailT)*100)+'%' : '—';
+    if (leadLbl)  leadLbl.textContent  = tLeadT>0  ? Math.round((tLeadM/tLeadT)*100)+'%'  : '—';
+
+    var haEl = document.getElementById('hand-analysis');
+    if (haEl && tTrailT>0 && tLeadT>0) {
+      var tP=Math.round((tTrailM/tTrailT)*100), lP=Math.round((tLeadM/tLeadT)*100);
+      var diff=lP-tP;
+      haEl.textContent = Math.abs(diff)<=8
+        ? 'Trail '+tP+'% / Lead '+lP+'% — Balanced.'
+        : diff>8 ? 'Lead stronger. Focus trail reps.'
+        : 'Trail stronger. Focus lead reps.';
+    } else if (haEl) {
+      haEl.textContent = 'Log both hands to see diagnosis.';
+    }
 
     // Hand analysis
     var tM = state.makeTrail, tT = state.makeTrail+state.missTrail;
@@ -1979,8 +2315,24 @@
     ['4','5','6','7','8'].forEach(function(d) {
       distData[d] = { makes: state['make'+d], total: state['make'+d]+state['miss'+d] };
     });
-    var trailData = { makes: state.makeTrail, total: state.makeTrail+state.missTrail };
-    var leadData  = { makes: state.makeLead,  total: state.makeLead+state.missLead };
+    var trailData = {
+      makes: state.makeTrail, total: state.makeTrail+state.missTrail,
+      byDist: {
+        '4':{makes:state.makeTrail4,total:state.makeTrail4+state.missTrail4},
+        '5':{makes:state.makeTrail5,total:state.makeTrail5+state.missTrail5},
+        '6':{makes:state.makeTrail6,total:state.makeTrail6+state.missTrail6},
+        '7':{makes:state.makeTrail7,total:state.makeTrail7+state.missTrail7}
+      }
+    };
+    var leadData = {
+      makes: state.makeLead, total: state.makeLead+state.missLead,
+      byDist: {
+        '4':{makes:state.makeLead4,total:state.makeLead4+state.missLead4},
+        '5':{makes:state.makeLead5,total:state.makeLead5+state.missLead5},
+        '6':{makes:state.makeLead6,total:state.makeLead6+state.missLead6},
+        '7':{makes:state.makeLead7,total:state.makeLead7+state.missLead7}
+      }
+    };
 
     var score = computeScore(distData, trailData, leadData, levelKey);
     var gradeEl = document.getElementById('grade-letter');
@@ -1999,7 +2351,12 @@
     }
 
     var g = gradeFromScore(score);
-    if (gradeEl) { gradeEl.textContent = g; gradeEl.style.color = gradeColor(g); }
+    // Only update grade letter if reveal panel is showing (grade not hidden)
+    var revealPanel = document.getElementById('grade-reveal-panel');
+    var gradeVisible = revealPanel && revealPanel.style.display !== 'none';
+    if (gradeEl && gradeVisible) { gradeEl.textContent = g; gradeEl.style.color = gradeColor(g); }
+    else if (gradeEl && gradeEl.textContent === '—') { /* keep placeholder */ }
+    else if (gradeEl) { gradeEl.textContent = g; gradeEl.style.color = gradeColor(g); }
     if (labelEl) labelEl.textContent = getGradeMsg(score);
     if (scoreEl) scoreEl.textContent = score + ' / 100';
     if (barEl)   { barEl.style.width = score + '%'; barEl.classList.toggle('warn', score < 73); }
@@ -2038,11 +2395,21 @@
       if (mel) mel.textContent = '0';
       if (misel) misel.textContent = '0';
     });
-    ['Trail','Lead'].forEach(function(h) {
-      state['make'+h] = 0; state['miss'+h] = 0;
-      document.getElementById('make'+h).textContent = '0';
-      document.getElementById('miss'+h).textContent = '0';
+    // Reset per-distance hand counters
+    ['4','5','6','7'].forEach(function(d) {
+      ['Trail','Lead'].forEach(function(h) {
+        state['make'+h+d] = 0; state['miss'+h+d] = 0;
+        var mel  = document.getElementById('make'+h+d);
+        var misel= document.getElementById('miss'+h+d);
+        if (mel)   mel.textContent   = '0';
+        if (misel) misel.textContent = '0';
+      });
     });
+    // Reset legacy combined
+    state.makeTrail = 0; state.missTrail = 0;
+    state.makeLead  = 0; state.missLead  = 0;
+    // Reset reveal panel
+    hideGrade();
     updatePct();
   }
 
@@ -2060,8 +2427,24 @@
     ['4','5','6','7','8'].forEach(function(d) {
       distData[d] = { makes: state['make'+d], total: state['make'+d]+state['miss'+d] };
     });
-    var trailData = { makes: state.makeTrail, total: state.makeTrail+state.missTrail };
-    var leadData  = { makes: state.makeLead,  total: state.makeLead+state.missLead };
+    var trailData = {
+      makes: state.makeTrail, total: state.makeTrail+state.missTrail,
+      byDist: {
+        '4':{makes:state.makeTrail4,total:state.makeTrail4+state.missTrail4},
+        '5':{makes:state.makeTrail5,total:state.makeTrail5+state.missTrail5},
+        '6':{makes:state.makeTrail6,total:state.makeTrail6+state.missTrail6},
+        '7':{makes:state.makeTrail7,total:state.makeTrail7+state.missTrail7}
+      }
+    };
+    var leadData = {
+      makes: state.makeLead, total: state.makeLead+state.missLead,
+      byDist: {
+        '4':{makes:state.makeLead4,total:state.makeLead4+state.missLead4},
+        '5':{makes:state.makeLead5,total:state.makeLead5+state.missLead5},
+        '6':{makes:state.makeLead6,total:state.makeLead6+state.missLead6},
+        '7':{makes:state.makeLead7,total:state.makeLead7+state.missLead7}
+      }
+    };
     var score = computeScore(distData, trailData, leadData, levelKey);
 
     if (score === null) { feedback.style.color='#e07060'; feedback.textContent='No putt data found. Hit some putts in the Make Tracker first.'; return; }
@@ -2112,8 +2495,24 @@
     var levelKey = (document.getElementById('log-level-input') || {}).value || 'L2';
     var distData = {};
     ['4','5','6','8'].forEach(function(d) { distData[d] = { makes: state['make'+d], total: state['make'+d]+state['miss'+d] }; });
-    var trailData = { makes: state.makeTrail, total: state.makeTrail+state.missTrail };
-    var leadData  = { makes: state.makeLead,  total: state.makeLead+state.missLead };
+    var trailData = {
+      makes: state.makeTrail, total: state.makeTrail+state.missTrail,
+      byDist: {
+        '4':{makes:state.makeTrail4,total:state.makeTrail4+state.missTrail4},
+        '5':{makes:state.makeTrail5,total:state.makeTrail5+state.missTrail5},
+        '6':{makes:state.makeTrail6,total:state.makeTrail6+state.missTrail6},
+        '7':{makes:state.makeTrail7,total:state.makeTrail7+state.missTrail7}
+      }
+    };
+    var leadData = {
+      makes: state.makeLead, total: state.makeLead+state.missLead,
+      byDist: {
+        '4':{makes:state.makeLead4,total:state.makeLead4+state.missLead4},
+        '5':{makes:state.makeLead5,total:state.makeLead5+state.missLead5},
+        '6':{makes:state.makeLead6,total:state.makeLead6+state.missLead6},
+        '7':{makes:state.makeLead7,total:state.makeLead7+state.missLead7}
+      }
+    };
     var sc = computeScore(distData, trailData, leadData, levelKey);
     var parts = [];
     ['4','5','6','8'].forEach(function(d) {
@@ -2125,6 +2524,29 @@
   }
 
   // ── RENDER LOG ────────────────────────────────────────────────────────────
+  // ── GRADE REVEAL ──────────────────────────────────────────────────────────
+  function revealGrade() {
+    var panel  = document.getElementById('grade-reveal-panel');
+    var btn    = document.getElementById('reveal-btn-wrap');
+    var gEl    = document.getElementById('grade-letter');
+    var lvlEl  = document.getElementById('grade-reveal-level');
+    var labelEl= document.getElementById('grade-label');
+    var levelKey = (document.getElementById('log-level-input')||{}).value || 'A1';
+    var lvlCfg = getLevelConfig(levelKey);
+    if (lvlEl) lvlEl.textContent = lvlCfg ? lvlCfg.name : levelKey;
+    // Force re-trigger animation
+    if (gEl) { gEl.style.animation='none'; void gEl.offsetWidth; gEl.style.animation='gradeReveal 0.4s ease-out'; }
+    if (panel) panel.style.display = 'block';
+    if (btn)   btn.style.display   = 'none';
+  }
+
+  function hideGrade() {
+    var panel = document.getElementById('grade-reveal-panel');
+    var btn   = document.getElementById('reveal-btn-wrap');
+    if (panel) panel.style.display = 'none';
+    if (btn)   btn.style.display   = 'block';
+  }
+
   // ── PHASE THEME DEFINITIONS ─────────────────────────────────────────────
   function applyPhaseTheme(levelKey) {
     var root = document.documentElement.style;
@@ -2140,18 +2562,24 @@
       root.setProperty('--phase-accent-light', '#c4baff');
       root.setProperty('--phase-glow', 'rgba(168,156,255,0.4)');
       root.setProperty('--phase-border', 'rgba(168,156,255,0.5)');
+      document.body.classList.add('phase-a1');
+      document.body.classList.remove('phase-a2');
     } else if (levelKey === 'L3') {
       // Heating up phase — amber/copper
       root.setProperty('--phase-accent', '#e0954c');
       root.setProperty('--phase-accent-light', '#f0b87a');
       root.setProperty('--phase-glow', 'rgba(224,149,76,0.4)');
       root.setProperty('--phase-border', 'rgba(224,149,76,0.5)');
+      document.body.classList.remove('phase-a1');
+      document.body.classList.remove('phase-a2');
     } else {
       // Foundation phase — original gold (L1/L2 default)
       root.setProperty('--phase-accent', '#c9a84c');
       root.setProperty('--phase-accent-light', '#e8c97a');
       root.setProperty('--phase-glow', 'rgba(201,168,76,0.4)');
       root.setProperty('--phase-border', 'rgba(201,168,76,0.5)');
+      document.body.classList.remove('phase-a1');
+      document.body.classList.remove('phase-a2');
     }
   }
 
